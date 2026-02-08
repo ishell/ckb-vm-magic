@@ -241,6 +241,23 @@ run_one_case() {
 write_reports() {
   mkdir -p "$OUTPUT_DIR"
 
+  local passed_count=0
+  local failed_count=0
+  local skipped_count=0
+  for status in "${STATUS[@]}"; do
+    case "$status" in
+      passed)
+        ((passed_count++))
+        ;;
+      failed)
+        ((failed_count++))
+        ;;
+      skipped)
+        ((skipped_count++))
+        ;;
+    esac
+  done
+
   {
     echo "batch,case_id,title,status,exit_code,command,log_file"
     for i in "${!CASE_ID[@]}"; do
@@ -253,18 +270,21 @@ write_reports() {
     echo "# Lab Run Report"
     echo
     echo "- Generated: $(date -Iseconds)"
-    echo "- Repo: \\`$REPO_ROOT\\`"
-    echo "- Batch: \\`$BATCH\\`"
-    echo "- Mode: \\`$MODE\\`"
-    echo "- Skip ASM: \\`$SKIP_ASM\\`"
-    echo "- Stop on fail: \\`$STOP_ON_FAIL\\`"
+    echo "- Repo: \`$REPO_ROOT\`"
+    echo "- Batch: \`$BATCH\`"
+    echo "- Mode: \`$MODE\`"
+    echo "- Skip ASM: \`$SKIP_ASM\`"
+    echo "- Stop on fail: \`$STOP_ON_FAIL\`"
+    echo "- Passed: \`$passed_count\`"
+    echo "- Failed: \`$failed_count\`"
+    echo "- Skipped: \`$skipped_count\`"
     echo
     echo "## Result Summary"
     echo
     echo "| Batch | Case | Title | Status | Exit | Command | Log |"
     echo "|---|---|---|---|---:|---|---|"
     for i in "${!CASE_ID[@]}"; do
-      echo "| ${CASE_BATCH[$i]} | ${CASE_ID[$i]} | ${CASE_TITLE[$i]} | ${STATUS[$i]} | ${EXIT_CODE[$i]} | \\`${CASE_CMD[$i]}\\` | \\`${LOG_FILE[$i]}\\` |"
+      echo "| ${CASE_BATCH[$i]} | ${CASE_ID[$i]} | ${CASE_TITLE[$i]} | ${STATUS[$i]} | ${EXIT_CODE[$i]} | \`${CASE_CMD[$i]}\` | \`${LOG_FILE[$i]}\` |"
     done
     echo
     echo "## Expectation Checklist"
@@ -282,8 +302,8 @@ write_reports() {
     echo
     echo "## Artifacts"
     echo
-    echo "- CSV summary: \\`${REPORT_CSV#$REPO_ROOT/}\\`"
-    echo "- Raw logs dir: \\`${LOG_DIR#$REPO_ROOT/}\\`"
+    echo "- CSV summary: \`${REPORT_CSV#$REPO_ROOT/}\`"
+    echo "- Raw logs dir: \`${LOG_DIR#$REPO_ROOT/}\`"
   } > "$REPORT_MD"
 
   echo
@@ -296,3 +316,26 @@ for i in "${!CASE_ID[@]}"; do
 done
 
 write_reports
+
+failed_total=0
+skipped_total=0
+passed_total=0
+for status in "${STATUS[@]}"; do
+  case "$status" in
+    passed)
+      ((passed_total++))
+      ;;
+    failed)
+      ((failed_total++))
+      ;;
+    skipped)
+      ((skipped_total++))
+      ;;
+  esac
+done
+
+echo "[summary] passed=$passed_total failed=$failed_total skipped=$skipped_total"
+
+if [[ "$failed_total" -gt 0 ]]; then
+  exit 1
+fi

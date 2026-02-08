@@ -35,10 +35,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-5252cc92.js";
+            window.path_to_searchindex_js = "../searchindex-7306d098.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-076badc4.js"></script>
+        <script src="../toc-feb77f24.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -205,17 +205,17 @@
 <li><code>A-1</code> 密码学执行栈：算法层到计费层的闭环</li>
 <li><code>C-1</code> ISA 到协议治理链：扩展引入与回滚策略</li>
 </ul>
-<h2 id="批次四可选增强"><a class="header" href="#批次四可选增强">批次四（可选增强）</a></h2>
+<h2 id="批次四增强层已完成"><a class="header" href="#批次四增强层已完成">批次四（增强层，已完成）</a></h2>
 <ul>
-<li>图示对应的“实验脚本化”版本（每篇附可复现实验）</li>
-<li>图示对应的“审计报告模板化”版本（每篇附审计表）</li>
-<li>图示对应的“教学演示版”版本（面向培训场景）</li>
+<li>已完成：图示配套实验脚本化执行（<code>tools/run_labs.sh</code> + 报告归档）</li>
+<li>已完成：图示对应审计模板化（<code>audit-templates/</code>，每篇长文一份 + 已填表示例）</li>
+<li>已完成：教学演示版增强（90 分钟授课脚本、幻灯片大纲、live demo runbook、评估单、逐页口播稿）</li>
 </ul>
 <h2 id="使用方式"><a class="header" href="#使用方式">使用方式</a></h2>
 <ul>
 <li>入门建议：按批次顺序阅读。</li>
-<li>评审建议：先读对应章节，再读同编号长文。</li>
-<li>工程建议：把每篇长文的“审计清单”直接挂到 PR 模板。</li>
+<li>评审建议：先读对应章节，再读同编号长文与审计模板。</li>
+<li>工程建议：把每篇长文模板直接挂到 PR 模板与发布门禁流程。</li>
 </ul>
 
                     </main>
@@ -253,22 +253,6 @@
         <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
         <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
 
-        <!-- Livereload script (if served using the cli tool) -->
-        <script>
-            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
-            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
-            const socket = new WebSocket(wsAddress);
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload();
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
 
 
         <script>

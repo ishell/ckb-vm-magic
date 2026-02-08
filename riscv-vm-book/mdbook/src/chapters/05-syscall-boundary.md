@@ -1,5 +1,6 @@
 > 出版版章节 `第 5 章` | 文档版本 `v0.5.0` | 评审状态 `可审阅`
 > 关联附录：术语见 `附录 B` 与 `附录 D`
+> 延伸阅读（批次二）：[图 5-1 长文](../articles/batch-02-05-ecall-dispatch-boundary.md) | [图 5-1 审计模板](../articles-audit/05-ecall-dispatch-boundary-audit-template.md)
 
 {{#include ../../../manuscript/05-syscall-boundary.md}}
 ---

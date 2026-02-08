@@ -18,6 +18,11 @@ pc -> decode_bits
 -> execute_instruction
 ```
 
+> 延伸阅读（批次一）：
+> - [图 4-1 长文](../standalone-articles/batch-01/04-decode-fastpath.md)
+> - [图 4-1 审计模板](../standalone-articles/audit-templates/04-decode-fastpath-audit-template.md)
+> - [对应实验手册](../standalone-articles/labs/batch-01-labs.md)
+
 ## 4.3 代码证据
 
 - `src/decoder.rs`：`decode_bits` 对页尾跨页场景做专门路径。

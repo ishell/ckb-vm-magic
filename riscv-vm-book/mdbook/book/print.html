@@ -36,10 +36,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-5252cc92.js";
+            window.path_to_searchindex_js = "searchindex-7306d098.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-076badc4.js"></script>
+        <script src="toc-feb77f24.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -195,6 +195,8 @@
 <ul>
 <li>阅读主线：第 1-11 章</li>
 <li>专题扩展：附录 A（密码学）与附录 C（RISC-V）</li>
+<li>图示到审计：图示长文 + 图示审计模板 + 已填表示例</li>
+<li>课堂交付：90 分钟教学包 + 逐页口播稿</li>
 <li>交叉检索：附录 B + 附录 D</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div>
@@ -202,8 +204,8 @@
 <h2 id="文档版本信息"><a class="header" href="#文档版本信息">文档版本信息</a></h2>
 <ul>
 <li>文档名称：Rust 与 RISC-V：区块链虚拟机的工程必然性</li>
-<li>当前版本：v0.7.0</li>
-<li>发布阶段：出版评审版（实验与教学增强）</li>
+<li>当前版本：v0.10.2</li>
+<li>发布阶段：出版评审版（章节链接同步补强）</li>
 <li>发布日期：2026-02-08</li>
 <li>语言：zh-CN</li>
 </ul>
@@ -232,8 +234,81 @@
 </ul>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="更新日志"><a class="header" href="#更新日志">更新日志</a></h1>
-<h2 id="v070---2026-02-08"><a class="header" href="#v070---2026-02-08">v0.7.0 - 2026-02-08</a></h2>
+<h2 id="v0102---2026-02-08"><a class="header" href="#v0102---2026-02-08">v0.10.2 - 2026-02-08</a></h2>
 <h3 id="added"><a class="header" href="#added">Added</a></h3>
+<ul>
+<li>第 1-4 章正文新增批次一链接（图示长文 + 审计模板 + 实验手册）。</li>
+</ul>
+<h3 id="changed"><a class="header" href="#changed">Changed</a></h3>
+<ul>
+<li>mdBook 第 1-4 章页头新增批次一延伸阅读链接，形成与第 5-11 章一致的章节导航体验。</li>
+</ul>
+<h2 id="v0101---2026-02-08"><a class="header" href="#v0101---2026-02-08">v0.10.1 - 2026-02-08</a></h2>
+<h3 id="added-1"><a class="header" href="#added-1">Added</a></h3>
+<ul>
+<li>新增真实仓库锚点审计样例：
+<ul>
+<li><code>standalone-articles/audit-templates/examples/03-pr-audit-sample-real-anchors-run-exit-cycles.md</code></li>
+</ul>
+</li>
+<li>mdBook 新增“审计样例 03 真实锚点映射”入口。</li>
+</ul>
+<h3 id="changed-1"><a class="header" href="#changed-1">Changed</a></h3>
+<ul>
+<li>审计样例集从 2 份扩展到 3 份（通过 / 拒绝 / 真实锚点）。</li>
+<li>导读页与 README 对审计样例描述升级为“通过/拒绝/真实锚点”。</li>
+</ul>
+<h2 id="v0100---2026-02-08"><a class="header" href="#v0100---2026-02-08">v0.10.0 - 2026-02-08</a></h2>
+<h3 id="added-2"><a class="header" href="#added-2">Added</a></h3>
+<ul>
+<li>新增审计样例集：<code>standalone-articles/audit-templates/examples/</code>。
+<ul>
+<li>样例 01：MOP + secp256k1 优化（有条件通过）。</li>
+<li>样例 02：host time syscall 扩展（拒绝通过）。</li>
+</ul>
+</li>
+<li>mdBook 新增“审计样例总览 + 两份已填表示例”导航入口。</li>
+<li>教学包新增“逐页口播稿”与审计样例联动使用路径。</li>
+</ul>
+<h3 id="changed-2"><a class="header" href="#changed-2">Changed</a></h3>
+<ul>
+<li>图示审计模板 README 增加样例索引与使用建议。</li>
+<li>总 README、图示 README、导读页同步到“模板 + 样例 + 教学演练”结构。</li>
+</ul>
+<h2 id="v090---2026-02-08"><a class="header" href="#v090---2026-02-08">v0.9.0 - 2026-02-08</a></h2>
+<h3 id="added-3"><a class="header" href="#added-3">Added</a></h3>
+<ul>
+<li>新增图示长文审计模板层：<code>standalone-articles/audit-templates/</code>，覆盖 13 篇图示长文（每篇一份模板）。</li>
+<li>mdBook 新增“图示审计模板总览 + 13 份模板”导航入口。</li>
+<li>新增教学增强文档：<code>teaching/08-90min-slide-verbatim-script.md</code>（90 分钟逐页口播稿，可直接照读）。</li>
+</ul>
+<h3 id="changed-3"><a class="header" href="#changed-3">Changed</a></h3>
+<ul>
+<li>图示路线图批次四状态升级为“已完成”（实验脚本化、审计模板化、教学增强闭环）。</li>
+<li>顶层 README、图示 README、教学 README、mdBook 索引全部同步到“读长文 -&gt; 跑实验 -&gt; 填模板 -&gt; 上课交付”链路。</li>
+</ul>
+<h2 id="v080---2026-02-08"><a class="header" href="#v080---2026-02-08">v0.8.0 - 2026-02-08</a></h2>
+<h3 id="added-4"><a class="header" href="#added-4">Added</a></h3>
+<ul>
+<li>新增实验脚本化执行手册：<code>standalone-articles/labs/runner-script.md</code>。</li>
+<li>新增脚本化入口并接入文档导航：<code>tools/run_labs.sh</code> 与 mdBook <code>labs/runner-script.md</code>。</li>
+<li>新增 90 分钟教学包：
+<ul>
+<li><code>teaching/04-90min-instructor-script.md</code></li>
+<li><code>teaching/05-90min-slide-outline.md</code></li>
+<li><code>teaching/06-90min-live-demo-runbook.md</code></li>
+<li><code>teaching/07-90min-assessment-sheet.md</code></li>
+</ul>
+</li>
+<li>mdBook 新增“实验脚本化执行”与“90 分钟教学包”导航入口。</li>
+</ul>
+<h3 id="changed-4"><a class="header" href="#changed-4">Changed</a></h3>
+<ul>
+<li>项目总目录、教学目录与 mdBook README 同步到“实验脚本化 + 课堂可交付”结构。</li>
+<li>图示长文路线图批次四状态更新为“第一阶段已完成”。</li>
+</ul>
+<h2 id="v070---2026-02-08"><a class="header" href="#v070---2026-02-08">v0.7.0 - 2026-02-08</a></h2>
+<h3 id="added-5"><a class="header" href="#added-5">Added</a></h3>
 <ul>
 <li>新增图示长文实验层（labs）：
 <ul>
@@ -253,13 +328,13 @@
 </li>
 <li>mdBook 新增实验与教学导航入口。</li>
 </ul>
-<h3 id="changed"><a class="header" href="#changed">Changed</a></h3>
+<h3 id="changed-5"><a class="header" href="#changed-5">Changed</a></h3>
 <ul>
 <li>项目总目录结构升级为“主文 + 图示长文 + 实验 + 教学 + 附录”。</li>
 <li>导读页和 README 文档同步到新结构。</li>
 </ul>
 <h2 id="v060---2026-02-08"><a class="header" href="#v060---2026-02-08">v0.6.0 - 2026-02-08</a></h2>
-<h3 id="added-1"><a class="header" href="#added-1">Added</a></h3>
+<h3 id="added-6"><a class="header" href="#added-6">Added</a></h3>
 <ul>
 <li>图示拆解长文批次三（5 篇）并接入 mdBook：
 <ul>
@@ -270,13 +345,13 @@
 <li>新增 <code>standalone-articles/batch-03/</code> 目录与批次说明。</li>
 <li>mdBook 目录增加批次三长文入口。</li>
 </ul>
-<h3 id="changed-1"><a class="header" href="#changed-1">Changed</a></h3>
+<h3 id="changed-6"><a class="header" href="#changed-6">Changed</a></h3>
 <ul>
 <li>图示长文路线图更新为“批次一/二/三已完成”。</li>
 <li>导读、README、索引页同步到批次三状态。</li>
 </ul>
 <h2 id="v050---2026-02-08"><a class="header" href="#v050---2026-02-08">v0.5.0 - 2026-02-08</a></h2>
-<h3 id="added-2"><a class="header" href="#added-2">Added</a></h3>
+<h3 id="added-7"><a class="header" href="#added-7">Added</a></h3>
 <ul>
 <li>新增 mdBook 发布页体系：
 <ul>
@@ -290,13 +365,13 @@
 <li>新增附录 G（作者改稿检查清单）。</li>
 <li>新增附录 F（密码学 PR 审计模板）并接入目录。</li>
 </ul>
-<h3 id="changed-2"><a class="header" href="#changed-2">Changed</a></h3>
+<h3 id="changed-7"><a class="header" href="#changed-7">Changed</a></h3>
 <ul>
 <li>第 1-11 章新增“审稿人问题清单（出版评审）”。</li>
 <li>顶层 README、manuscript README、mdBook README 全部同步到新结构。</li>
 </ul>
 <h2 id="v040---2026-02-08"><a class="header" href="#v040---2026-02-08">v0.4.0 - 2026-02-08</a></h2>
-<h3 id="added-3"><a class="header" href="#added-3">Added</a></h3>
+<h3 id="added-8"><a class="header" href="#added-8">Added</a></h3>
 <ul>
 <li>主体第 1-11 章新增出版收口结构：
 <ul>
@@ -310,59 +385,59 @@
 <li>新增附录 D（术语交叉索引）</li>
 <li>新增附录 E（出版规范与合规矩阵）</li>
 </ul>
-<h3 id="changed-3"><a class="header" href="#changed-3">Changed</a></h3>
+<h3 id="changed-8"><a class="header" href="#changed-8">Changed</a></h3>
 <ul>
 <li>术语总表升级为带锚点版本，支持章节交叉引用。</li>
 <li>目录结构按“主线阅读 + 专题附录 + 审计辅助”重排。</li>
 </ul>
 <h2 id="v030---2026-02-08"><a class="header" href="#v030---2026-02-08">v0.3.0 - 2026-02-08</a></h2>
-<h3 id="added-4"><a class="header" href="#added-4">Added</a></h3>
+<h3 id="added-9"><a class="header" href="#added-9">Added</a></h3>
 <ul>
 <li>第 1-11 章完整稿（严肃专业版）</li>
 <li>附录 A 密码学专题初版</li>
 <li>mdBook 基础可读结构</li>
 </ul>
 <h2 id="v020---2026-02-08"><a class="header" href="#v020---2026-02-08">v0.2.0 - 2026-02-08</a></h2>
-<h3 id="added-5"><a class="header" href="#added-5">Added</a></h3>
+<h3 id="added-10"><a class="header" href="#added-10">Added</a></h3>
 <ul>
 <li>分批扩展稿：执行主线、Rust/RISC-V 论证、架构评估</li>
 </ul>
 <h2 id="v010---2026-02-08"><a class="header" href="#v010---2026-02-08">v0.1.0 - 2026-02-08</a></h2>
-<h3 id="added-6"><a class="header" href="#added-6">Added</a></h3>
+<h3 id="added-11"><a class="header" href="#added-11">Added</a></h3>
 <ul>
 <li>初始大纲与章节规划</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="审稿人变更摘要页"><a class="header" href="#审稿人变更摘要页">审稿人变更摘要页</a></h1>
 <blockquote>
-<p>版本范围：<code>v0.6.0</code> -&gt; <code>v0.7.0</code><br>评审目标：确认“图示长文 -&gt; 实验 -&gt; 教学”三层链路已闭环。</p>
+<p>版本范围：<code>v0.10.1</code> -&gt; <code>v0.10.2</code><br>评审目标：确认第 1-4 章已同步批次一链接，章节导航覆盖 1-11 章。</p>
 </blockquote>
 <h2 id="一这次改了什么按影响度排序"><a class="header" href="#一这次改了什么按影响度排序">一、这次改了什么（按影响度排序）</a></h2>
 <ol>
-<li>新增实验层：每个图示批次均有可复现实验手册。</li>
-<li>新增教学层：课程地图、讲义、练习题、答案评分。</li>
-<li>mdBook 索引升级：支持“阅读 + 实验 +授课”三种使用路径。</li>
-<li>文档结构升级为五层：主文、图示长文、实验、教学、附录。</li>
+<li>第 1-4 章正文新增批次一链接（长文/审计模板/实验手册）。</li>
+<li>mdBook 第 1-4 章页头新增批次一延伸阅读链接。</li>
+<li>第 1-11 章现已形成完整“章节 -&gt; 长文 -&gt; 审计模板 -&gt; 实验手册”导航闭环。</li>
+<li>读者不再需要跨目录手工定位批次一资料。</li>
 </ol>
 <h2 id="二审稿建议路径30-45-分钟快速审"><a class="header" href="#二审稿建议路径30-45-分钟快速审">二、审稿建议路径（30-45 分钟快速审）</a></h2>
 <ul>
-<li>第一步：查看 <code>实验总准备</code> 与 <code>实验手册-批次一/二/三</code>。</li>
-<li>第二步：查看 <code>教学地图</code> 与 <code>教学讲义</code> 是否覆盖主文核心脉络。</li>
-<li>第三步：抽查 2 个练习题与答案是否与主文结论一致。</li>
-<li>第四步：确认实验命令与测试文件在仓库中可定位。</li>
+<li>第一步：抽查第 1 章与第 2 章，确认正文已出现批次一三类链接。</li>
+<li>第二步：抽查第 3 章与第 4 章，确认 mdBook 页头延伸阅读可点击。</li>
+<li>第三步：抽查第 5 章与第 10 章，确认旧有批次二/三链接未回归。</li>
+<li>第四步：核对版本页、更新日志、审稿摘要的一致性。</li>
 </ul>
 <h2 id="三重点审稿问题高优先级"><a class="header" href="#三重点审稿问题高优先级">三、重点审稿问题（高优先级）</a></h2>
 <ol>
-<li>实验步骤是否具备可复现性（命令、输入、预期）？</li>
-<li>教学材料是否保持“证据优先”，避免口号化？</li>
-<li>练习题是否覆盖语义、计费、治理三类能力？</li>
-<li>答案评分标准是否可执行、可复核？</li>
+<li>第 1-4 章链接是否都指向批次一且无错链？</li>
+<li>章节正文与 mdBook 页头链接是否保持一致？</li>
+<li>第 5-11 章既有链接是否受本次改动影响？</li>
+<li>是否形成“看章节即可跳到对应批次材料”的统一体验？</li>
 </ol>
 <h2 id="四签署建议"><a class="header" href="#四签署建议">四、签署建议</a></h2>
 <ul>
 <li><input disabled="" type="checkbox"> 通过：可进入终版排版</li>
-<li><input disabled="" type="checkbox"> 条件通过：需补充实验记录样本</li>
-<li><input disabled="" type="checkbox"> 拒绝通过：实验或教学链路存在断点</li>
+<li><input disabled="" type="checkbox"> 条件通过：需补充一次全章链接点击回归记录</li>
+<li><input disabled="" type="checkbox"> 拒绝通过：样例无法指导真实评审</li>
 </ul>
 <p>签署人：<br>日期：</p>
 <div style="break-before: page; page-break-before: always;"></div>
@@ -377,8 +452,9 @@
 <li>发布页：封面、版本、更新日志、审稿人摘要</li>
 <li>主体：第 1-11 章（出版版 + 深度扩展段）</li>
 <li>图示拆解长文：将“图 X-1”扩展为独立文章（完成批次一/二/三）</li>
-<li>实验手册：每批图示长文对应可复现实验</li>
-<li>教学资料：讲义、练习题、参考答案</li>
+<li>图示审计模板：每篇图示长文对应审计模板（含通过/拒绝/真实锚点样例）</li>
+<li>实验手册：每批图示长文对应可复现实验（含 <code>run_labs.sh</code> 脚本化执行）</li>
+<li>教学资料：讲义、练习题、参考答案、90 分钟教学包、逐页口播稿</li>
 <li>附录 A：密码学专题（工作负载映射、计费校准、发布门禁）</li>
 <li>附录 F：密码学实现审计模板（PR 直用）</li>
 <li>附录 H/I：端到端案例（secp 与 hash/Merkle）</li>
@@ -420,7 +496,8 @@ mdbook serve
 <div style="break-before: page; page-break-before: always;"></div>
 <blockquote>
 <p>出版版章节 <code>第 1 章</code> | 文档版本 <code>v0.5.0</code> | 评审状态 <code>可审阅</code>
-关联附录：术语见 <code>附录 B</code> 与 <code>附录 D</code></p>
+关联附录：术语见 <code>附录 B</code> 与 <code>附录 D</code>
+延伸阅读（批次一）：<a href="#图-1-1-长文共识-vm-约束层级不是示意图而是设计宪法">图 1-1 长文</a> | <a href="#审计模板-1-1共识-vm-约束层级">图 1-1 审计模板</a></p>
 </blockquote>
 <h1 id="第-1-章-共识机器优先区块链-vm-的第一性原理"><a class="header" href="#第-1-章-共识机器优先区块链-vm-的第一性原理">第 1 章 共识机器优先：区块链 VM 的第一性原理</a></h1>
 <h2 id="11-核心问题"><a class="header" href="#11-核心问题">1.1 核心问题</a></h2>
@@ -442,6 +519,14 @@ mdbook serve
 +------------------------------+
 </code></pre>
 <p>关键判断：性能优化位于最底层，必须服从上层约束。</p>
+<blockquote>
+<p>延伸阅读（批次一）：</p>
+<ul>
+<li><a href="standalone-articles/batch-01/01-constraint-hierarchy.html">图 1-1 长文</a></li>
+<li><a href="standalone-articles/audit-templates/01-constraint-hierarchy-audit-template.html">图 1-1 审计模板</a></li>
+<li><a href="standalone-articles/labs/batch-01-labs.html">对应实验手册</a></li>
+</ul>
+</blockquote>
 <h2 id="13-代码证据"><a class="header" href="#13-代码证据">1.3 代码证据</a></h2>
 <p><code>src/machine/mod.rs</code> 的 <code>SupportMachine::add_cycles</code> 直接把“执行动作”和“计费上限”耦合在一起：</p>
 <ul>
@@ -542,7 +627,8 @@ mdbook serve
 <div style="break-before: page; page-break-before: always;"></div>
 <blockquote>
 <p>出版版章节 <code>第 2 章</code> | 文档版本 <code>v0.5.0</code> | 评审状态 <code>可审阅</code>
-关联附录：术语见 <code>附录 B</code> 与 <code>附录 D</code></p>
+关联附录：术语见 <code>附录 B</code> 与 <code>附录 D</code>
+延伸阅读（批次一）：<a href="#图-2-1-长文从-run-到-exit-的生命周期为什么必须做成显式状态机">图 2-1 长文</a> | <a href="#审计模板-2-1run-生命周期状态机">图 2-1 审计模板</a></p>
 </blockquote>
 <h1 id="第-2-章-从-run-到-exit执行主流程的可审计链条"><a class="header" href="#第-2-章-从-run-到-exit执行主流程的可审计链条">第 2 章 从 run 到 exit：执行主流程的可审计链条</a></h1>
 <h2 id="21-核心问题"><a class="header" href="#21-核心问题">2.1 核心问题</a></h2>
@@ -563,6 +649,14 @@ mdbook serve
   -&gt; exit_code
 </code></pre>
 <p>代码入口位于 <code>src/lib.rs</code>。</p>
+<blockquote>
+<p>延伸阅读（批次一）：</p>
+<ul>
+<li><a href="standalone-articles/batch-01/02-run-lifecycle.html">图 2-1 长文</a></li>
+<li><a href="standalone-articles/audit-templates/02-run-lifecycle-audit-template.html">图 2-1 审计模板</a></li>
+<li><a href="standalone-articles/labs/batch-01-labs.html">对应实验手册</a></li>
+</ul>
+</blockquote>
 <h2 id="23-代码证据"><a class="header" href="#23-代码证据">2.3 代码证据</a></h2>
 <p><code>DefaultMachine::load_program</code>（<code>src/machine/mod.rs</code>）将装载拆成两段：</p>
 <ul>
@@ -666,7 +760,8 @@ mdbook serve
 <div style="break-before: page; page-break-before: always;"></div>
 <blockquote>
 <p>出版版章节 <code>第 3 章</code> | 文档版本 <code>v0.5.0</code> | 评审状态 <code>可审阅</code>
-关联附录：术语见 <code>附录 B</code> 与 <code>附录 D</code></p>
+关联附录：术语见 <code>附录 B</code> 与 <code>附录 D</code>
+延伸阅读（批次一）：<a href="#图-3-1-长文elf-到页动作的转换为什么这是-vm-的第一道安全防线">图 3-1 长文</a> | <a href="#审计模板-3-1elf-到页动作转换">图 3-1 审计模板</a></p>
 </blockquote>
 <h1 id="第-3-章-elf-装载与内存权限把外部程序变成受控状态"><a class="header" href="#第-3-章-elf-装载与内存权限把外部程序变成受控状态">第 3 章 ELF 装载与内存权限：把外部程序变成受控状态</a></h1>
 <h2 id="31-核心问题"><a class="header" href="#31-核心问题">3.1 核心问题</a></h2>
@@ -681,6 +776,14 @@ mdbook serve
       -&gt; init_pages per action
       -&gt; set PC = entry
 </code></pre>
+<blockquote>
+<p>延伸阅读（批次一）：</p>
+<ul>
+<li><a href="standalone-articles/batch-01/03-elf-to-page-actions.html">图 3-1 长文</a></li>
+<li><a href="standalone-articles/audit-templates/03-elf-to-page-actions-audit-template.html">图 3-1 审计模板</a></li>
+<li><a href="standalone-articles/labs/batch-01-labs.html">对应实验手册</a></li>
+</ul>
+</blockquote>
 <h2 id="33-代码证据"><a class="header" href="#33-代码证据">3.3 代码证据</a></h2>
 <p><code>src/elf.rs</code> 的 <code>parse_elf</code> 明确生成 <code>ProgramMetadata</code>，不是直接把 ELF 结构散用在执行路径里。</p>
 <p><code>convert_flags</code> 实施两项硬拒绝：</p>
@@ -777,7 +880,8 @@ mdbook serve
 <div style="break-before: page; page-break-before: always;"></div>
 <blockquote>
 <p>出版版章节 <code>第 4 章</code> | 文档版本 <code>v0.5.0</code> | 评审状态 <code>可审阅</code>
-关联附录：术语见 <code>附录 B</code> 与 <code>附录 D</code></p>
+关联附录：术语见 <code>附录 B</code> 与 <code>附录 D</code>
+延伸阅读（批次一）：<a href="#图-4-1-长文取指与解码快路径如何在确定性边界内拿到性能">图 4-1 长文</a> | <a href="#审计模板-4-1解码快路径与慢路径回落">图 4-1 审计模板</a></p>
 </blockquote>
 <h1 id="第-4-章-解码执行与-trace确定性边界内的性能工程"><a class="header" href="#第-4-章-解码执行与-trace确定性边界内的性能工程">第 4 章 解码、执行与 Trace：确定性边界内的性能工程</a></h1>
 <h2 id="41-核心问题"><a class="header" href="#41-核心问题">4.1 核心问题</a></h2>
@@ -793,6 +897,14 @@ mdbook serve
 -&gt; optional decode_mop fusion
 -&gt; execute_instruction
 </code></pre>
+<blockquote>
+<p>延伸阅读（批次一）：</p>
+<ul>
+<li><a href="standalone-articles/batch-01/04-decode-fastpath.html">图 4-1 长文</a></li>
+<li><a href="standalone-articles/audit-templates/04-decode-fastpath-audit-template.html">图 4-1 审计模板</a></li>
+<li><a href="standalone-articles/labs/batch-01-labs.html">对应实验手册</a></li>
+</ul>
+</blockquote>
 <h2 id="43-代码证据"><a class="header" href="#43-代码证据">4.3 代码证据</a></h2>
 <ul>
 <li><code>src/decoder.rs</code>：<code>decode_bits</code> 对页尾跨页场景做专门路径。</li>
@@ -883,7 +995,8 @@ mdbook serve
 <div style="break-before: page; page-break-before: always;"></div>
 <blockquote>
 <p>出版版章节 <code>第 5 章</code> | 文档版本 <code>v0.5.0</code> | 评审状态 <code>可审阅</code>
-关联附录：术语见 <code>附录 B</code> 与 <code>附录 D</code></p>
+关联附录：术语见 <code>附录 B</code> 与 <code>附录 D</code>
+延伸阅读（批次二）：<a href="#图-5-1-长文ecall-分发路径如何把宿主能力关进最小边界">图 5-1 长文</a> | <a href="#审计模板-5-1ecall-分发边界">图 5-1 审计模板</a></p>
 </blockquote>
 <h1 id="第-5-章-syscall-与宿主边界最小可信计算基"><a class="header" href="#第-5-章-syscall-与宿主边界最小可信计算基">第 5 章 Syscall 与宿主边界：最小可信计算基</a></h1>
 <h2 id="51-核心问题"><a class="header" href="#51-核心问题">5.1 核心问题</a></h2>
@@ -898,6 +1011,14 @@ mdbook serve
             if module.ecall() handled: return
          error InvalidEcall
 </code></pre>
+<blockquote>
+<p>延伸阅读（批次二）：</p>
+<ul>
+<li><a href="standalone-articles/batch-02/05-ecall-dispatch-boundary.html">图 5-1 长文</a></li>
+<li><a href="standalone-articles/audit-templates/05-ecall-dispatch-boundary-audit-template.html">图 5-1 审计模板</a></li>
+<li><a href="standalone-articles/labs/batch-02-labs.html">对应实验手册</a></li>
+</ul>
+</blockquote>
 <h2 id="53-代码证据"><a class="header" href="#53-代码证据">5.3 代码证据</a></h2>
 <ul>
 <li><code>src/machine/mod.rs</code>：<code>Machine::ecall</code> 内核仅处理退出。</li>
@@ -986,7 +1107,8 @@ mdbook serve
 <div style="break-before: page; page-break-before: always;"></div>
 <blockquote>
 <p>出版版章节 <code>第 6 章</code> | 文档版本 <code>v0.5.0</code> | 评审状态 <code>可审阅</code>
-关联附录：术语见 <code>附录 B</code> 与 <code>附录 D</code></p>
+关联附录：术语见 <code>附录 B</code> 与 <code>附录 D</code>
+延伸阅读（批次二）：<a href="#图-6-1-长文快照分层不是序列化技巧而是执行经济学核心">图 6-1 长文</a> | <a href="#审计模板-6-1快照分层与恢复经济学">图 6-1 审计模板</a></p>
 </blockquote>
 <h1 id="第-6-章-快照与恢复把执行过程对象化"><a class="header" href="#第-6-章-快照与恢复把执行过程对象化">第 6 章 快照与恢复：把执行过程对象化</a></h1>
 <h2 id="61-核心问题"><a class="header" href="#61-核心问题">6.1 核心问题</a></h2>
@@ -1002,6 +1124,14 @@ snapshot v1:
 snapshot v2:
   dirty pages + pages_from_source(id,offset,length)
 </code></pre>
+<blockquote>
+<p>延伸阅读（批次二）：</p>
+<ul>
+<li><a href="standalone-articles/batch-02/06-snapshot-layering-economics.html">图 6-1 长文</a></li>
+<li><a href="standalone-articles/audit-templates/06-snapshot-layering-economics-audit-template.html">图 6-1 审计模板</a></li>
+<li><a href="standalone-articles/labs/batch-02-labs.html">对应实验手册</a></li>
+</ul>
+</blockquote>
 <h2 id="63-代码证据"><a class="header" href="#63-代码证据">6.3 代码证据</a></h2>
 <ul>
 <li><code>src/snapshot.rs</code>：基础版脏页快照。</li>
@@ -1107,7 +1237,8 @@ snapshot v2:
 <div style="break-before: page; page-break-before: always;"></div>
 <blockquote>
 <p>出版版章节 <code>第 7 章</code> | 文档版本 <code>v0.5.0</code> | 评审状态 <code>可审阅</code>
-关联附录：术语见 <code>附录 B</code> 与 <code>附录 D</code></p>
+关联附录：术语见 <code>附录 B</code> 与 <code>附录 D</code>
+延伸阅读（批次二）：<a href="#图-7-1-长文register-trait-语义下沉类型系统如何守住-isa-边界">图 7-1 长文</a> | <a href="#审计模板-7-1register-trait-语义下沉">图 7-1 审计模板</a></p>
 </blockquote>
 <h1 id="第-7-章-rust-类型系统把-isa-语义固定在编译期"><a class="header" href="#第-7-章-rust-类型系统把-isa-语义固定在编译期">第 7 章 Rust 类型系统：把 ISA 语义固定在编译期</a></h1>
 <h2 id="71-核心问题"><a class="header" href="#71-核心问题">7.1 核心问题</a></h2>
@@ -1119,6 +1250,14 @@ snapshot v2:
 
 (no hidden cast / no UB shortcut)
 </code></pre>
+<blockquote>
+<p>延伸阅读（批次二）：</p>
+<ul>
+<li><a href="standalone-articles/batch-02/07-register-trait-semantics.html">图 7-1 长文</a></li>
+<li><a href="standalone-articles/audit-templates/07-register-trait-semantics-audit-template.html">图 7-1 审计模板</a></li>
+<li><a href="standalone-articles/labs/batch-02-labs.html">对应实验手册</a></li>
+</ul>
+</blockquote>
 <h2 id="73-代码证据"><a class="header" href="#73-代码证据">7.3 代码证据</a></h2>
 <p><code>src/instructions/register.rs</code> 的 <code>Register</code> trait 明确要求实现：</p>
 <ul>
@@ -1208,7 +1347,8 @@ snapshot v2:
 <div style="break-before: page; page-break-before: always;"></div>
 <blockquote>
 <p>出版版章节 <code>第 8 章</code> | 文档版本 <code>v0.5.0</code> | 评审状态 <code>可审阅</code>
-关联附录：术语见 <code>附录 B</code> 与 <code>附录 D</code></p>
+关联附录：术语见 <code>附录 B</code> 与 <code>附录 D</code>
+延伸阅读（批次二）：<a href="#图-8-1-长文rust--asm-混合控制流如何做到快路径服从语义锚点">图 8-1 长文</a> | <a href="#审计模板-8-1rust--asm-控制平面">图 8-1 审计模板</a></p>
 </blockquote>
 <h1 id="第-8-章-rust--asm-混合执行性能路径与语义锚点"><a class="header" href="#第-8-章-rust--asm-混合执行性能路径与语义锚点">第 8 章 Rust + ASM 混合执行：性能路径与语义锚点</a></h1>
 <h2 id="81-核心问题"><a class="header" href="#81-核心问题">8.1 核心问题</a></h2>
@@ -1223,6 +1363,14 @@ snapshot v2:
   -&gt; Rust side handles status
      -&gt; maybe fallback execute_instruction
 </code></pre>
+<blockquote>
+<p>延伸阅读（批次二）：</p>
+<ul>
+<li><a href="standalone-articles/batch-02/08-rust-asm-control-plane.html">图 8-1 长文</a></li>
+<li><a href="standalone-articles/audit-templates/08-rust-asm-control-plane-audit-template.html">图 8-1 审计模板</a></li>
+<li><a href="standalone-articles/labs/batch-02-labs.html">对应实验手册</a></li>
+</ul>
+</blockquote>
 <h2 id="83-代码证据"><a class="header" href="#83-代码证据">8.3 代码证据</a></h2>
 <ul>
 <li><code>build.rs</code>：按目标平台条件启用汇编后端。</li>
@@ -1313,7 +1461,8 @@ snapshot v2:
 <div style="break-before: page; page-break-before: always;"></div>
 <blockquote>
 <p>出版版章节 <code>第 9 章</code> | 文档版本 <code>v0.5.0</code> | 评审状态 <code>可审阅</code>
-关联附录：术语见 <code>附录 B</code> 与 <code>附录 D</code></p>
+关联附录：术语见 <code>附录 B</code> 与 <code>附录 D</code>
+延伸阅读（批次三）：<a href="#图-9-1-长文isa-选择影响链不是性能偏好而是治理架构">图 9-1 长文</a> | <a href="#审计模板-9-1isa-选择影响链">图 9-1 审计模板</a></p>
 </blockquote>
 <h1 id="第-9-章-为什么是-risc-v开放-isa-的长期治理价值"><a class="header" href="#第-9-章-为什么是-risc-v开放-isa-的长期治理价值">第 9 章 为什么是 RISC-V：开放 ISA 的长期治理价值</a></h1>
 <h2 id="91-核心问题"><a class="header" href="#91-核心问题">9.1 核心问题</a></h2>
@@ -1325,6 +1474,14 @@ snapshot v2:
   -&gt; verifier/auditor cost
   -&gt; protocol upgrade flexibility
 </code></pre>
+<blockquote>
+<p>延伸阅读（批次三）：</p>
+<ul>
+<li><a href="standalone-articles/batch-03/09-isa-selection-impact-chain.html">图 9-1 长文</a></li>
+<li><a href="standalone-articles/audit-templates/09-isa-selection-impact-chain-audit-template.html">图 9-1 审计模板</a></li>
+<li><a href="standalone-articles/labs/batch-03-labs.html">对应实验手册</a></li>
+</ul>
+</blockquote>
 <h2 id="93-代码证据"><a class="header" href="#93-代码证据">9.3 代码证据</a></h2>
 <p><code>ckb-vm</code> 体现了 RISC-V 的三类工程收益：</p>
 <ul>
@@ -1411,7 +1568,8 @@ snapshot v2:
 <div style="break-before: page; page-break-before: always;"></div>
 <blockquote>
 <p>出版版章节 <code>第 10 章</code> | 文档版本 <code>v0.5.0</code> | 评审状态 <code>可审阅</code>
-关联附录：术语见 <code>附录 B</code> 与 <code>附录 D</code></p>
+关联附录：术语见 <code>附录 B</code> 与 <code>附录 D</code>
+延伸阅读（批次三）：<a href="#图-10-1-长文密码学扩展映射bmamop-的真实分工">图 10-1 长文</a> | <a href="#审计模板-10-1密码学扩展真实分工">图 10-1 审计模板</a></p>
 </blockquote>
 <h1 id="第-10-章-密码学负载与指令扩展从-bma-到-mop"><a class="header" href="#第-10-章-密码学负载与指令扩展从-bma-到-mop">第 10 章 密码学负载与指令扩展：从 B/M/A 到 MOP</a></h1>
 <h2 id="101-核心问题"><a class="header" href="#101-核心问题">10.1 核心问题</a></h2>
@@ -1422,6 +1580,14 @@ Bit permutation       -&gt; B (REV8/ORCB)
 Carry-less arithmetic -&gt; B (CLMUL/CLMULH/CLMULR)
 Atomic handshakes     -&gt; A (LR/SC/AMO)
 </code></pre>
+<blockquote>
+<p>延伸阅读（批次三）：</p>
+<ul>
+<li><a href="standalone-articles/batch-03/10-crypto-extension-real-division.html">图 10-1 长文</a></li>
+<li><a href="standalone-articles/audit-templates/10-crypto-extension-real-division-audit-template.html">图 10-1 审计模板</a></li>
+<li><a href="standalone-articles/labs/batch-03-labs.html">对应实验手册</a></li>
+</ul>
+</blockquote>
 <h2 id="103-代码证据"><a class="header" href="#103-代码证据">10.3 代码证据</a></h2>
 <ul>
 <li><code>src/instructions/b.rs</code>：位操作与无进位乘法相关指令解码。</li>
@@ -1512,7 +1678,8 @@ Atomic handshakes     -&gt; A (LR/SC/AMO)
 <div style="break-before: page; page-break-before: always;"></div>
 <blockquote>
 <p>出版版章节 <code>第 11 章</code> | 文档版本 <code>v0.5.0</code> | 评审状态 <code>可审阅</code>
-关联附录：术语见 <code>附录 B</code> 与 <code>附录 D</code></p>
+关联附录：术语见 <code>附录 B</code> 与 <code>附录 D</code>
+延伸阅读（批次三）：<a href="#图-11-1-长文收益-成本矩阵架构决策如何避免单边乐观">图 11-1 长文</a> | <a href="#审计模板-11-1收益-成本硬约束矩阵">图 11-1 审计模板</a></p>
 </blockquote>
 <h1 id="第-11-章-架构总评优势代价与下一步"><a class="header" href="#第-11-章-架构总评优势代价与下一步">第 11 章 架构总评：优势、代价与下一步</a></h1>
 <h2 id="111-核心问题"><a class="header" href="#111-核心问题">11.1 核心问题</a></h2>
@@ -1524,6 +1691,14 @@ Atomic handshakes     -&gt; A (LR/SC/AMO)
 - 可恢复执行                 - syscall 生态集成复杂
 - 渐进式性能优化             - 密码学侧信道防护额外投入
 </code></pre>
+<blockquote>
+<p>延伸阅读（批次三）：</p>
+<ul>
+<li><a href="standalone-articles/batch-03/11-benefit-cost-hard-constraints.html">图 11-1 长文</a></li>
+<li><a href="standalone-articles/audit-templates/11-benefit-cost-hard-constraints-audit-template.html">图 11-1 审计模板</a></li>
+<li><a href="standalone-articles/labs/batch-03-labs.html">对应实验手册</a></li>
+</ul>
+</blockquote>
 <h2 id="113-优势判断"><a class="header" href="#113-优势判断">11.3 优势判断</a></h2>
 <ol>
 <li>执行边界清晰：装载、执行、syscall、快照职责分离。</li>
@@ -1645,17 +1820,17 @@ Atomic handshakes     -&gt; A (LR/SC/AMO)
 <li><code>A-1</code> 密码学执行栈：算法层到计费层的闭环</li>
 <li><code>C-1</code> ISA 到协议治理链：扩展引入与回滚策略</li>
 </ul>
-<h2 id="批次四可选增强"><a class="header" href="#批次四可选增强">批次四（可选增强）</a></h2>
+<h2 id="批次四增强层已完成"><a class="header" href="#批次四增强层已完成">批次四（增强层，已完成）</a></h2>
 <ul>
-<li>图示对应的“实验脚本化”版本（每篇附可复现实验）</li>
-<li>图示对应的“审计报告模板化”版本（每篇附审计表）</li>
-<li>图示对应的“教学演示版”版本（面向培训场景）</li>
+<li>已完成：图示配套实验脚本化执行（<code>tools/run_labs.sh</code> + 报告归档）</li>
+<li>已完成：图示对应审计模板化（<code>audit-templates/</code>，每篇长文一份 + 已填表示例）</li>
+<li>已完成：教学演示版增强（90 分钟授课脚本、幻灯片大纲、live demo runbook、评估单、逐页口播稿）</li>
 </ul>
 <h2 id="使用方式"><a class="header" href="#使用方式">使用方式</a></h2>
 <ul>
 <li>入门建议：按批次顺序阅读。</li>
-<li>评审建议：先读对应章节，再读同编号长文。</li>
-<li>工程建议：把每篇长文的“审计清单”直接挂到 PR 模板。</li>
+<li>评审建议：先读对应章节，再读同编号长文与审计模板。</li>
+<li>工程建议：把每篇长文模板直接挂到 PR 模板与发布门禁流程。</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="图-1-1-长文共识-vm-约束层级不是示意图而是设计宪法"><a class="header" href="#图-1-1-长文共识-vm-约束层级不是示意图而是设计宪法">图 1-1 长文：共识 VM 约束层级不是示意图，而是设计宪法</a></h1>
@@ -2598,6 +2773,1330 @@ Atomic handshakes     -&gt; A
 <h2 id="8-一针见血结论-4"><a class="header" href="#8-一针见血结论-4">8. 一针见血结论</a></h2>
 <p>扩展引入的成败，不取决于“指令是否可实现”，而取决于“是否可治理”。</p>
 <div style="break-before: page; page-break-before: always;"></div>
+<h1 id="图示长文审计模板总览"><a class="header" href="#图示长文审计模板总览">图示长文审计模板总览</a></h1>
+<h2 id="一针见血定位"><a class="header" href="#一针见血定位">一针见血定位</a></h2>
+<p>每篇图示长文都给出独立审计模板，目的是把“阅读理解”升级为“可执行门禁”。
+这些模板不是填表动作，而是发布决策前的证据清单。</p>
+<h2 id="使用方式-1"><a class="header" href="#使用方式-1">使用方式</a></h2>
+<ol>
+<li>先阅读对应图示长文，确认架构结论。</li>
+<li>再填写同编号审计模板，逐项挂载证据。</li>
+<li>在 PR 中附模板结论与报告路径（md/csv/log）。</li>
+</ol>
+<h2 id="模板索引"><a class="header" href="#模板索引">模板索引</a></h2>
+<ul>
+<li><code>01-constraint-hierarchy-audit-template.md</code>（图 1-1）</li>
+<li><code>02-run-lifecycle-audit-template.md</code>（图 2-1）</li>
+<li><code>03-elf-to-page-actions-audit-template.md</code>（图 3-1）</li>
+<li><code>04-decode-fastpath-audit-template.md</code>（图 4-1）</li>
+<li><code>05-ecall-dispatch-boundary-audit-template.md</code>（图 5-1）</li>
+<li><code>06-snapshot-layering-economics-audit-template.md</code>（图 6-1）</li>
+<li><code>07-register-trait-semantics-audit-template.md</code>（图 7-1）</li>
+<li><code>08-rust-asm-control-plane-audit-template.md</code>（图 8-1）</li>
+<li><code>09-isa-selection-impact-chain-audit-template.md</code>（图 9-1）</li>
+<li><code>10-crypto-extension-real-division-audit-template.md</code>（图 10-1）</li>
+<li><code>11-benefit-cost-hard-constraints-audit-template.md</code>（图 11-1）</li>
+<li><code>A1-crypto-execution-stack-closure-audit-template.md</code>（图 A-1）</li>
+<li><code>C1-isa-to-protocol-governance-chain-audit-template.md</code>（图 C-1）</li>
+</ul>
+<h2 id="已填表示例"><a class="header" href="#已填表示例">已填表示例</a></h2>
+<ul>
+<li><code>examples/README.md</code></li>
+<li><code>examples/01-pr-audit-sample-mop-secp256k1.md</code></li>
+<li><code>examples/02-pr-audit-sample-syscall-host-time.md</code></li>
+<li><code>examples/03-pr-audit-sample-real-anchors-run-exit-cycles.md</code></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="审计模板-1-1共识-vm-约束层级"><a class="header" href="#审计模板-1-1共识-vm-约束层级">审计模板 1-1：共识 VM 约束层级</a></h1>
+<h2 id="一针见血风险"><a class="header" href="#一针见血风险">一针见血风险</a></h2>
+<p>优化结论反向覆盖协议语义，导致共识可回放性受损。</p>
+<h2 id="关联阅读"><a class="header" href="#关联阅读">关联阅读</a></h2>
+<ul>
+<li>图示长文：<code>standalone-articles/batch-01/01-constraint-hierarchy.md</code></li>
+<li>对应章节：<code>manuscript/01-consensus-first.md</code></li>
+<li>关联审计模板：<code>manuscript/F-crypto-implementation-audit-template.md</code></li>
+</ul>
+<h2 id="审计输入清单"><a class="header" href="#审计输入清单">审计输入清单</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"> PR 链接与提交哈希</li>
+<li><input disabled="" type="checkbox"> 影响文件列表（含代码与文档）</li>
+<li><input disabled="" type="checkbox"> 影响后端范围（interpreter / asm / 其他）</li>
+<li><input disabled="" type="checkbox"> 基线版本与目标版本</li>
+<li><input disabled="" type="checkbox"> 报告产物路径（md/csv/log）</li>
+</ul>
+<h2 id="核心审计问题必须回答"><a class="header" href="#核心审计问题必须回答">核心审计问题（必须回答）</a></h2>
+<ol>
+<li>本次改动是否改变错误码、退出语义或状态迁移定义？</li>
+<li>cycles 计费规则是否与改动前保持可解释且可复核？</li>
+<li>是否存在无法在 PR 证据中重放的行为变化？</li>
+</ol>
+<h2 id="审计检查表"><a class="header" href="#审计检查表">审计检查表</a></h2>
+<h3 id="a-协议语义"><a class="header" href="#a-协议语义">A. 协议语义</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> 同输入同初始状态下结果可重放</li>
+<li><input disabled="" type="checkbox"> 错误码与退出语义保持兼容</li>
+<li><input disabled="" type="checkbox"> 边界输入无未定义行为</li>
+</ul>
+<h3 id="b-计费与性能"><a class="header" href="#b-计费与性能">B. 计费与性能</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> cycles 变化具备解释与样本支持</li>
+<li><input disabled="" type="checkbox"> 长尾输入行为已观测，不只看平均值</li>
+<li><input disabled="" type="checkbox"> smoke 与 full 结论边界明确</li>
+</ul>
+<h3 id="c-边界与安全"><a class="header" href="#c-边界与安全">C. 边界与安全</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> 宿主接口与内存权限边界未扩张</li>
+<li><input disabled="" type="checkbox"> 新增路径具备失败可观测性（日志/错误码）</li>
+<li><input disabled="" type="checkbox"> 回滚路径可执行且有演练记录</li>
+</ul>
+<h3 id="d-治理与发布"><a class="header" href="#d-治理与发布">D. 治理与发布</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> 版本兼容结论与证据一致</li>
+<li><input disabled="" type="checkbox"> 发布门禁、灰度策略、冻结条件已定义</li>
+<li><input disabled="" type="checkbox"> 责任人、观察窗口、复盘机制已指定</li>
+</ul>
+<h2 id="推荐验证命令"><a class="header" href="#推荐验证命令">推荐验证命令</a></h2>
+<pre><code class="language-bash">cargo test --test test_simple -- --nocapture
+cargo test --test test_versions -- --nocapture
+bash docs/riscv-vm-book/tools/run_labs.sh --batch 1 --mode smoke --skip-asm
+</code></pre>
+<h2 id="证据记录填写区"><a class="header" href="#证据记录填写区">证据记录（填写区）</a></h2>
+<ul>
+<li>关键日志：</li>
+<li>差分结果：</li>
+<li>计费变化：</li>
+<li>治理评估：</li>
+</ul>
+<h2 id="审计结论签署区"><a class="header" href="#审计结论签署区">审计结论（签署区）</a></h2>
+<ul>
+<li>结论：<code>[ ] 通过  [ ] 条件通过  [ ] 拒绝</code></li>
+<li>风险等级：<code>[ ] 低  [ ] 中  [ ] 高</code></li>
+<li>发布建议：</li>
+<li>回滚触发条件：</li>
+<li>审计人：</li>
+<li>日期：</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="审计模板-2-1run-生命周期状态机"><a class="header" href="#审计模板-2-1run-生命周期状态机">审计模板 2-1：run 生命周期状态机</a></h1>
+<h2 id="一针见血风险-1"><a class="header" href="#一针见血风险-1">一针见血风险</a></h2>
+<p>pause/exit 语义边界混淆，造成恢复与终止行为不一致。</p>
+<h2 id="关联阅读-1"><a class="header" href="#关联阅读-1">关联阅读</a></h2>
+<ul>
+<li>图示长文：<code>standalone-articles/batch-01/02-run-lifecycle.md</code></li>
+<li>对应章节：<code>manuscript/02-run-to-exit.md</code></li>
+<li>关联审计模板：<code>manuscript/F-crypto-implementation-audit-template.md</code></li>
+</ul>
+<h2 id="审计输入清单-1"><a class="header" href="#审计输入清单-1">审计输入清单</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"> PR 链接与提交哈希</li>
+<li><input disabled="" type="checkbox"> 影响文件列表（含代码与文档）</li>
+<li><input disabled="" type="checkbox"> 影响后端范围（interpreter / asm / 其他）</li>
+<li><input disabled="" type="checkbox"> 基线版本与目标版本</li>
+<li><input disabled="" type="checkbox"> 报告产物路径（md/csv/log）</li>
+</ul>
+<h2 id="核心审计问题必须回答-1"><a class="header" href="#核心审计问题必须回答-1">核心审计问题（必须回答）</a></h2>
+<ol>
+<li>run -&gt; pause -&gt; resume -&gt; exit 的状态转移是否保持确定？</li>
+<li>异常路径是否仍能返回可审计错误码与退出码？</li>
+<li>是否补齐了状态机回归测试与日志证据？</li>
+</ol>
+<h2 id="审计检查表-1"><a class="header" href="#审计检查表-1">审计检查表</a></h2>
+<h3 id="a-协议语义-1"><a class="header" href="#a-协议语义-1">A. 协议语义</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> 同输入同初始状态下结果可重放</li>
+<li><input disabled="" type="checkbox"> 错误码与退出语义保持兼容</li>
+<li><input disabled="" type="checkbox"> 边界输入无未定义行为</li>
+</ul>
+<h3 id="b-计费与性能-1"><a class="header" href="#b-计费与性能-1">B. 计费与性能</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> cycles 变化具备解释与样本支持</li>
+<li><input disabled="" type="checkbox"> 长尾输入行为已观测，不只看平均值</li>
+<li><input disabled="" type="checkbox"> smoke 与 full 结论边界明确</li>
+</ul>
+<h3 id="c-边界与安全-1"><a class="header" href="#c-边界与安全-1">C. 边界与安全</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> 宿主接口与内存权限边界未扩张</li>
+<li><input disabled="" type="checkbox"> 新增路径具备失败可观测性（日志/错误码）</li>
+<li><input disabled="" type="checkbox"> 回滚路径可执行且有演练记录</li>
+</ul>
+<h3 id="d-治理与发布-1"><a class="header" href="#d-治理与发布-1">D. 治理与发布</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> 版本兼容结论与证据一致</li>
+<li><input disabled="" type="checkbox"> 发布门禁、灰度策略、冻结条件已定义</li>
+<li><input disabled="" type="checkbox"> 责任人、观察窗口、复盘机制已指定</li>
+</ul>
+<h2 id="推荐验证命令-1"><a class="header" href="#推荐验证命令-1">推荐验证命令</a></h2>
+<pre><code class="language-bash">cargo test --test test_signal_pause -- --nocapture
+cargo test --test test_resume -- --nocapture
+cargo test --test test_resume2 -- --nocapture
+</code></pre>
+<h2 id="证据记录填写区-1"><a class="header" href="#证据记录填写区-1">证据记录（填写区）</a></h2>
+<ul>
+<li>关键日志：</li>
+<li>差分结果：</li>
+<li>计费变化：</li>
+<li>治理评估：</li>
+</ul>
+<h2 id="审计结论签署区-1"><a class="header" href="#审计结论签署区-1">审计结论（签署区）</a></h2>
+<ul>
+<li>结论：<code>[ ] 通过  [ ] 条件通过  [ ] 拒绝</code></li>
+<li>风险等级：<code>[ ] 低  [ ] 中  [ ] 高</code></li>
+<li>发布建议：</li>
+<li>回滚触发条件：</li>
+<li>审计人：</li>
+<li>日期：</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="审计模板-3-1elf-到页动作转换"><a class="header" href="#审计模板-3-1elf-到页动作转换">审计模板 3-1：ELF 到页动作转换</a></h1>
+<h2 id="一针见血风险-2"><a class="header" href="#一针见血风险-2">一针见血风险</a></h2>
+<p>装载阶段权限映射错误，触发 W^X 破坏或越界访问窗口。</p>
+<h2 id="关联阅读-2"><a class="header" href="#关联阅读-2">关联阅读</a></h2>
+<ul>
+<li>图示长文：<code>standalone-articles/batch-01/03-elf-to-page-actions.md</code></li>
+<li>对应章节：<code>manuscript/03-elf-loader-memory.md</code></li>
+<li>关联审计模板：<code>manuscript/F-crypto-implementation-audit-template.md</code></li>
+</ul>
+<h2 id="审计输入清单-2"><a class="header" href="#审计输入清单-2">审计输入清单</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"> PR 链接与提交哈希</li>
+<li><input disabled="" type="checkbox"> 影响文件列表（含代码与文档）</li>
+<li><input disabled="" type="checkbox"> 影响后端范围（interpreter / asm / 其他）</li>
+<li><input disabled="" type="checkbox"> 基线版本与目标版本</li>
+<li><input disabled="" type="checkbox"> 报告产物路径（md/csv/log）</li>
+</ul>
+<h2 id="核心审计问题必须回答-2"><a class="header" href="#核心审计问题必须回答-2">核心审计问题（必须回答）</a></h2>
+<ol>
+<li>ELF 段标志与页权限映射是否一一对应并可证明？</li>
+<li>加载后内存布局是否可能出现写可执行重叠？</li>
+<li>跨平台构建条件是否改变了权限边界行为？</li>
+</ol>
+<h2 id="审计检查表-2"><a class="header" href="#审计检查表-2">审计检查表</a></h2>
+<h3 id="a-协议语义-2"><a class="header" href="#a-协议语义-2">A. 协议语义</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> 同输入同初始状态下结果可重放</li>
+<li><input disabled="" type="checkbox"> 错误码与退出语义保持兼容</li>
+<li><input disabled="" type="checkbox"> 边界输入无未定义行为</li>
+</ul>
+<h3 id="b-计费与性能-2"><a class="header" href="#b-计费与性能-2">B. 计费与性能</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> cycles 变化具备解释与样本支持</li>
+<li><input disabled="" type="checkbox"> 长尾输入行为已观测，不只看平均值</li>
+<li><input disabled="" type="checkbox"> smoke 与 full 结论边界明确</li>
+</ul>
+<h3 id="c-边界与安全-2"><a class="header" href="#c-边界与安全-2">C. 边界与安全</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> 宿主接口与内存权限边界未扩张</li>
+<li><input disabled="" type="checkbox"> 新增路径具备失败可观测性（日志/错误码）</li>
+<li><input disabled="" type="checkbox"> 回滚路径可执行且有演练记录</li>
+</ul>
+<h3 id="d-治理与发布-2"><a class="header" href="#d-治理与发布-2">D. 治理与发布</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> 版本兼容结论与证据一致</li>
+<li><input disabled="" type="checkbox"> 发布门禁、灰度策略、冻结条件已定义</li>
+<li><input disabled="" type="checkbox"> 责任人、观察窗口、复盘机制已指定</li>
+</ul>
+<h2 id="推荐验证命令-2"><a class="header" href="#推荐验证命令-2">推荐验证命令</a></h2>
+<pre><code class="language-bash">cargo test --test test_versions -- --nocapture
+cargo test --test test_misc -- --nocapture
+cargo run --example ckb_vm_runner -- --mode interpreter64 tests/programs/simple64
+</code></pre>
+<h2 id="证据记录填写区-2"><a class="header" href="#证据记录填写区-2">证据记录（填写区）</a></h2>
+<ul>
+<li>关键日志：</li>
+<li>差分结果：</li>
+<li>计费变化：</li>
+<li>治理评估：</li>
+</ul>
+<h2 id="审计结论签署区-2"><a class="header" href="#审计结论签署区-2">审计结论（签署区）</a></h2>
+<ul>
+<li>结论：<code>[ ] 通过  [ ] 条件通过  [ ] 拒绝</code></li>
+<li>风险等级：<code>[ ] 低  [ ] 中  [ ] 高</code></li>
+<li>发布建议：</li>
+<li>回滚触发条件：</li>
+<li>审计人：</li>
+<li>日期：</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="审计模板-4-1解码快路径与慢路径回落"><a class="header" href="#审计模板-4-1解码快路径与慢路径回落">审计模板 4-1：解码快路径与慢路径回落</a></h1>
+<h2 id="一针见血风险-3"><a class="header" href="#一针见血风险-3">一针见血风险</a></h2>
+<p>快路径优化引入语义漂移，且 slowpath 回落不完整。</p>
+<h2 id="关联阅读-3"><a class="header" href="#关联阅读-3">关联阅读</a></h2>
+<ul>
+<li>图示长文：<code>standalone-articles/batch-01/04-decode-fastpath.md</code></li>
+<li>对应章节：<code>manuscript/04-decode-execute-trace.md</code></li>
+<li>关联审计模板：<code>manuscript/F-crypto-implementation-audit-template.md</code></li>
+</ul>
+<h2 id="审计输入清单-3"><a class="header" href="#审计输入清单-3">审计输入清单</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"> PR 链接与提交哈希</li>
+<li><input disabled="" type="checkbox"> 影响文件列表（含代码与文档）</li>
+<li><input disabled="" type="checkbox"> 影响后端范围（interpreter / asm / 其他）</li>
+<li><input disabled="" type="checkbox"> 基线版本与目标版本</li>
+<li><input disabled="" type="checkbox"> 报告产物路径（md/csv/log）</li>
+</ul>
+<h2 id="核心审计问题必须回答-3"><a class="header" href="#核心审计问题必须回答-3">核心审计问题（必须回答）</a></h2>
+<ol>
+<li>fastpath 与 slowpath 的结果是否做过差分验证？</li>
+<li>RET_SLOWPATH 触发条件是否覆盖新增边界？</li>
+<li>MOP/Trace 优化是否附带回滚开关与观察指标？</li>
+</ol>
+<h2 id="审计检查表-3"><a class="header" href="#审计检查表-3">审计检查表</a></h2>
+<h3 id="a-协议语义-3"><a class="header" href="#a-协议语义-3">A. 协议语义</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> 同输入同初始状态下结果可重放</li>
+<li><input disabled="" type="checkbox"> 错误码与退出语义保持兼容</li>
+<li><input disabled="" type="checkbox"> 边界输入无未定义行为</li>
+</ul>
+<h3 id="b-计费与性能-3"><a class="header" href="#b-计费与性能-3">B. 计费与性能</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> cycles 变化具备解释与样本支持</li>
+<li><input disabled="" type="checkbox"> 长尾输入行为已观测，不只看平均值</li>
+<li><input disabled="" type="checkbox"> smoke 与 full 结论边界明确</li>
+</ul>
+<h3 id="c-边界与安全-3"><a class="header" href="#c-边界与安全-3">C. 边界与安全</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> 宿主接口与内存权限边界未扩张</li>
+<li><input disabled="" type="checkbox"> 新增路径具备失败可观测性（日志/错误码）</li>
+<li><input disabled="" type="checkbox"> 回滚路径可执行且有演练记录</li>
+</ul>
+<h3 id="d-治理与发布-3"><a class="header" href="#d-治理与发布-3">D. 治理与发布</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> 版本兼容结论与证据一致</li>
+<li><input disabled="" type="checkbox"> 发布门禁、灰度策略、冻结条件已定义</li>
+<li><input disabled="" type="checkbox"> 责任人、观察窗口、复盘机制已指定</li>
+</ul>
+<h2 id="推荐验证命令-3"><a class="header" href="#推荐验证命令-3">推荐验证命令</a></h2>
+<pre><code class="language-bash">cargo test --test test_mop -- --nocapture
+cargo test --test test_simple -- --nocapture
+cargo test --test test_misc -- --nocapture
+</code></pre>
+<h2 id="证据记录填写区-3"><a class="header" href="#证据记录填写区-3">证据记录（填写区）</a></h2>
+<ul>
+<li>关键日志：</li>
+<li>差分结果：</li>
+<li>计费变化：</li>
+<li>治理评估：</li>
+</ul>
+<h2 id="审计结论签署区-3"><a class="header" href="#审计结论签署区-3">审计结论（签署区）</a></h2>
+<ul>
+<li>结论：<code>[ ] 通过  [ ] 条件通过  [ ] 拒绝</code></li>
+<li>风险等级：<code>[ ] 低  [ ] 中  [ ] 高</code></li>
+<li>发布建议：</li>
+<li>回滚触发条件：</li>
+<li>审计人：</li>
+<li>日期：</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="审计模板-5-1ecall-分发边界"><a class="header" href="#审计模板-5-1ecall-分发边界">审计模板 5-1：ecall 分发边界</a></h1>
+<h2 id="一针见血风险-4"><a class="header" href="#一针见血风险-4">一针见血风险</a></h2>
+<p>syscall 面膨胀导致最小可信计算基失控。</p>
+<h2 id="关联阅读-4"><a class="header" href="#关联阅读-4">关联阅读</a></h2>
+<ul>
+<li>图示长文：<code>standalone-articles/batch-02/05-ecall-dispatch-boundary.md</code></li>
+<li>对应章节：<code>manuscript/05-syscall-boundary.md</code></li>
+<li>关联审计模板：<code>manuscript/F-crypto-implementation-audit-template.md</code></li>
+</ul>
+<h2 id="审计输入清单-4"><a class="header" href="#审计输入清单-4">审计输入清单</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"> PR 链接与提交哈希</li>
+<li><input disabled="" type="checkbox"> 影响文件列表（含代码与文档）</li>
+<li><input disabled="" type="checkbox"> 影响后端范围（interpreter / asm / 其他）</li>
+<li><input disabled="" type="checkbox"> 基线版本与目标版本</li>
+<li><input disabled="" type="checkbox"> 报告产物路径（md/csv/log）</li>
+</ul>
+<h2 id="核心审计问题必须回答-4"><a class="header" href="#核心审计问题必须回答-4">核心审计问题（必须回答）</a></h2>
+<ol>
+<li>新增或变更 syscall 是否有明确白名单与拒绝策略？</li>
+<li>宿主能力是否出现隐式状态依赖或时序依赖？</li>
+<li>错误码、返回值、cycles 是否可在异常路径复核？</li>
+</ol>
+<h2 id="审计检查表-4"><a class="header" href="#审计检查表-4">审计检查表</a></h2>
+<h3 id="a-协议语义-4"><a class="header" href="#a-协议语义-4">A. 协议语义</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> 同输入同初始状态下结果可重放</li>
+<li><input disabled="" type="checkbox"> 错误码与退出语义保持兼容</li>
+<li><input disabled="" type="checkbox"> 边界输入无未定义行为</li>
+</ul>
+<h3 id="b-计费与性能-4"><a class="header" href="#b-计费与性能-4">B. 计费与性能</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> cycles 变化具备解释与样本支持</li>
+<li><input disabled="" type="checkbox"> 长尾输入行为已观测，不只看平均值</li>
+<li><input disabled="" type="checkbox"> smoke 与 full 结论边界明确</li>
+</ul>
+<h3 id="c-边界与安全-4"><a class="header" href="#c-边界与安全-4">C. 边界与安全</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> 宿主接口与内存权限边界未扩张</li>
+<li><input disabled="" type="checkbox"> 新增路径具备失败可观测性（日志/错误码）</li>
+<li><input disabled="" type="checkbox"> 回滚路径可执行且有演练记录</li>
+</ul>
+<h3 id="d-治理与发布-4"><a class="header" href="#d-治理与发布-4">D. 治理与发布</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> 版本兼容结论与证据一致</li>
+<li><input disabled="" type="checkbox"> 发布门禁、灰度策略、冻结条件已定义</li>
+<li><input disabled="" type="checkbox"> 责任人、观察窗口、复盘机制已指定</li>
+</ul>
+<h2 id="推荐验证命令-4"><a class="header" href="#推荐验证命令-4">推荐验证命令</a></h2>
+<pre><code class="language-bash">cargo test --test test_simple -- --nocapture
+cargo test --test test_misc -- --nocapture
+cargo run --example ckb_vm_runner -- --mode interpreter64 tests/programs/simple64
+</code></pre>
+<h2 id="证据记录填写区-4"><a class="header" href="#证据记录填写区-4">证据记录（填写区）</a></h2>
+<ul>
+<li>关键日志：</li>
+<li>差分结果：</li>
+<li>计费变化：</li>
+<li>治理评估：</li>
+</ul>
+<h2 id="审计结论签署区-4"><a class="header" href="#审计结论签署区-4">审计结论（签署区）</a></h2>
+<ul>
+<li>结论：<code>[ ] 通过  [ ] 条件通过  [ ] 拒绝</code></li>
+<li>风险等级：<code>[ ] 低  [ ] 中  [ ] 高</code></li>
+<li>发布建议：</li>
+<li>回滚触发条件：</li>
+<li>审计人：</li>
+<li>日期：</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="审计模板-6-1快照分层与恢复经济学"><a class="header" href="#审计模板-6-1快照分层与恢复经济学">审计模板 6-1：快照分层与恢复经济学</a></h1>
+<h2 id="一针见血风险-5"><a class="header" href="#一针见血风险-5">一针见血风险</a></h2>
+<p>快照层间共享策略不当，导致恢复后语义或计费不一致。</p>
+<h2 id="关联阅读-5"><a class="header" href="#关联阅读-5">关联阅读</a></h2>
+<ul>
+<li>图示长文：<code>standalone-articles/batch-02/06-snapshot-layering-economics.md</code></li>
+<li>对应章节：<code>manuscript/06-snapshot-resume.md</code></li>
+<li>关联审计模板：<code>manuscript/F-crypto-implementation-audit-template.md</code></li>
+</ul>
+<h2 id="审计输入清单-5"><a class="header" href="#审计输入清单-5">审计输入清单</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"> PR 链接与提交哈希</li>
+<li><input disabled="" type="checkbox"> 影响文件列表（含代码与文档）</li>
+<li><input disabled="" type="checkbox"> 影响后端范围（interpreter / asm / 其他）</li>
+<li><input disabled="" type="checkbox"> 基线版本与目标版本</li>
+<li><input disabled="" type="checkbox"> 报告产物路径（md/csv/log）</li>
+</ul>
+<h2 id="核心审计问题必须回答-5"><a class="header" href="#核心审计问题必须回答-5">核心审计问题（必须回答）</a></h2>
+<ol>
+<li>Snapshot/Snapshot2 的恢复结果是否保持语义等价？</li>
+<li>分层复用是否改变了热点路径计费分布？</li>
+<li>恢复失败是否可稳定复现并可回滚？</li>
+</ol>
+<h2 id="审计检查表-5"><a class="header" href="#审计检查表-5">审计检查表</a></h2>
+<h3 id="a-协议语义-5"><a class="header" href="#a-协议语义-5">A. 协议语义</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> 同输入同初始状态下结果可重放</li>
+<li><input disabled="" type="checkbox"> 错误码与退出语义保持兼容</li>
+<li><input disabled="" type="checkbox"> 边界输入无未定义行为</li>
+</ul>
+<h3 id="b-计费与性能-5"><a class="header" href="#b-计费与性能-5">B. 计费与性能</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> cycles 变化具备解释与样本支持</li>
+<li><input disabled="" type="checkbox"> 长尾输入行为已观测，不只看平均值</li>
+<li><input disabled="" type="checkbox"> smoke 与 full 结论边界明确</li>
+</ul>
+<h3 id="c-边界与安全-5"><a class="header" href="#c-边界与安全-5">C. 边界与安全</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> 宿主接口与内存权限边界未扩张</li>
+<li><input disabled="" type="checkbox"> 新增路径具备失败可观测性（日志/错误码）</li>
+<li><input disabled="" type="checkbox"> 回滚路径可执行且有演练记录</li>
+</ul>
+<h3 id="d-治理与发布-5"><a class="header" href="#d-治理与发布-5">D. 治理与发布</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> 版本兼容结论与证据一致</li>
+<li><input disabled="" type="checkbox"> 发布门禁、灰度策略、冻结条件已定义</li>
+<li><input disabled="" type="checkbox"> 责任人、观察窗口、复盘机制已指定</li>
+</ul>
+<h2 id="推荐验证命令-5"><a class="header" href="#推荐验证命令-5">推荐验证命令</a></h2>
+<pre><code class="language-bash">cargo test --test test_resume -- --nocapture
+cargo test --test test_resume2 -- --nocapture
+bash docs/riscv-vm-book/tools/run_labs.sh --batch 2 --mode smoke --skip-asm
+</code></pre>
+<h2 id="证据记录填写区-5"><a class="header" href="#证据记录填写区-5">证据记录（填写区）</a></h2>
+<ul>
+<li>关键日志：</li>
+<li>差分结果：</li>
+<li>计费变化：</li>
+<li>治理评估：</li>
+</ul>
+<h2 id="审计结论签署区-5"><a class="header" href="#审计结论签署区-5">审计结论（签署区）</a></h2>
+<ul>
+<li>结论：<code>[ ] 通过  [ ] 条件通过  [ ] 拒绝</code></li>
+<li>风险等级：<code>[ ] 低  [ ] 中  [ ] 高</code></li>
+<li>发布建议：</li>
+<li>回滚触发条件：</li>
+<li>审计人：</li>
+<li>日期：</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="审计模板-7-1register-trait-语义下沉"><a class="header" href="#审计模板-7-1register-trait-语义下沉">审计模板 7-1：Register trait 语义下沉</a></h1>
+<h2 id="一针见血风险-6"><a class="header" href="#一针见血风险-6">一针见血风险</a></h2>
+<p>类型层契约被绕过，导致 ISA 语义在后端出现分裂。</p>
+<h2 id="关联阅读-6"><a class="header" href="#关联阅读-6">关联阅读</a></h2>
+<ul>
+<li>图示长文：<code>standalone-articles/batch-02/07-register-trait-semantics.md</code></li>
+<li>对应章节：<code>manuscript/07-rust-type-semantics.md</code></li>
+<li>关联审计模板：<code>manuscript/F-crypto-implementation-audit-template.md</code></li>
+</ul>
+<h2 id="审计输入清单-6"><a class="header" href="#审计输入清单-6">审计输入清单</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"> PR 链接与提交哈希</li>
+<li><input disabled="" type="checkbox"> 影响文件列表（含代码与文档）</li>
+<li><input disabled="" type="checkbox"> 影响后端范围（interpreter / asm / 其他）</li>
+<li><input disabled="" type="checkbox"> 基线版本与目标版本</li>
+<li><input disabled="" type="checkbox"> 报告产物路径（md/csv/log）</li>
+</ul>
+<h2 id="核心审计问题必须回答-6"><a class="header" href="#核心审计问题必须回答-6">核心审计问题（必须回答）</a></h2>
+<ol>
+<li>trait 约束是否仍覆盖寄存器宽度、符号扩展与溢出语义？</li>
+<li>泛型改动是否影响后端一致性或错误路径行为？</li>
+<li>是否新增针对 trait 契约的反例测试？</li>
+</ol>
+<h2 id="审计检查表-6"><a class="header" href="#审计检查表-6">审计检查表</a></h2>
+<h3 id="a-协议语义-6"><a class="header" href="#a-协议语义-6">A. 协议语义</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> 同输入同初始状态下结果可重放</li>
+<li><input disabled="" type="checkbox"> 错误码与退出语义保持兼容</li>
+<li><input disabled="" type="checkbox"> 边界输入无未定义行为</li>
+</ul>
+<h3 id="b-计费与性能-6"><a class="header" href="#b-计费与性能-6">B. 计费与性能</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> cycles 变化具备解释与样本支持</li>
+<li><input disabled="" type="checkbox"> 长尾输入行为已观测，不只看平均值</li>
+<li><input disabled="" type="checkbox"> smoke 与 full 结论边界明确</li>
+</ul>
+<h3 id="c-边界与安全-6"><a class="header" href="#c-边界与安全-6">C. 边界与安全</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> 宿主接口与内存权限边界未扩张</li>
+<li><input disabled="" type="checkbox"> 新增路径具备失败可观测性（日志/错误码）</li>
+<li><input disabled="" type="checkbox"> 回滚路径可执行且有演练记录</li>
+</ul>
+<h3 id="d-治理与发布-6"><a class="header" href="#d-治理与发布-6">D. 治理与发布</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> 版本兼容结论与证据一致</li>
+<li><input disabled="" type="checkbox"> 发布门禁、灰度策略、冻结条件已定义</li>
+<li><input disabled="" type="checkbox"> 责任人、观察窗口、复盘机制已指定</li>
+</ul>
+<h2 id="推荐验证命令-6"><a class="header" href="#推荐验证命令-6">推荐验证命令</a></h2>
+<pre><code class="language-bash">cargo test --test test_b_extension -- --nocapture
+cargo test --test test_a_extension -- --nocapture
+cargo test --test test_versions -- --nocapture
+</code></pre>
+<h2 id="证据记录填写区-6"><a class="header" href="#证据记录填写区-6">证据记录（填写区）</a></h2>
+<ul>
+<li>关键日志：</li>
+<li>差分结果：</li>
+<li>计费变化：</li>
+<li>治理评估：</li>
+</ul>
+<h2 id="审计结论签署区-6"><a class="header" href="#审计结论签署区-6">审计结论（签署区）</a></h2>
+<ul>
+<li>结论：<code>[ ] 通过  [ ] 条件通过  [ ] 拒绝</code></li>
+<li>风险等级：<code>[ ] 低  [ ] 中  [ ] 高</code></li>
+<li>发布建议：</li>
+<li>回滚触发条件：</li>
+<li>审计人：</li>
+<li>日期：</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="审计模板-8-1rust--asm-控制平面"><a class="header" href="#审计模板-8-1rust--asm-控制平面">审计模板 8-1：Rust + ASM 控制平面</a></h1>
+<h2 id="一针见血风险-7"><a class="header" href="#一针见血风险-7">一针见血风险</a></h2>
+<p>asm 热路径绕开 Rust 语义锚点，形成不可审计漂移。</p>
+<h2 id="关联阅读-7"><a class="header" href="#关联阅读-7">关联阅读</a></h2>
+<ul>
+<li>图示长文：<code>standalone-articles/batch-02/08-rust-asm-control-plane.md</code></li>
+<li>对应章节：<code>manuscript/08-rust-asm-hybrid.md</code></li>
+<li>关联审计模板：<code>manuscript/F-crypto-implementation-audit-template.md</code></li>
+</ul>
+<h2 id="审计输入清单-7"><a class="header" href="#审计输入清单-7">审计输入清单</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"> PR 链接与提交哈希</li>
+<li><input disabled="" type="checkbox"> 影响文件列表（含代码与文档）</li>
+<li><input disabled="" type="checkbox"> 影响后端范围（interpreter / asm / 其他）</li>
+<li><input disabled="" type="checkbox"> 基线版本与目标版本</li>
+<li><input disabled="" type="checkbox"> 报告产物路径（md/csv/log）</li>
+</ul>
+<h2 id="核心审计问题必须回答-7"><a class="header" href="#核心审计问题必须回答-7">核心审计问题（必须回答）</a></h2>
+<ol>
+<li>Rust 与 ASM 的入口/退出约定是否保持一致？</li>
+<li>asm 失败回落 slowpath 是否覆盖新增边界输入？</li>
+<li>解释器与 asm 差分结果是否可复核？</li>
+</ol>
+<h2 id="审计检查表-7"><a class="header" href="#审计检查表-7">审计检查表</a></h2>
+<h3 id="a-协议语义-7"><a class="header" href="#a-协议语义-7">A. 协议语义</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> 同输入同初始状态下结果可重放</li>
+<li><input disabled="" type="checkbox"> 错误码与退出语义保持兼容</li>
+<li><input disabled="" type="checkbox"> 边界输入无未定义行为</li>
+</ul>
+<h3 id="b-计费与性能-7"><a class="header" href="#b-计费与性能-7">B. 计费与性能</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> cycles 变化具备解释与样本支持</li>
+<li><input disabled="" type="checkbox"> 长尾输入行为已观测，不只看平均值</li>
+<li><input disabled="" type="checkbox"> smoke 与 full 结论边界明确</li>
+</ul>
+<h3 id="c-边界与安全-7"><a class="header" href="#c-边界与安全-7">C. 边界与安全</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> 宿主接口与内存权限边界未扩张</li>
+<li><input disabled="" type="checkbox"> 新增路径具备失败可观测性（日志/错误码）</li>
+<li><input disabled="" type="checkbox"> 回滚路径可执行且有演练记录</li>
+</ul>
+<h3 id="d-治理与发布-7"><a class="header" href="#d-治理与发布-7">D. 治理与发布</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> 版本兼容结论与证据一致</li>
+<li><input disabled="" type="checkbox"> 发布门禁、灰度策略、冻结条件已定义</li>
+<li><input disabled="" type="checkbox"> 责任人、观察窗口、复盘机制已指定</li>
+</ul>
+<h2 id="推荐验证命令-7"><a class="header" href="#推荐验证命令-7">推荐验证命令</a></h2>
+<pre><code class="language-bash">cargo test --features asm --test test_asm -- --nocapture
+cargo test --features asm --test test_versions -- --nocapture
+cargo run --features asm --example ckb_vm_runner -- --mode asm64 tests/programs/simple64
+</code></pre>
+<h2 id="证据记录填写区-7"><a class="header" href="#证据记录填写区-7">证据记录（填写区）</a></h2>
+<ul>
+<li>关键日志：</li>
+<li>差分结果：</li>
+<li>计费变化：</li>
+<li>治理评估：</li>
+</ul>
+<h2 id="审计结论签署区-7"><a class="header" href="#审计结论签署区-7">审计结论（签署区）</a></h2>
+<ul>
+<li>结论：<code>[ ] 通过  [ ] 条件通过  [ ] 拒绝</code></li>
+<li>风险等级：<code>[ ] 低  [ ] 中  [ ] 高</code></li>
+<li>发布建议：</li>
+<li>回滚触发条件：</li>
+<li>审计人：</li>
+<li>日期：</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="审计模板-9-1isa-选择影响链"><a class="header" href="#审计模板-9-1isa-选择影响链">审计模板 9-1：ISA 选择影响链</a></h1>
+<h2 id="一针见血风险-8"><a class="header" href="#一针见血风险-8">一针见血风险</a></h2>
+<p>架构选择缺少治理约束，短期收益转化为长期协议债务。</p>
+<h2 id="关联阅读-8"><a class="header" href="#关联阅读-8">关联阅读</a></h2>
+<ul>
+<li>图示长文：<code>standalone-articles/batch-03/09-isa-selection-impact-chain.md</code></li>
+<li>对应章节：<code>manuscript/09-riscv-governance.md</code></li>
+<li>关联审计模板：<code>manuscript/F-crypto-implementation-audit-template.md</code></li>
+</ul>
+<h2 id="审计输入清单-8"><a class="header" href="#审计输入清单-8">审计输入清单</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"> PR 链接与提交哈希</li>
+<li><input disabled="" type="checkbox"> 影响文件列表（含代码与文档）</li>
+<li><input disabled="" type="checkbox"> 影响后端范围（interpreter / asm / 其他）</li>
+<li><input disabled="" type="checkbox"> 基线版本与目标版本</li>
+<li><input disabled="" type="checkbox"> 报告产物路径（md/csv/log）</li>
+</ul>
+<h2 id="核心审计问题必须回答-8"><a class="header" href="#核心审计问题必须回答-8">核心审计问题（必须回答）</a></h2>
+<ol>
+<li>本次 ISA 相关改动是否定义了治理门禁与回滚条件？</li>
+<li>是否评估了对历史程序与生态工具链的兼容影响？</li>
+<li>是否有跨版本观测指标用于发布后追踪？</li>
+</ol>
+<h2 id="审计检查表-8"><a class="header" href="#审计检查表-8">审计检查表</a></h2>
+<h3 id="a-协议语义-8"><a class="header" href="#a-协议语义-8">A. 协议语义</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> 同输入同初始状态下结果可重放</li>
+<li><input disabled="" type="checkbox"> 错误码与退出语义保持兼容</li>
+<li><input disabled="" type="checkbox"> 边界输入无未定义行为</li>
+</ul>
+<h3 id="b-计费与性能-8"><a class="header" href="#b-计费与性能-8">B. 计费与性能</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> cycles 变化具备解释与样本支持</li>
+<li><input disabled="" type="checkbox"> 长尾输入行为已观测，不只看平均值</li>
+<li><input disabled="" type="checkbox"> smoke 与 full 结论边界明确</li>
+</ul>
+<h3 id="c-边界与安全-8"><a class="header" href="#c-边界与安全-8">C. 边界与安全</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> 宿主接口与内存权限边界未扩张</li>
+<li><input disabled="" type="checkbox"> 新增路径具备失败可观测性（日志/错误码）</li>
+<li><input disabled="" type="checkbox"> 回滚路径可执行且有演练记录</li>
+</ul>
+<h3 id="d-治理与发布-8"><a class="header" href="#d-治理与发布-8">D. 治理与发布</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> 版本兼容结论与证据一致</li>
+<li><input disabled="" type="checkbox"> 发布门禁、灰度策略、冻结条件已定义</li>
+<li><input disabled="" type="checkbox"> 责任人、观察窗口、复盘机制已指定</li>
+</ul>
+<h2 id="推荐验证命令-8"><a class="header" href="#推荐验证命令-8">推荐验证命令</a></h2>
+<pre><code class="language-bash">cargo test --test test_versions -- --nocapture
+cargo test --test test_misc -- --nocapture
+bash docs/riscv-vm-book/tools/run_labs.sh --batch 3 --mode smoke --skip-asm
+</code></pre>
+<h2 id="证据记录填写区-8"><a class="header" href="#证据记录填写区-8">证据记录（填写区）</a></h2>
+<ul>
+<li>关键日志：</li>
+<li>差分结果：</li>
+<li>计费变化：</li>
+<li>治理评估：</li>
+</ul>
+<h2 id="审计结论签署区-8"><a class="header" href="#审计结论签署区-8">审计结论（签署区）</a></h2>
+<ul>
+<li>结论：<code>[ ] 通过  [ ] 条件通过  [ ] 拒绝</code></li>
+<li>风险等级：<code>[ ] 低  [ ] 中  [ ] 高</code></li>
+<li>发布建议：</li>
+<li>回滚触发条件：</li>
+<li>审计人：</li>
+<li>日期：</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="审计模板-10-1密码学扩展真实分工"><a class="header" href="#审计模板-10-1密码学扩展真实分工">审计模板 10-1：密码学扩展真实分工</a></h1>
+<h2 id="一针见血风险-9"><a class="header" href="#一针见血风险-9">一针见血风险</a></h2>
+<p>把算法优化误当指令扩展问题，导致计费和兼容双重错配。</p>
+<h2 id="关联阅读-9"><a class="header" href="#关联阅读-9">关联阅读</a></h2>
+<ul>
+<li>图示长文：<code>standalone-articles/batch-03/10-crypto-extension-real-division.md</code></li>
+<li>对应章节：<code>manuscript/10-isa-extensions-crypto.md</code></li>
+<li>关联审计模板：<code>manuscript/F-crypto-implementation-audit-template.md</code></li>
+</ul>
+<h2 id="审计输入清单-9"><a class="header" href="#审计输入清单-9">审计输入清单</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"> PR 链接与提交哈希</li>
+<li><input disabled="" type="checkbox"> 影响文件列表（含代码与文档）</li>
+<li><input disabled="" type="checkbox"> 影响后端范围（interpreter / asm / 其他）</li>
+<li><input disabled="" type="checkbox"> 基线版本与目标版本</li>
+<li><input disabled="" type="checkbox"> 报告产物路径（md/csv/log）</li>
+</ul>
+<h2 id="核心审计问题必须回答-9"><a class="header" href="#核心审计问题必须回答-9">核心审计问题（必须回答）</a></h2>
+<ol>
+<li>B/M/A/MOP 的职责边界是否清晰且有证据支持？</li>
+<li>扩展引入是否评估了常数时间与差分攻击风险？</li>
+<li>计费校准是否覆盖短输入、长尾输入和极端边界？</li>
+</ol>
+<h2 id="审计检查表-9"><a class="header" href="#审计检查表-9">审计检查表</a></h2>
+<h3 id="a-协议语义-9"><a class="header" href="#a-协议语义-9">A. 协议语义</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> 同输入同初始状态下结果可重放</li>
+<li><input disabled="" type="checkbox"> 错误码与退出语义保持兼容</li>
+<li><input disabled="" type="checkbox"> 边界输入无未定义行为</li>
+</ul>
+<h3 id="b-计费与性能-9"><a class="header" href="#b-计费与性能-9">B. 计费与性能</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> cycles 变化具备解释与样本支持</li>
+<li><input disabled="" type="checkbox"> 长尾输入行为已观测，不只看平均值</li>
+<li><input disabled="" type="checkbox"> smoke 与 full 结论边界明确</li>
+</ul>
+<h3 id="c-边界与安全-9"><a class="header" href="#c-边界与安全-9">C. 边界与安全</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> 宿主接口与内存权限边界未扩张</li>
+<li><input disabled="" type="checkbox"> 新增路径具备失败可观测性（日志/错误码）</li>
+<li><input disabled="" type="checkbox"> 回滚路径可执行且有演练记录</li>
+</ul>
+<h3 id="d-治理与发布-9"><a class="header" href="#d-治理与发布-9">D. 治理与发布</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> 版本兼容结论与证据一致</li>
+<li><input disabled="" type="checkbox"> 发布门禁、灰度策略、冻结条件已定义</li>
+<li><input disabled="" type="checkbox"> 责任人、观察窗口、复盘机制已指定</li>
+</ul>
+<h2 id="推荐验证命令-9"><a class="header" href="#推荐验证命令-9">推荐验证命令</a></h2>
+<pre><code class="language-bash">cargo test --test test_b_extension -- --nocapture
+cargo test --test test_mop -- --nocapture
+cargo test --test test_misc -- --nocapture
+</code></pre>
+<h2 id="证据记录填写区-9"><a class="header" href="#证据记录填写区-9">证据记录（填写区）</a></h2>
+<ul>
+<li>关键日志：</li>
+<li>差分结果：</li>
+<li>计费变化：</li>
+<li>治理评估：</li>
+</ul>
+<h2 id="审计结论签署区-9"><a class="header" href="#审计结论签署区-9">审计结论（签署区）</a></h2>
+<ul>
+<li>结论：<code>[ ] 通过  [ ] 条件通过  [ ] 拒绝</code></li>
+<li>风险等级：<code>[ ] 低  [ ] 中  [ ] 高</code></li>
+<li>发布建议：</li>
+<li>回滚触发条件：</li>
+<li>审计人：</li>
+<li>日期：</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="审计模板-11-1收益-成本硬约束矩阵"><a class="header" href="#审计模板-11-1收益-成本硬约束矩阵">审计模板 11-1：收益-成本硬约束矩阵</a></h1>
+<h2 id="一针见血风险-10"><a class="header" href="#一针见血风险-10">一针见血风险</a></h2>
+<p>单指标决策掩盖了治理与维护成本，发布后风险转嫁给生态。</p>
+<h2 id="关联阅读-10"><a class="header" href="#关联阅读-10">关联阅读</a></h2>
+<ul>
+<li>图示长文：<code>standalone-articles/batch-03/11-benefit-cost-hard-constraints.md</code></li>
+<li>对应章节：<code>manuscript/11-architecture-judgment.md</code></li>
+<li>关联审计模板：<code>manuscript/F-crypto-implementation-audit-template.md</code></li>
+</ul>
+<h2 id="审计输入清单-10"><a class="header" href="#审计输入清单-10">审计输入清单</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"> PR 链接与提交哈希</li>
+<li><input disabled="" type="checkbox"> 影响文件列表（含代码与文档）</li>
+<li><input disabled="" type="checkbox"> 影响后端范围（interpreter / asm / 其他）</li>
+<li><input disabled="" type="checkbox"> 基线版本与目标版本</li>
+<li><input disabled="" type="checkbox"> 报告产物路径（md/csv/log）</li>
+</ul>
+<h2 id="核心审计问题必须回答-10"><a class="header" href="#核心审计问题必须回答-10">核心审计问题（必须回答）</a></h2>
+<ol>
+<li>决策矩阵是否同时覆盖收益、成本、不可逆风险？</li>
+<li>是否定义了灰度、回滚与冻结条件？</li>
+<li>是否提供了不发布该改动时的替代路径评估？</li>
+</ol>
+<h2 id="审计检查表-10"><a class="header" href="#审计检查表-10">审计检查表</a></h2>
+<h3 id="a-协议语义-10"><a class="header" href="#a-协议语义-10">A. 协议语义</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> 同输入同初始状态下结果可重放</li>
+<li><input disabled="" type="checkbox"> 错误码与退出语义保持兼容</li>
+<li><input disabled="" type="checkbox"> 边界输入无未定义行为</li>
+</ul>
+<h3 id="b-计费与性能-10"><a class="header" href="#b-计费与性能-10">B. 计费与性能</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> cycles 变化具备解释与样本支持</li>
+<li><input disabled="" type="checkbox"> 长尾输入行为已观测，不只看平均值</li>
+<li><input disabled="" type="checkbox"> smoke 与 full 结论边界明确</li>
+</ul>
+<h3 id="c-边界与安全-10"><a class="header" href="#c-边界与安全-10">C. 边界与安全</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> 宿主接口与内存权限边界未扩张</li>
+<li><input disabled="" type="checkbox"> 新增路径具备失败可观测性（日志/错误码）</li>
+<li><input disabled="" type="checkbox"> 回滚路径可执行且有演练记录</li>
+</ul>
+<h3 id="d-治理与发布-10"><a class="header" href="#d-治理与发布-10">D. 治理与发布</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> 版本兼容结论与证据一致</li>
+<li><input disabled="" type="checkbox"> 发布门禁、灰度策略、冻结条件已定义</li>
+<li><input disabled="" type="checkbox"> 责任人、观察窗口、复盘机制已指定</li>
+</ul>
+<h2 id="推荐验证命令-10"><a class="header" href="#推荐验证命令-10">推荐验证命令</a></h2>
+<pre><code class="language-bash">cargo test --all -- --nocapture
+cargo test --test test_versions -- --nocapture
+bash docs/riscv-vm-book/tools/run_labs.sh --batch all --mode smoke --skip-asm
+</code></pre>
+<h2 id="证据记录填写区-10"><a class="header" href="#证据记录填写区-10">证据记录（填写区）</a></h2>
+<ul>
+<li>关键日志：</li>
+<li>差分结果：</li>
+<li>计费变化：</li>
+<li>治理评估：</li>
+</ul>
+<h2 id="审计结论签署区-10"><a class="header" href="#审计结论签署区-10">审计结论（签署区）</a></h2>
+<ul>
+<li>结论：<code>[ ] 通过  [ ] 条件通过  [ ] 拒绝</code></li>
+<li>风险等级：<code>[ ] 低  [ ] 中  [ ] 高</code></li>
+<li>发布建议：</li>
+<li>回滚触发条件：</li>
+<li>审计人：</li>
+<li>日期：</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="审计模板-a-1密码学执行栈闭环"><a class="header" href="#审计模板-a-1密码学执行栈闭环">审计模板 A-1：密码学执行栈闭环</a></h1>
+<h2 id="一针见血风险-11"><a class="header" href="#一针见血风险-11">一针见血风险</a></h2>
+<p>算法层、指令层、VM 层、计费层脱节，形成发布后不可解释行为。</p>
+<h2 id="关联阅读-11"><a class="header" href="#关联阅读-11">关联阅读</a></h2>
+<ul>
+<li>图示长文：<code>standalone-articles/batch-03/A1-crypto-execution-stack-closure.md</code></li>
+<li>对应章节：<code>manuscript/A-crypto-workload-mapping.md</code></li>
+<li>关联审计模板：<code>manuscript/F-crypto-implementation-audit-template.md</code></li>
+</ul>
+<h2 id="审计输入清单-11"><a class="header" href="#审计输入清单-11">审计输入清单</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"> PR 链接与提交哈希</li>
+<li><input disabled="" type="checkbox"> 影响文件列表（含代码与文档）</li>
+<li><input disabled="" type="checkbox"> 影响后端范围（interpreter / asm / 其他）</li>
+<li><input disabled="" type="checkbox"> 基线版本与目标版本</li>
+<li><input disabled="" type="checkbox"> 报告产物路径（md/csv/log）</li>
+</ul>
+<h2 id="核心审计问题必须回答-11"><a class="header" href="#核心审计问题必须回答-11">核心审计问题（必须回答）</a></h2>
+<ol>
+<li>算法-指令-VM-计费链路是否形成闭环证据？</li>
+<li>是否区分确定性正确与侧信道安全两类验证目标？</li>
+<li>PR 审计模板是否完整链接到日志与基准证据？</li>
+</ol>
+<h2 id="审计检查表-11"><a class="header" href="#审计检查表-11">审计检查表</a></h2>
+<h3 id="a-协议语义-11"><a class="header" href="#a-协议语义-11">A. 协议语义</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> 同输入同初始状态下结果可重放</li>
+<li><input disabled="" type="checkbox"> 错误码与退出语义保持兼容</li>
+<li><input disabled="" type="checkbox"> 边界输入无未定义行为</li>
+</ul>
+<h3 id="b-计费与性能-11"><a class="header" href="#b-计费与性能-11">B. 计费与性能</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> cycles 变化具备解释与样本支持</li>
+<li><input disabled="" type="checkbox"> 长尾输入行为已观测，不只看平均值</li>
+<li><input disabled="" type="checkbox"> smoke 与 full 结论边界明确</li>
+</ul>
+<h3 id="c-边界与安全-11"><a class="header" href="#c-边界与安全-11">C. 边界与安全</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> 宿主接口与内存权限边界未扩张</li>
+<li><input disabled="" type="checkbox"> 新增路径具备失败可观测性（日志/错误码）</li>
+<li><input disabled="" type="checkbox"> 回滚路径可执行且有演练记录</li>
+</ul>
+<h3 id="d-治理与发布-11"><a class="header" href="#d-治理与发布-11">D. 治理与发布</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> 版本兼容结论与证据一致</li>
+<li><input disabled="" type="checkbox"> 发布门禁、灰度策略、冻结条件已定义</li>
+<li><input disabled="" type="checkbox"> 责任人、观察窗口、复盘机制已指定</li>
+</ul>
+<h2 id="推荐验证命令-11"><a class="header" href="#推荐验证命令-11">推荐验证命令</a></h2>
+<pre><code class="language-bash">cargo test --test test_mop -- --nocapture
+cargo test --test test_misc -- --nocapture
+cargo test --test test_versions -- --nocapture
+</code></pre>
+<h2 id="证据记录填写区-11"><a class="header" href="#证据记录填写区-11">证据记录（填写区）</a></h2>
+<ul>
+<li>关键日志：</li>
+<li>差分结果：</li>
+<li>计费变化：</li>
+<li>治理评估：</li>
+</ul>
+<h2 id="审计结论签署区-11"><a class="header" href="#审计结论签署区-11">审计结论（签署区）</a></h2>
+<ul>
+<li>结论：<code>[ ] 通过  [ ] 条件通过  [ ] 拒绝</code></li>
+<li>风险等级：<code>[ ] 低  [ ] 中  [ ] 高</code></li>
+<li>发布建议：</li>
+<li>回滚触发条件：</li>
+<li>审计人：</li>
+<li>日期：</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="审计模板-c-1isa-到协议治理链"><a class="header" href="#审计模板-c-1isa-到协议治理链">审计模板 C-1：ISA 到协议治理链</a></h1>
+<h2 id="一针见血风险-12"><a class="header" href="#一针见血风险-12">一针见血风险</a></h2>
+<p>扩展引入流程缺少治理阶段门禁，导致回滚和责任界面模糊。</p>
+<h2 id="关联阅读-12"><a class="header" href="#关联阅读-12">关联阅读</a></h2>
+<ul>
+<li>图示长文：<code>standalone-articles/batch-03/C1-isa-to-protocol-governance-chain.md</code></li>
+<li>对应章节：<code>manuscript/C-riscv-isa-and-os-appendix.md</code></li>
+<li>关联审计模板：<code>manuscript/F-crypto-implementation-audit-template.md</code></li>
+</ul>
+<h2 id="审计输入清单-12"><a class="header" href="#审计输入清单-12">审计输入清单</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"> PR 链接与提交哈希</li>
+<li><input disabled="" type="checkbox"> 影响文件列表（含代码与文档）</li>
+<li><input disabled="" type="checkbox"> 影响后端范围（interpreter / asm / 其他）</li>
+<li><input disabled="" type="checkbox"> 基线版本与目标版本</li>
+<li><input disabled="" type="checkbox"> 报告产物路径（md/csv/log）</li>
+</ul>
+<h2 id="核心审计问题必须回答-12"><a class="header" href="#核心审计问题必须回答-12">核心审计问题（必须回答）</a></h2>
+<ol>
+<li>扩展提案是否定义了阶段门禁、失败处理与责任人？</li>
+<li>协议层、实现层、工具链层是否同步计划发布窗口？</li>
+<li>是否配置了发布后持续观测指标与阈值？</li>
+</ol>
+<h2 id="审计检查表-12"><a class="header" href="#审计检查表-12">审计检查表</a></h2>
+<h3 id="a-协议语义-12"><a class="header" href="#a-协议语义-12">A. 协议语义</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> 同输入同初始状态下结果可重放</li>
+<li><input disabled="" type="checkbox"> 错误码与退出语义保持兼容</li>
+<li><input disabled="" type="checkbox"> 边界输入无未定义行为</li>
+</ul>
+<h3 id="b-计费与性能-12"><a class="header" href="#b-计费与性能-12">B. 计费与性能</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> cycles 变化具备解释与样本支持</li>
+<li><input disabled="" type="checkbox"> 长尾输入行为已观测，不只看平均值</li>
+<li><input disabled="" type="checkbox"> smoke 与 full 结论边界明确</li>
+</ul>
+<h3 id="c-边界与安全-12"><a class="header" href="#c-边界与安全-12">C. 边界与安全</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> 宿主接口与内存权限边界未扩张</li>
+<li><input disabled="" type="checkbox"> 新增路径具备失败可观测性（日志/错误码）</li>
+<li><input disabled="" type="checkbox"> 回滚路径可执行且有演练记录</li>
+</ul>
+<h3 id="d-治理与发布-12"><a class="header" href="#d-治理与发布-12">D. 治理与发布</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> 版本兼容结论与证据一致</li>
+<li><input disabled="" type="checkbox"> 发布门禁、灰度策略、冻结条件已定义</li>
+<li><input disabled="" type="checkbox"> 责任人、观察窗口、复盘机制已指定</li>
+</ul>
+<h2 id="推荐验证命令-12"><a class="header" href="#推荐验证命令-12">推荐验证命令</a></h2>
+<pre><code class="language-bash">cargo test --test test_versions -- --nocapture
+cargo test --features asm --test test_versions -- --nocapture
+bash docs/riscv-vm-book/tools/run_labs.sh --batch 3 --mode full --stop-on-fail
+</code></pre>
+<h2 id="证据记录填写区-12"><a class="header" href="#证据记录填写区-12">证据记录（填写区）</a></h2>
+<ul>
+<li>关键日志：</li>
+<li>差分结果：</li>
+<li>计费变化：</li>
+<li>治理评估：</li>
+</ul>
+<h2 id="审计结论签署区-12"><a class="header" href="#审计结论签署区-12">审计结论（签署区）</a></h2>
+<ul>
+<li>结论：<code>[ ] 通过  [ ] 条件通过  [ ] 拒绝</code></li>
+<li>风险等级：<code>[ ] 低  [ ] 中  [ ] 高</code></li>
+<li>发布建议：</li>
+<li>回滚触发条件：</li>
+<li>审计人：</li>
+<li>日期：</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="图示审计模板样例集"><a class="header" href="#图示审计模板样例集">图示审计模板样例集</a></h1>
+<h2 id="一针见血定位-1"><a class="header" href="#一针见血定位-1">一针见血定位</a></h2>
+<p>模板解决的是“该检查什么”；样例解决的是“怎么把结论写到可签署”。</p>
+<p>本目录给出三份完整样例：</p>
+<ol>
+<li>一份<code>有条件通过</code>案例（性能优化可上线但需补门禁）。</li>
+<li>一份<code>拒绝通过</code>案例（边界设计直接违背共识约束）。</li>
+<li>一份<code>真实锚点映射</code>案例（直接映射当前 ckb-vm 代码路径）。</li>
+</ol>
+<h2 id="使用方式-2"><a class="header" href="#使用方式-2">使用方式</a></h2>
+<ul>
+<li>先选一份与当前 PR 最接近的样例。</li>
+<li>再把其中“证据结构”和“决策逻辑”替换为你自己的数据。</li>
+<li>禁止复制结论；只允许复用结构。</li>
+</ul>
+<h2 id="样例索引"><a class="header" href="#样例索引">样例索引</a></h2>
+<ul>
+<li><code>01-pr-audit-sample-mop-secp256k1.md</code></li>
+<li><code>02-pr-audit-sample-syscall-host-time.md</code></li>
+<li><code>03-pr-audit-sample-real-anchors-run-exit-cycles.md</code></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="审计样例-01mop-融合优化-secp256k1-路径有条件通过"><a class="header" href="#审计样例-01mop-融合优化-secp256k1-路径有条件通过">审计样例 01：MOP 融合优化 secp256k1 路径（有条件通过）</a></h1>
+<blockquote>
+<p>类型：性能优化 + 指令映射调整<br>审计结论：<code>条件通过</code><br>目的：展示“性能收益存在，但治理门禁尚未补齐”时如何写结论。</p>
+</blockquote>
+<h2 id="1-pr-基本信息示例"><a class="header" href="#1-pr-基本信息示例">1. PR 基本信息（示例）</a></h2>
+<ul>
+<li>PR 标题：<code>optimize secp256k1 scalar mul by mop fusion</code></li>
+<li>PR 链接：<code>(示例) https://example.local/pr/427</code></li>
+<li>负责人：<code>vm-crypto-owner</code></li>
+<li>审计人：<code>security-reviewer-A</code></li>
+<li>目标模块：<code>src/instructions/</code>、<code>src/machine/</code>、<code>tests/test_mop.rs</code></li>
+<li>关联 issue/RFC：<code>RFC-crypto-mop-fusion-v2</code></li>
+<li>影响范围：VM 执行层 + 计费模型</li>
+</ul>
+<h2 id="2-变更分类"><a class="header" href="#2-变更分类">2. 变更分类</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"> 新增算法实现</li>
+<li><input disabled="" type="checkbox"> 现有算法重构</li>
+<li><input disabled="" type="checkbox" checked=""> 性能优化（无语义变更）</li>
+<li><input disabled="" type="checkbox" checked=""> 指令映射调整（MOP 路径）</li>
+<li><input disabled="" type="checkbox" checked=""> 计费模型调整（cycles）</li>
+<li><input disabled="" type="checkbox"> 汇编快路径变更</li>
+</ul>
+<h2 id="3-一针见血风险"><a class="header" href="#3-一针见血风险">3. 一针见血风险</a></h2>
+<p>该改动把热点路径融合为更少步数，平均 cycles 降低明显；但如果长尾输入下 cycles 下降幅度与平均值差异过大，可能造成计费公平性偏移，形成“非典型输入套利窗口”。</p>
+<h2 id="4-证据摘要"><a class="header" href="#4-证据摘要">4. 证据摘要</a></h2>
+<h3 id="41-语义一致性"><a class="header" href="#41-语义一致性">4.1 语义一致性</a></h3>
+<ul>
+<li>证据命令：</li>
+</ul>
+<pre><code class="language-bash">cargo test --test test_mop -- --nocapture
+cargo test --test test_versions -- --nocapture
+bash docs/riscv-vm-book/tools/run_labs.sh --batch 3 --mode smoke --skip-asm
+</code></pre>
+<ul>
+<li>结果摘要：
+<ul>
+<li>功能断言全部通过；</li>
+<li>错误码行为未变化；</li>
+<li>版本回放测试未出现分歧。</li>
+</ul>
+</li>
+</ul>
+<p>结论：语义层<code>通过</code>。</p>
+<h3 id="42-计费变化"><a class="header" href="#42-计费变化">4.2 计费变化</a></h3>
+<ul>
+<li>基线 workload（示例，10k 样本）：
+<ul>
+<li>中位数 cycles：<code>-14.8%</code></li>
+<li>p95 cycles：<code>-6.1%</code></li>
+<li>p99 cycles：<code>-1.4%</code></li>
+</ul>
+</li>
+<li>观察：长尾收益显著低于中位收益，且 p99 波动扩大。</li>
+</ul>
+<p>结论：计费层<code>有条件通过</code>，需补长尾样本校准。</p>
+<h3 id="43-边界与安全"><a class="header" href="#43-边界与安全">4.3 边界与安全</a></h3>
+<ul>
+<li>未新增 syscall；</li>
+<li>未触及 W^X 权限切换路径；</li>
+<li>未引入新的 unsafe 块。</li>
+</ul>
+<p>结论：边界层<code>通过</code>。</p>
+<h3 id="44-治理与发布"><a class="header" href="#44-治理与发布">4.4 治理与发布</a></h3>
+<p>当前 PR 缺失两项发布门禁：</p>
+<ol>
+<li>未定义“长尾波动阈值”超限后的回滚触发条件；</li>
+<li>未给出灰度窗口内的观测指标 owner。</li>
+</ol>
+<p>结论：治理层<code>未通过</code>。</p>
+<h2 id="5-审计检查表已填写"><a class="header" href="#5-审计检查表已填写">5. 审计检查表（已填写）</a></h2>
+<h3 id="a-协议语义-13"><a class="header" href="#a-协议语义-13">A. 协议语义</a></h3>
+<ul>
+<li><input disabled="" type="checkbox" checked=""> 同输入同初始状态下结果可重放</li>
+<li><input disabled="" type="checkbox" checked=""> 错误码与退出语义保持兼容</li>
+<li><input disabled="" type="checkbox" checked=""> 边界输入无未定义行为</li>
+</ul>
+<h3 id="b-计费与性能-13"><a class="header" href="#b-计费与性能-13">B. 计费与性能</a></h3>
+<ul>
+<li><input disabled="" type="checkbox" checked=""> cycles 变化具备解释与样本支持</li>
+<li><input disabled="" type="checkbox"> 长尾输入行为已观测并完成阈值化</li>
+<li><input disabled="" type="checkbox" checked=""> smoke 与 full 结论边界明确</li>
+</ul>
+<h3 id="c-边界与安全-13"><a class="header" href="#c-边界与安全-13">C. 边界与安全</a></h3>
+<ul>
+<li><input disabled="" type="checkbox" checked=""> 宿主接口与内存权限边界未扩张</li>
+<li><input disabled="" type="checkbox" checked=""> 新增路径具备失败可观测性（日志/错误码）</li>
+<li><input disabled="" type="checkbox" checked=""> 回滚路径可执行且有演练记录</li>
+</ul>
+<h3 id="d-治理与发布-13"><a class="header" href="#d-治理与发布-13">D. 治理与发布</a></h3>
+<ul>
+<li><input disabled="" type="checkbox" checked=""> 版本兼容结论与证据一致</li>
+<li><input disabled="" type="checkbox"> 发布门禁、灰度策略、冻结条件已完整定义</li>
+<li><input disabled="" type="checkbox"> 责任人、观察窗口、复盘机制已完整指定</li>
+</ul>
+<h2 id="6-审计结论签署区"><a class="header" href="#6-审计结论签署区">6. 审计结论（签署区）</a></h2>
+<ul>
+<li>结论：<code>[ ] 通过  [x] 条件通过  [ ] 拒绝</code></li>
+<li>风险等级：<code>[ ] 低  [x] 中  [ ] 高</code></li>
+<li>发布建议：
+<ul>
+<li>允许进入灰度；</li>
+<li>不允许直接全量；</li>
+<li>必须补齐长尾阈值与回滚触发策略。</li>
+</ul>
+</li>
+<li>回滚触发条件（建议）：
+<ol>
+<li>p99 cycles 波动超过基线 <code>+5%</code> 连续 3 个观测窗口；</li>
+<li>任一后端出现错误码不一致；</li>
+<li>同输入出现不可解释状态分叉。</li>
+</ol>
+</li>
+<li>审计人：<code>security-reviewer-A</code></li>
+<li>日期：<code>2026-02-08</code></li>
+</ul>
+<h2 id="7-必须补齐项上线前"><a class="header" href="#7-必须补齐项上线前">7. 必须补齐项（上线前）</a></h2>
+<ol>
+<li>在文档中明确 p95/p99 阈值与触发动作。</li>
+<li>在 PR 描述中挂载完整 <code>lab-run-report.md</code> 与原始日志路径。</li>
+<li>在发布计划中指定灰度 owner 与 7 天观测复盘时间点。</li>
+</ol>
+<h2 id="8-一针见血结论-5"><a class="header" href="#8-一针见血结论-5">8. 一针见血结论</a></h2>
+<p>这个 PR 不是“不能上”，而是“不能裸上”。性能收益成立，但治理约束未闭环；先补门禁，再谈全量。</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="审计样例-02新增-host-time-syscall拒绝通过"><a class="header" href="#审计样例-02新增-host-time-syscall拒绝通过">审计样例 02：新增 host time syscall（拒绝通过）</a></h1>
+<blockquote>
+<p>类型：syscall 边界扩张<br>审计结论：<code>拒绝</code><br>目的：展示“看似方便的功能增强”如何直接破坏共识约束。</p>
+</blockquote>
+<h2 id="1-pr-基本信息示例-1"><a class="header" href="#1-pr-基本信息示例-1">1. PR 基本信息（示例）</a></h2>
+<ul>
+<li>PR 标题：<code>add ecall 200 for host unix timestamp</code></li>
+<li>PR 链接：<code>(示例) https://example.local/pr/433</code></li>
+<li>负责人：<code>vm-runtime-owner</code></li>
+<li>审计人：<code>security-reviewer-B</code></li>
+<li>目标模块：<code>src/machine/mod.rs</code>、<code>src/syscalls/</code>、<code>tests/test_simple.rs</code></li>
+<li>关联 issue/RFC：<code>feature-request-host-time</code></li>
+<li>影响范围：syscall 边界 + 共识确定性</li>
+</ul>
+<h2 id="2-变更分类-1"><a class="header" href="#2-变更分类-1">2. 变更分类</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"> 新增算法实现</li>
+<li><input disabled="" type="checkbox"> 现有算法重构</li>
+<li><input disabled="" type="checkbox"> 性能优化（无语义变更）</li>
+<li><input disabled="" type="checkbox"> 指令映射调整</li>
+<li><input disabled="" type="checkbox"> 计费模型调整</li>
+<li><input disabled="" type="checkbox" checked=""> 宿主接口扩展（新增 syscall）</li>
+</ul>
+<h2 id="3-一针见血风险-1"><a class="header" href="#3-一针见血风险-1">3. 一针见血风险</a></h2>
+<p>该 PR 允许 VM 程序读取宿主当前时间。时间是节点本地非共识状态，不同节点会返回不同值，直接破坏“同输入同状态同输出”的共识前提。</p>
+<h2 id="4-证据摘要-1"><a class="header" href="#4-证据摘要-1">4. 证据摘要</a></h2>
+<h3 id="41-复现实验"><a class="header" href="#41-复现实验">4.1 复现实验</a></h3>
+<pre><code class="language-bash">cargo test --test test_simple -- --nocapture
+cargo run --example ckb_vm_runner -- --mode interpreter64 tests/programs/simple64
+</code></pre>
+<p>实验记录（示例）：</p>
+<ul>
+<li>同一程序、同一输入，间隔 2 秒运行两次，返回值不同；</li>
+<li>在两台节点机器上运行，返回值也不同；</li>
+<li>交易执行结果依赖本地时间，无法重放一致。</li>
+</ul>
+<p>结论：语义层<code>失败</code>。</p>
+<h3 id="42-计费与经济层"><a class="header" href="#42-计费与经济层">4.2 计费与经济层</a></h3>
+<ul>
+<li>cycles 本身可稳定计量；</li>
+<li>但输出结果不确定导致交易可验证性断裂，计费正确已失去意义。</li>
+</ul>
+<p>结论：计费层<code>不成立</code>（前提被破坏）。</p>
+<h3 id="43-边界与安全层"><a class="header" href="#43-边界与安全层">4.3 边界与安全层</a></h3>
+<ul>
+<li>新增 syscall 扩张了宿主能力面；</li>
+<li>返回值来自外部时钟，属于未受共识约束的环境依赖；</li>
+<li>未提供 deterministic 替代方案。</li>
+</ul>
+<p>结论：边界层<code>失败</code>。</p>
+<h3 id="44-治理层"><a class="header" href="#44-治理层">4.4 治理层</a></h3>
+<ul>
+<li>PR 中无回滚机制；</li>
+<li>无跨版本兼容策略；</li>
+<li>无发布后观测与补救流程。</li>
+</ul>
+<p>结论：治理层<code>失败</code>。</p>
+<h2 id="5-审计检查表已填写-1"><a class="header" href="#5-审计检查表已填写-1">5. 审计检查表（已填写）</a></h2>
+<h3 id="a-协议语义-14"><a class="header" href="#a-协议语义-14">A. 协议语义</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> 同输入同初始状态下结果可重放</li>
+<li><input disabled="" type="checkbox"> 错误码与退出语义保持兼容</li>
+<li><input disabled="" type="checkbox"> 边界输入无未定义行为</li>
+</ul>
+<h3 id="b-计费与性能-14"><a class="header" href="#b-计费与性能-14">B. 计费与性能</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> cycles 变化具备解释与样本支持</li>
+<li><input disabled="" type="checkbox"> 长尾输入行为已观测，不只看平均值</li>
+<li><input disabled="" type="checkbox" checked=""> smoke 与 full 结论边界明确</li>
+</ul>
+<h3 id="c-边界与安全-14"><a class="header" href="#c-边界与安全-14">C. 边界与安全</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> 宿主接口与内存权限边界未扩张</li>
+<li><input disabled="" type="checkbox"> 新增路径具备失败可观测性（日志/错误码）</li>
+<li><input disabled="" type="checkbox"> 回滚路径可执行且有演练记录</li>
+</ul>
+<h3 id="d-治理与发布-14"><a class="header" href="#d-治理与发布-14">D. 治理与发布</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> 版本兼容结论与证据一致</li>
+<li><input disabled="" type="checkbox"> 发布门禁、灰度策略、冻结条件已定义</li>
+<li><input disabled="" type="checkbox"> 责任人、观察窗口、复盘机制已指定</li>
+</ul>
+<h2 id="6-审计结论签署区-1"><a class="header" href="#6-审计结论签署区-1">6. 审计结论（签署区）</a></h2>
+<ul>
+<li>结论：<code>[ ] 通过  [ ] 条件通过  [x] 拒绝</code></li>
+<li>风险等级：<code>[ ] 低  [ ] 中  [x] 高</code></li>
+<li>发布建议：拒绝合并到共识路径。</li>
+<li>回滚触发条件：不适用（建议直接关闭 PR）。</li>
+<li>审计人：<code>security-reviewer-B</code></li>
+<li>日期：<code>2026-02-08</code></li>
+</ul>
+<h2 id="7-替代方案建议"><a class="header" href="#7-替代方案建议">7. 替代方案建议</a></h2>
+<p>可接受的替代方向：</p>
+<ol>
+<li>不提供“宿主当前时间”能力；</li>
+<li>如业务确需时间语义，应由交易输入显式携带并在共识规则中验证；</li>
+<li>由协议层定义可验证时间窗口，而非由 VM 读取宿主状态。</li>
+</ol>
+<h2 id="8-一针见血结论-6"><a class="header" href="#8-一针见血结论-6">8. 一针见血结论</a></h2>
+<p>这个 PR 的问题不是实现细节，而是方向错误：它把非共识状态引入共识执行。该类改动应在设计阶段就被否决。</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="审计样例-03真实-ckb-vm-代码锚点映射run--pause--exit--cycles"><a class="header" href="#审计样例-03真实-ckb-vm-代码锚点映射run--pause--exit--cycles">审计样例 03：真实 ckb-vm 代码锚点映射（run / pause / exit / cycles）</a></h1>
+<blockquote>
+<p>类型：真实仓库代码锚点演练（非虚拟模块）<br>审计结论：<code>通过（环境证据待补跑）</code><br>目的：给团队一份可以直接映射到当前 <code>ckb-vm</code> 代码的审计模板填写样例。</p>
+</blockquote>
+<h2 id="0-一针见血结论"><a class="header" href="#0-一针见血结论">0. 一针见血结论</a></h2>
+<p>如果一个改动同时触及 <code>run_with_decoder</code>、<code>ecall</code>、<code>add_cycles</code> 任意两处，你就必须把它当作“共识语义改动”审计，而不是普通性能 PR。</p>
+<h2 id="1-审计对象真实锚点范围"><a class="header" href="#1-审计对象真实锚点范围">1. 审计对象（真实锚点范围）</a></h2>
+<p>本样例不假设新 PR，而是直接对当前仓库核心路径做锚点映射。覆盖 4 条主链：</p>
+<ol>
+<li>运行主循环：<code>run_with_decoder</code>。</li>
+<li>退出语义：<code>ecall</code> 中 <code>A7=93</code> 的 <code>exit</code> 行为。</li>
+<li>资源边界：<code>add_cycles</code> 的溢出与上限分支。</li>
+<li>外部中断：<code>pause</code> 信号触发与恢复。</li>
+</ol>
+<h2 id="2-代码锚点总表真实路径"><a class="header" href="#2-代码锚点总表真实路径">2. 代码锚点总表（真实路径）</a></h2>
+<h3 id="21-执行与退出"><a class="header" href="#21-执行与退出">2.1 执行与退出</a></h3>
+<ul>
+<li><code>src/machine/mod.rs:598</code>：<code>fn ecall(&amp;mut self)</code> 入口。</li>
+<li><code>src/machine/mod.rs:601</code>：<code>match code</code> 分发。</li>
+<li><code>src/machine/mod.rs:601-606</code>：<code>A7 == 93</code> 时设置 <code>exit_code</code> 并 <code>set_running(false)</code>。</li>
+<li><code>src/machine/mod.rs:607-618</code>：非 93 走 syscall 链，未处理返回 <code>Error::InvalidEcall(code)</code>。</li>
+</ul>
+<h3 id="22-运行循环与暂停"><a class="header" href="#22-运行循环与暂停">2.2 运行循环与暂停</a></h3>
+<ul>
+<li><code>src/machine/mod.rs:666</code>：<code>run_with_decoder</code> 入口。</li>
+<li><code>src/machine/mod.rs:671-680</code>：主循环 <code>while self.running()</code>。</li>
+<li><code>src/machine/mod.rs:672-674</code>：检测 pause 信号后返回 <code>Error::Pause</code>。</li>
+<li><code>src/machine/mod.rs:676-678</code>：reset 信号触发 decoder cache reset。</li>
+</ul>
+<h3 id="23-计费边界"><a class="header" href="#23-计费边界">2.3 计费边界</a></h3>
+<ul>
+<li><code>src/machine/mod.rs:95-105</code>：<code>add_cycles</code>，先 <code>checked_add</code>，再比较 <code>max_cycles</code>。</li>
+<li><code>src/machine/mod.rs:99</code>：溢出返回 <code>Error::CyclesOverflow</code>。</li>
+<li><code>src/machine/mod.rs:100-102</code>：超过上限返回 <code>Error::CyclesExceeded</code>。</li>
+</ul>
+<h3 id="24-错误类型与边界语义"><a class="header" href="#24-错误类型与边界语义">2.4 错误类型与边界语义</a></h3>
+<ul>
+<li><code>src/error.rs:6</code>：<code>CyclesExceeded</code>。</li>
+<li><code>src/error.rs:8</code>：<code>CyclesOverflow</code>。</li>
+<li><code>src/error.rs:24</code>：<code>InvalidEcall(u64)</code>。</li>
+<li><code>src/error.rs:47</code>：<code>Pause</code>。</li>
+</ul>
+<h3 id="25-内存权限辅助锚点"><a class="header" href="#25-内存权限辅助锚点">2.5 内存权限（辅助锚点）</a></h3>
+<ul>
+<li><code>src/memory/wxorx.rs:36-41</code>：页对齐约束。</li>
+<li><code>src/memory/wxorx.rs:60-63</code>：冻结页写入保护。</li>
+<li><code>src/memory/wxorx.rs:115-160</code>：写路径权限检查。</li>
+</ul>
+<h2 id="3-测试锚点映射真实测试文件"><a class="header" href="#3-测试锚点映射真实测试文件">3. 测试锚点映射（真实测试文件）</a></h2>
+<h3 id="31-cycles-与上限"><a class="header" href="#31-cycles-与上限">3.1 cycles 与上限</a></h3>
+<ul>
+<li><code>tests/test_simple.rs:37-52</code>：<code>test_simple_cycles</code>（708 cycles 基线）。</li>
+<li><code>tests/test_simple.rs:55-69</code>：<code>test_simple_max_cycles_reached</code>（断言 <code>CyclesExceeded</code>）。</li>
+<li><code>tests/test_simple.rs:92-107</code>：<code>test_simple_cycles_overflow</code>（断言 <code>CyclesOverflow</code>）。</li>
+</ul>
+<h3 id="32-pause-语义"><a class="header" href="#32-pause-语义">3.2 pause 语义</a></h3>
+<ul>
+<li><code>tests/test_signal_pause.rs:55-97</code>：<code>test_int_pause</code>（多次中断后应恢复并正确退出）。</li>
+<li><code>tests/test_signal_pause.rs:80</code>：明确断言 <code>result == Err(Error::Pause)</code> 分支。</li>
+</ul>
+<h3 id="33-版本与边界兼容"><a class="header" href="#33-版本与边界兼容">3.3 版本与边界兼容</a></h3>
+<ul>
+<li><code>tests/test_versions.rs:76-83</code>：<code>VERSION0</code> 下边界读取触发 <code>MemOutOfBound</code>。</li>
+<li><code>tests/test_versions.rs:126-132</code>：<code>VERSION1</code> 同类路径恢复为可执行语义。</li>
+<li><code>tests/test_versions.rs:242-253</code>：<code>VERSION0</code> 下 <code>unaligned64</code> 触发 <code>MemWriteOnExecutablePage</code>。</li>
+</ul>
+<h2 id="4-审计问题按是否可发布排序"><a class="header" href="#4-审计问题按是否可发布排序">4. 审计问题（按“是否可发布”排序）</a></h2>
+<ol>
+<li><code>ecall</code> 行为是否仍保证只有显式退出码路径能结束运行？</li>
+<li><code>run_with_decoder</code> 是否可能在 pause/reset 分支上引入不可重放状态？</li>
+<li>cycles 上限与溢出分支是否仍然互斥且可观测？</li>
+<li>错误类型是否仍能把失败场景稳定映射到 <code>Error</code> 枚举？</li>
+<li>版本差异行为是否仍由 <code>VERSION0/1/2</code> 显式控制，而非隐式漂移？</li>
+</ol>
+<h2 id="5-推荐验证命令直接映射锚点"><a class="header" href="#5-推荐验证命令直接映射锚点">5. 推荐验证命令（直接映射锚点）</a></h2>
+<pre><code class="language-bash">cargo test --test test_simple test_simple_cycles -- --nocapture
+cargo test --test test_simple test_simple_max_cycles_reached -- --nocapture
+cargo test --test test_simple test_simple_cycles_overflow -- --nocapture
+cargo test --test test_signal_pause test_int_pause -- --nocapture
+cargo test --test test_versions -- --nocapture
+</code></pre>
+<p>批量审计可用：</p>
+<pre><code class="language-bash">bash docs/riscv-vm-book/tools/run_labs.sh --batch 1 --mode smoke --skip-asm
+</code></pre>
+<h2 id="6-审计检查表已填写示例"><a class="header" href="#6-审计检查表已填写示例">6. 审计检查表（已填写示例）</a></h2>
+<h3 id="a-协议语义-15"><a class="header" href="#a-协议语义-15">A. 协议语义</a></h3>
+<ul>
+<li><input disabled="" type="checkbox" checked=""> run/pause/exit 路径均有代码与测试锚点。</li>
+<li><input disabled="" type="checkbox" checked=""> <code>ecall=93</code> 的退出行为可在代码中单点定位。</li>
+<li><input disabled="" type="checkbox" checked=""> 关键失败分支（Pause/CyclesExceeded/CyclesOverflow）都有枚举定义与断言。</li>
+</ul>
+<h3 id="b-计费与性能-15"><a class="header" href="#b-计费与性能-15">B. 计费与性能</a></h3>
+<ul>
+<li><input disabled="" type="checkbox" checked=""> cycles 边界在 <code>add_cycles</code> 中集中定义。</li>
+<li><input disabled="" type="checkbox" checked=""> 超限与溢出由不同错误码区分。</li>
+<li><input disabled="" type="checkbox" checked=""> 基线样例（708）有测试锚点。</li>
+</ul>
+<h3 id="c-边界与安全-15"><a class="header" href="#c-边界与安全-15">C. 边界与安全</a></h3>
+<ul>
+<li><input disabled="" type="checkbox" checked=""> pause 分支不会吞掉运行状态（可恢复继续执行）。</li>
+<li><input disabled="" type="checkbox" checked=""> W^X 相关页权限路径可通过 <code>WXorXMemory</code> 定位。</li>
+<li><input disabled="" type="checkbox" checked=""> 边界异常可落到可观测错误。</li>
+</ul>
+<h3 id="d-治理与发布-15"><a class="header" href="#d-治理与发布-15">D. 治理与发布</a></h3>
+<ul>
+<li><input disabled="" type="checkbox" checked=""> 版本行为差异具备专门回归测试。</li>
+<li><input disabled="" type="checkbox" checked=""> 审计结论可回链到具体文件与行号。</li>
+<li><input disabled="" type="checkbox"> 本地全量测试产物待在可写 rustup 环境补跑归档。</li>
+</ul>
+<h2 id="7-当前环境证据状态2026-02-08"><a class="header" href="#7-当前环境证据状态2026-02-08">7. 当前环境证据状态（2026-02-08）</a></h2>
+<ul>
+<li>已有证据：代码锚点与测试锚点完整可定位。</li>
+<li>待补证据：本机 rustup 临时目录权限异常，<code>cargo test</code> 执行日志需在修复权限后补挂。</li>
+<li>影响判断：这属于“环境执行证据缺口”，不是“锚点映射缺口”。</li>
+</ul>
+<h2 id="8-审计结论签署区"><a class="header" href="#8-审计结论签署区">8. 审计结论（签署区）</a></h2>
+<ul>
+<li>结论：<code>[x] 通过  [ ] 条件通过  [ ] 拒绝</code></li>
+<li>风险等级：<code>[ ] 低  [x] 中  [ ] 高</code></li>
+<li>发布建议：
+<ul>
+<li>允许将本样例作为“真实仓库锚点审计模板”纳入评审流程；</li>
+<li>任何触及 run/ecall/cycles 的 PR 必须引用本样例锚点并补充实际日志。</li>
+</ul>
+</li>
+<li>审计人：<code>docs-maintainer</code></li>
+<li>日期：<code>2026-02-08</code></li>
+</ul>
+<h2 id="9-一针见血复盘"><a class="header" href="#9-一针见血复盘">9. 一针见血复盘</a></h2>
+<p>真正危险的不是“测试偶尔失败”，而是“改动触及共识路径却没有锚点映射”。
+先把锚点钉死，再谈性能与发布，才是区块链 VM 的工程纪律。</p>
+<div style="break-before: page; page-break-before: always;"></div>
 <h1 id="图示长文实验通用准备"><a class="header" href="#图示长文实验通用准备">图示长文实验：通用准备</a></h1>
 <h2 id="1-环境准备"><a class="header" href="#1-环境准备">1. 环境准备</a></h2>
 <pre><code class="language-bash"># 在项目根目录
@@ -2614,6 +4113,7 @@ cargo test --test test_versions
 </code></pre>
 <h2 id="3-一键脚本按批次自动执行并生成报告"><a class="header" href="#3-一键脚本按批次自动执行并生成报告">3. 一键脚本（按批次自动执行并生成报告）</a></h2>
 <p>脚本位置：<code>docs/riscv-vm-book/tools/run_labs.sh</code></p>
+<p>深度说明：<code>docs/riscv-vm-book/standalone-articles/labs/runner-script.md</code></p>
 <pre><code class="language-bash"># 仅跑批次一
 bash docs/riscv-vm-book/tools/run_labs.sh --batch 1
 
@@ -2657,6 +4157,128 @@ cargo run --features asm --example ckb_vm_runner -- --mode asm64 tests/programs/
 <li>若系统使用 <code>rustup</code> 并提示权限问题，先检查本机 rustup 目录写权限。</li>
 <li>Windows/macOS/Linux 的可用后端可能不同，以 <code>build.rs</code> 条件为准。</li>
 <li>对拍实验必须保持同一程序、同一参数、同一 VM 版本。</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="实验脚本化执行手册run_labssh"><a class="header" href="#实验脚本化执行手册run_labssh">实验脚本化执行手册（<code>run_labs.sh</code>）</a></h1>
+<h2 id="一针见血结论"><a class="header" href="#一针见血结论">一针见血结论</a></h2>
+<p>把实验命令手动拷贝到终端并不能形成工程证据链；<code>run_labs.sh</code> 的核心价值不是“省几次敲键盘”，而是把 <strong>批次目标、命令集合、执行日志、结果汇总</strong> 固化为统一格式，使实验结果能够进入评审、复核与回归流程。</p>
+<h2 id="1-为什么要脚本化"><a class="header" href="#1-为什么要脚本化">1. 为什么要脚本化</a></h2>
+<p>在区块链 VM 场景里，实验记录不是“个人笔记”，而是架构决策依据。脚本化解决的是四个高频失真点：</p>
+<ol>
+<li>命令漂移：同一实验在不同人机器上参数不一致。</li>
+<li>证据缺口：只记录“通过/失败”，没有完整输出日志。</li>
+<li>报告异构：每人自己写报告，无法批量对比。</li>
+<li>复现成本高：审稿人不知道从何开始复跑。</li>
+</ol>
+<p><code>run_labs.sh</code> 的设计目标就是消除这四个失真点。</p>
+<h2 id="2-执行模型批次---用例---证据"><a class="header" href="#2-执行模型批次---用例---证据">2. 执行模型：批次 -&gt; 用例 -&gt; 证据</a></h2>
+<p>脚本内部把实验定义为五元组：</p>
+<ul>
+<li><code>batch</code>：所属批次（1/2/3）。</li>
+<li><code>case_id</code>：用例编号（如 <code>2.3</code>）。</li>
+<li><code>title</code>：简短说明。</li>
+<li><code>command</code>：可直接执行的命令。</li>
+<li><code>expectation</code>：人工复核时应关注的结论。</li>
+</ul>
+<p>这意味着脚本不仅“执行命令”，还把“我们为什么执行它”写进报告模板，降低后续审计时的解释成本。</p>
+<h2 id="3-参数设计与使用策略"><a class="header" href="#3-参数设计与使用策略">3. 参数设计与使用策略</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>参数</th><th>作用</th><th>何时使用</th></tr>
+</thead>
+<tbody>
+<tr><td>`–batch &lt;1</td><td>2</td><td>3</td></tr>
+<tr><td>`–mode &lt;full</td><td>smoke&gt;`</td><td>选择命令强度</td></tr>
+<tr><td><code>--skip-asm</code></td><td>跳过依赖 <code>--features asm</code> 的命令</td><td>缺少 asm 构建条件或临时排障</td></tr>
+<tr><td><code>--stop-on-fail</code></td><td>首个失败立即停止</td><td>快速定位首个断点</td></tr>
+<tr><td><code>--output-dir &lt;path&gt;</code></td><td>自定义产物目录</td><td>CI 场景写入固定归档目录</td></tr>
+</tbody>
+</table>
+</div>
+<p>建议顺序：</p>
+<ol>
+<li><code>smoke</code> 验证环境可用；</li>
+<li>批次级 <code>full</code> 做专题评审；</li>
+<li><code>all + full</code> 做发布前总回归。</li>
+</ol>
+<h2 id="4-报告产物结构默认输出"><a class="header" href="#4-报告产物结构默认输出">4. 报告产物结构（默认输出）</a></h2>
+<p>默认路径：<code>docs/riscv-vm-book/reports/labs/&lt;timestamp&gt;/</code></p>
+<ul>
+<li><code>lab-run-report.md</code>：适合评审阅读的汇总报告。</li>
+<li><code>lab-run-report.csv</code>：适合表格工具与脚本二次分析。</li>
+<li><code>logs/*.log</code>：每条命令对应独立原始日志。</li>
+</ul>
+<p>这三层分别面向：</p>
+<ul>
+<li>研发负责人（先看 Markdown 总览）；</li>
+<li>数据/质量工程（读取 CSV 聚合）；</li>
+<li>问题定位者（钻取单条日志）。</li>
+</ul>
+<p>退出码语义：</p>
+<ul>
+<li>全部用例 <code>passed</code> 或 <code>skipped</code> 时返回 <code>0</code>。</li>
+<li>存在任意 <code>failed</code> 用例时返回 <code>1</code>（适合 CI 直接门禁）。</li>
+</ul>
+<h2 id="5-标准执行剧本"><a class="header" href="#5-标准执行剧本">5. 标准执行剧本</a></h2>
+<h3 id="51-首次接入推荐"><a class="header" href="#51-首次接入推荐">5.1 首次接入（推荐）</a></h3>
+<pre><code class="language-bash">bash docs/riscv-vm-book/tools/run_labs.sh --batch 1 --mode smoke --skip-asm
+</code></pre>
+<p>目标：验证脚本链路、报告产物与基础测试可用。</p>
+<h3 id="52-批次评审"><a class="header" href="#52-批次评审">5.2 批次评审</a></h3>
+<pre><code class="language-bash">bash docs/riscv-vm-book/tools/run_labs.sh --batch 2 --mode full --stop-on-fail
+</code></pre>
+<p>目标：在中断点处立即停机，减少无效等待。</p>
+<h3 id="53-发布前回归"><a class="header" href="#53-发布前回归">5.3 发布前回归</a></h3>
+<pre><code class="language-bash">bash docs/riscv-vm-book/tools/run_labs.sh --batch all --mode full
+</code></pre>
+<p>目标：形成可归档的全量证据包。</p>
+<h2 id="6-失败排障路径建议固定化"><a class="header" href="#6-失败排障路径建议固定化">6. 失败排障路径（建议固定化）</a></h2>
+<p>当某个 <code>case_id</code> 失败时，按以下顺序处理：</p>
+<ol>
+<li>打开对应 <code>logs/&lt;case&gt;.log</code>，确认失败是编译、运行还是断言层。</li>
+<li>在报告中填写“Cross-backend differences observed”。</li>
+<li>判断是否属于环境因素（工具链、权限、平台差异）。</li>
+<li>仅在证据充分时才修改主文结论；否则先修复实现或测试。</li>
+</ol>
+<p>这条路径的意义是：先保证证据完整，再讨论结论变更。</p>
+<h2 id="7-ci-接入建议"><a class="header" href="#7-ci-接入建议">7. CI 接入建议</a></h2>
+<p>最小化接入示例：</p>
+<pre><code class="language-bash">bash docs/riscv-vm-book/tools/run_labs.sh \
+  --batch all \
+  --mode smoke \
+  --skip-asm \
+  --output-dir /tmp/ckb-vm-lab-report
+</code></pre>
+<p>CI 里建议把 <code>lab-run-report.md</code> 与 <code>lab-run-report.csv</code> 作为构建产物上传，并在 PR 描述中附报告路径。</p>
+<h2 id="8-扩展脚本时的约束"><a class="header" href="#8-扩展脚本时的约束">8. 扩展脚本时的约束</a></h2>
+<p>新增实验用例时，建议遵守三条规则：</p>
+<ol>
+<li>用例命名必须反映“语义目标”而非“文件名”。</li>
+<li><code>expectation</code> 必须可被人工验证，避免空泛表述。</li>
+<li>同一批次应覆盖“语义正确性 + 边界行为 + 回归稳定性”三类命令。</li>
+</ol>
+<h2 id="9-与主文附录的对应关系"><a class="header" href="#9-与主文附录的对应关系">9. 与主文/附录的对应关系</a></h2>
+<ul>
+<li>与主文关系：脚本把章节中的结论转成可执行证据。</li>
+<li>与图示长文关系：每篇长文至少应能映射到一条实验命令。</li>
+<li>与附录 F 关系：失败日志可直接进入 PR 审计模板。</li>
+<li>与教学资料关系：90 分钟教学包的 live demo 可直接调用本脚本。</li>
+</ul>
+<h2 id="10-常见误区"><a class="header" href="#10-常见误区">10. 常见误区</a></h2>
+<ol>
+<li>把 <code>smoke</code> 结果当作发布结论。</li>
+<li>失败后只截图，不保留原始日志。</li>
+<li>跳过 asm 后仍声称完成“后端一致性”验证。</li>
+<li>只看通过率，不看长尾样本耗时与差异。</li>
+</ol>
+<h2 id="11-快速复核清单"><a class="header" href="#11-快速复核清单">11. 快速复核清单</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"> 报告目录已生成（md/csv/log）</li>
+<li><input disabled="" type="checkbox"> 每个失败用例都有日志定位</li>
+<li><input disabled="" type="checkbox"> 关键结论已回填到实验记录</li>
+<li><input disabled="" type="checkbox"> 审计模板（附录 F）已引用对应 case id</li>
+<li><input disabled="" type="checkbox"> 需要教学演示的命令已做 smoke 预跑</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="批次一实验手册图-1-1-到-4-1"><a class="header" href="#批次一实验手册图-1-1-到-4-1">批次一实验手册（图 1-1 到 4-1）</a></h1>
@@ -2882,6 +4504,15 @@ cargo test --features asm --test test_asm -- --nocapture
 </ul>
 </li>
 </ul>
+<h2 id="快速开课路径90-分钟"><a class="header" href="#快速开课路径90-分钟">快速开课路径（90 分钟）</a></h2>
+<p>适用于短训或技术分享，建议使用以下五份材料：</p>
+<ul>
+<li><code>04-90min-instructor-script.md</code></li>
+<li><code>05-90min-slide-outline.md</code></li>
+<li><code>06-90min-live-demo-runbook.md</code></li>
+<li><code>07-90min-assessment-sheet.md</code></li>
+<li><code>08-90min-slide-verbatim-script.md</code></li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="教学讲义模块化"><a class="header" href="#教学讲义模块化">教学讲义（模块化）</a></h1>
 <h2 id="模块一共识-vm-的第一性原理"><a class="header" href="#模块一共识-vm-的第一性原理">模块一：共识 VM 的第一性原理</a></h2>
@@ -3020,6 +4651,696 @@ cargo test --features asm --test test_asm -- --nocapture
 <li>只谈性能，不谈兼容与治理。</li>
 <li>模板填写空泛，无法执行。</li>
 </ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="90-分钟授课脚本讲师版"><a class="header" href="#90-分钟授课脚本讲师版">90 分钟授课脚本（讲师版）</a></h1>
+<h2 id="一针见血目标"><a class="header" href="#一针见血目标">一针见血目标</a></h2>
+<p>90 分钟课程不是“把 11 章缩读一遍”，而是让学员在一次课内建立一个可执行判断框架：</p>
+<ul>
+<li>什么是共识 VM 的硬约束；</li>
+<li>为什么 Rust 与 RISC-V 在此问题上形成工程合力；</li>
+<li>如何用证据链评估一次优化是否可发布。</li>
+</ul>
+<h2 id="1-课前准备t-15-分钟"><a class="header" href="#1-课前准备t-15-分钟">1. 课前准备（T-15 分钟）</a></h2>
+<p>讲师在开讲前完成以下检查：</p>
+<ol>
+<li>打开主文第 1、4、8、10、11 章对应页面。</li>
+<li>打开图示长文 <code>1-1</code>、<code>8-1</code>、<code>10-1</code>。</li>
+<li>终端预跑 <code>run_labs.sh --batch 1 --mode smoke --skip-asm</code>。</li>
+<li>准备两份日志：一份通过样本，一份失败样本（用于讲失败语义）。</li>
+<li>确认投影可显示代码锚点路径（<code>src/</code> 与 <code>tests/</code>）。</li>
+</ol>
+<h2 id="2-时间编排总览90-分钟"><a class="header" href="#2-时间编排总览90-分钟">2. 时间编排总览（90 分钟）</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>时间段</th><th>模块</th><th>目标产出</th></tr>
+</thead>
+<tbody>
+<tr><td>0-10</td><td>开场与问题定义</td><td>学员能复述“共识约束优先”</td></tr>
+<tr><td>10-25</td><td>图 1-1 深挖：约束层级</td><td>学员能区分语义/计费/边界/优化</td></tr>
+<tr><td>25-40</td><td>执行主线与状态机</td><td>学员能描述 run -&gt; pause -&gt; exit</td></tr>
+<tr><td>40-55</td><td>内存权限与 syscall 边界</td><td>学员能说明 W^X 与宿主边界含义</td></tr>
+<tr><td>55-70</td><td>Rust + ASM 协同机制</td><td>学员能说明为何必须保留 Rust 语义锚点</td></tr>
+<tr><td>70-82</td><td>RISC-V 与密码学负载映射</td><td>学员能解释 B/M/A/MOP 的分工</td></tr>
+<tr><td>82-88</td><td>现场 demo 与失败复盘</td><td>学员能根据日志定位失败层级</td></tr>
+<tr><td>88-90</td><td>收束与布置作业</td><td>学员写出 1 条架构结论</td></tr>
+</tbody>
+</table>
+</div>
+<h2 id="3-分段讲稿逐分钟"><a class="header" href="#3-分段讲稿逐分钟">3. 分段讲稿（逐分钟）</a></h2>
+<h3 id="31-0-10-分钟开场"><a class="header" href="#31-0-10-分钟开场">3.1 0-10 分钟：开场</a></h3>
+<p>讲师台词建议：</p>
+<ul>
+<li>“今天我们不讨论 TPS 宣传词，只讨论可被审计的共识执行。”</li>
+<li>“任何优化都要先回答：是否改变可验证语义。”</li>
+</ul>
+<p>板书三问：</p>
+<ol>
+<li>这个改动改变了什么语义？</li>
+<li>这个改动改变了多少计费结构？</li>
+<li>这个改动把风险转移给了谁？</li>
+</ol>
+<p>课堂动作：</p>
+<ul>
+<li>先投屏 <code>图 1-1</code> 对应长文封面，不急于讲代码。</li>
+<li>让学员写下自己认为“最容易被忽略的一层约束”。</li>
+</ul>
+<h3 id="32-10-25-分钟图-1-1-约束层级"><a class="header" href="#32-10-25-分钟图-1-1-约束层级">3.2 10-25 分钟：图 1-1 约束层级</a></h3>
+<p>讲解顺序固定为：</p>
+<ol>
+<li>语义正确性（同输入同状态同输出）。</li>
+<li>资源计费可解释（cycles 不是黑箱参数）。</li>
+<li>宿主边界可审计（syscall 白名单、内存权限）。</li>
+<li>性能优化可回滚（快路径不是不可逆投资）。</li>
+</ol>
+<p>关键强调：</p>
+<ul>
+<li>不允许把性能层结论反向覆盖语义层结论。</li>
+<li>“平均性能提升”不能掩盖长尾失败模式。</li>
+</ul>
+<p>互动问题：</p>
+<ul>
+<li>如果某优化让平均 cycles 降低 15%，但错误码语义发生漂移，是否可上线？为什么？</li>
+</ul>
+<h3 id="33-25-40-分钟run---exit-生命周期"><a class="header" href="#33-25-40-分钟run---exit-生命周期">3.3 25-40 分钟：run -&gt; exit 生命周期</a></h3>
+<p>使用图 2-1 和图 4-1 串讲：</p>
+<ul>
+<li><code>run()</code> 入口不是黑盒，它会反复进入 fetch/decode/execute。</li>
+<li><code>pause</code> 与 <code>exit</code> 是两种语义不同的终止状态。</li>
+<li>fast path 失败后回落 slow path 是“语义保险丝”，不是性能失败。</li>
+</ul>
+<p>演示建议：</p>
+<ul>
+<li>展示一条触发 <code>pause</code> 的测试输出，强调“可恢复执行”与“终止执行”不同。</li>
+</ul>
+<h3 id="34-40-55-分钟内存权限与-syscall"><a class="header" href="#34-40-55-分钟内存权限与-syscall">3.4 40-55 分钟：内存权限与 syscall</a></h3>
+<p>核心结论：</p>
+<ul>
+<li>ELF 装载是权限系统初始化，不是普通 IO。</li>
+<li><code>ecall</code> 分发是最小可信计算基入口。</li>
+</ul>
+<p>讲师动作：</p>
+<ol>
+<li>展示页权限变化示意（R/W/X 的阶段变化）。</li>
+<li>展示“只保留最小 syscall 集”带来的好处：面缩小、审计成本可控。</li>
+</ol>
+<p>一针见血提醒：</p>
+<ul>
+<li>在共识 VM 里，“功能丰富”常常意味着“攻击面扩张”。</li>
+</ul>
+<h3 id="35-55-70-分钟rust--asm-协同"><a class="header" href="#35-55-70-分钟rust--asm-协同">3.5 55-70 分钟：Rust + ASM 协同</a></h3>
+<p>讲法：先讲原则，再讲实现。</p>
+<p>原则：</p>
+<ul>
+<li>Rust 提供可验证语义主线。</li>
+<li>ASM 提供热点路径性能。</li>
+<li>二者通过统一入口/退出约定连接。</li>
+</ul>
+<p>实现关注点：</p>
+<ul>
+<li>register 状态镜像一致性；</li>
+<li>错误码与 PC 语义一致性；</li>
+<li>fallback 路径必须可测。</li>
+</ul>
+<p>课堂问题：</p>
+<ul>
+<li>如果 asm 后端快路径遗漏某个边界检查，最先暴露在哪类测试里？</li>
+</ul>
+<h3 id="36-70-82-分钟risc-v-与密码学扩展分工"><a class="header" href="#36-70-82-分钟risc-v-与密码学扩展分工">3.6 70-82 分钟：RISC-V 与密码学扩展分工</a></h3>
+<p>讲解框架：</p>
+<ul>
+<li>RISC-V 的价值是治理可分层，不是“天然更快”。</li>
+<li>密码学负载拆分必须遵守“算法层 -&gt; 指令层 -&gt; VM 层 -&gt; 计费层”闭环。</li>
+</ul>
+<p>推荐强调：</p>
+<ul>
+<li>B/M/A/MOP 的分工是工程化结果，不是教科书预设。</li>
+<li>指令扩展引入要同时满足：兼容、计费、回滚、观测。</li>
+</ul>
+<h3 id="37-82-88-分钟现场-demo-与失败复盘"><a class="header" href="#37-82-88-分钟现场-demo-与失败复盘">3.7 82-88 分钟：现场 demo 与失败复盘</a></h3>
+<p>建议命令：</p>
+<pre><code class="language-bash">bash docs/riscv-vm-book/tools/run_labs.sh --batch 1 --mode smoke --skip-asm
+</code></pre>
+<p>讲师要做的不是“展示通过”，而是：</p>
+<ol>
+<li>指出每条 case 的语义目标；</li>
+<li>打开一条日志解释失败定位路径；</li>
+<li>演示如何把日志信息写入审计模板（附录 F）。</li>
+</ol>
+<h3 id="38-88-90-分钟收束"><a class="header" href="#38-88-90-分钟收束">3.8 88-90 分钟：收束</a></h3>
+<p>让每位学员现场写一句话：</p>
+<p>“如果我要批准一个 VM 优化上线，我最先检查 ________，因为 ________。”</p>
+<p>讲师收尾语：</p>
+<ul>
+<li>“没有证据链的性能结论，在共识系统里等于没有结论。”</li>
+</ul>
+<h2 id="4-讲师易错点清单"><a class="header" href="#4-讲师易错点清单">4. 讲师易错点清单</a></h2>
+<ol>
+<li>只讲抽象原则，不给代码锚点。</li>
+<li>只展示成功日志，不展示失败样本。</li>
+<li>把 RISC-V 讲成营销标签，而非治理机制。</li>
+<li>把 Rust 讲成“语法偏好”，而非安全与可审计手段。</li>
+</ol>
+<h2 id="5-课后作业与练习题联动"><a class="header" href="#5-课后作业与练习题联动">5. 课后作业（与练习题联动）</a></h2>
+<ul>
+<li>基础班：完成 <code>teaching/02-exercises.md</code> 的 A/B 组。</li>
+<li>工程班：追加 C 组实操并提交日志归档。</li>
+<li>高阶班：完成 D 组治理题并给出门禁指标阈值。</li>
+</ul>
+<h2 id="6-成功判据"><a class="header" href="#6-成功判据">6. 成功判据</a></h2>
+<p>课程结束后，至少 70% 学员应达到：</p>
+<ol>
+<li>能正确描述四层约束先后关系；</li>
+<li>能解释一个失败日志对应的风险层级；</li>
+<li>能说出“Rust + RISC-V”在共识 VM 里的非口号化理由。</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="90-分钟课程幻灯片大纲含讲者提示"><a class="header" href="#90-分钟课程幻灯片大纲含讲者提示">90 分钟课程幻灯片大纲（含讲者提示）</a></h1>
+<h2 id="使用原则"><a class="header" href="#使用原则">使用原则</a></h2>
+<ul>
+<li>配套口播稿：<code>08-90min-slide-verbatim-script.md</code>（逐页照读）。</li>
+<li>每页只保留一个核心断言。</li>
+<li>每个断言必须配一条代码/测试证据锚点。</li>
+<li>任何“性能结论”必须附带“语义未漂移”的佐证。</li>
+</ul>
+<h2 id="幻灯片目录建议-26-页"><a class="header" href="#幻灯片目录建议-26-页">幻灯片目录（建议 26 页）</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: right">页码</th><th>标题</th><th>核心断言</th><th>证据锚点</th><th>讲者提示</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align: right">1</td><td>课程标题</td><td>共识 VM 是约束工程，不是跑分工程</td><td>主文第 1 章</td><td>用一句话否定“只看 TPS”</td></tr>
+<tr><td style="text-align: right">2</td><td>学习目标</td><td>今天只做三件事：理解约束、看清实现、学会评审</td><td>教学地图</td><td>明确产出导向</td></tr>
+<tr><td style="text-align: right">3</td><td>三个判断问题</td><td>语义、计费、治理必须同时成立</td><td>章 1/11</td><td>让学员先答再讲</td></tr>
+<tr><td style="text-align: right">4</td><td>图 1-1 全景</td><td>四层约束有严格优先级</td><td>图示长文 1-1</td><td>不要先讲优化</td></tr>
+<tr><td style="text-align: right">5</td><td>语义层</td><td>不确定语义会直接破坏共识</td><td><code>run/exit</code> 路径</td><td>结合失败案例</td></tr>
+<tr><td style="text-align: right">6</td><td>计费层</td><td>cycles 是抗 DoS 协议参数</td><td>测试 <code>max_cycles</code></td><td>解释边界意义</td></tr>
+<tr><td style="text-align: right">7</td><td>边界层</td><td>syscall/内存权限是可审计边界</td><td>图 3-1/5-1</td><td>强调最小接口</td></tr>
+<tr><td style="text-align: right">8</td><td>优化层</td><td>优化必须可回滚、可对拍</td><td>图 4-1/8-1</td><td>讲 fallback 价值</td></tr>
+<tr><td style="text-align: right">9</td><td>生命周期总览</td><td>run -&gt; pause -&gt; exit 是状态机，不是线性函数</td><td>图 2-1</td><td>画状态转移箭头</td></tr>
+<tr><td style="text-align: right">10</td><td>fetch/decode/execute</td><td>热路径与慢路径共存才安全</td><td>图 4-1</td><td>引出 MOP</td></tr>
+<tr><td style="text-align: right">11</td><td>装载器角色</td><td>ELF 装载是权限编排器</td><td>图 3-1</td><td>关联 W^X</td></tr>
+<tr><td style="text-align: right">12</td><td>syscall 最小集</td><td><code>ecall</code> 白名单维持 TCB 收敛</td><td>图 5-1</td><td>给反例：接口膨胀</td></tr>
+<tr><td style="text-align: right">13</td><td>快照价值</td><td>Snapshot2 用结构共享换恢复成本</td><td>图 6-1</td><td>对比 v1/v2</td></tr>
+<tr><td style="text-align: right">14</td><td>Register trait</td><td>类型系统是语义合同，不是语法糖</td><td>图 7-1</td><td>讲跨后端一致性</td></tr>
+<tr><td style="text-align: right">15</td><td>Rust+ASM 协同</td><td>Rust 守语义，ASM 抢热点</td><td>图 8-1</td><td>强调“主次关系”</td></tr>
+<tr><td style="text-align: right">16</td><td>后端一致性</td><td>快路径失效必须能回落并等价</td><td>test_asm/test_versions</td><td>讲对拍矩阵</td></tr>
+<tr><td style="text-align: right">17</td><td>为什么 RISC-V</td><td>价值在治理可分层与扩展可控</td><td>图 9-1</td><td>避免绝对化表达</td></tr>
+<tr><td style="text-align: right">18</td><td>扩展代价模型</td><td>每个扩展都引入长期维护成本</td><td>章 9/11</td><td>给运营视角</td></tr>
+<tr><td style="text-align: right">19</td><td>密码学负载分层</td><td>算法优化不等于 ISA 扩展</td><td>图 10-1/A-1</td><td>讲分工边界</td></tr>
+<tr><td style="text-align: right">20</td><td>计费校准</td><td>“更快”不代表“更安全”</td><td>附录 A/F</td><td>讲校准流程</td></tr>
+<tr><td style="text-align: right">21</td><td>决策矩阵</td><td>收益-成本矩阵优先于性能单指标</td><td>图 11-1</td><td>演示打分法</td></tr>
+<tr><td style="text-align: right">22</td><td>Live Demo 入口</td><td>脚本化实验形成证据链</td><td><code>run_labs.sh</code></td><td>先讲输出结构</td></tr>
+<tr><td style="text-align: right">23</td><td>Demo 结果解读</td><td>报告 + CSV + raw log 三层证据</td><td>labs runner 文档</td><td>引导看失败样本</td></tr>
+<tr><td style="text-align: right">24</td><td>PR 审计模板</td><td>失败日志如何进入审计流程</td><td>附录 F</td><td>给填写示例</td></tr>
+<tr><td style="text-align: right">25</td><td>常见误区</td><td>跳过 asm 不能宣称后端一致性完成</td><td>labs/common-setup</td><td>强调边界条件</td></tr>
+<tr><td style="text-align: right">26</td><td>课后任务</td><td>练习 + 审计 + 治理题三线并行</td><td>teaching 02/03</td><td>说明评分方式</td></tr>
+</tbody>
+</table>
+</div>
+<h2 id="现场节奏建议"><a class="header" href="#现场节奏建议">现场节奏建议</a></h2>
+<ul>
+<li>每 12-15 分钟插入一次“30 秒复述”：让学员用一句话回顾刚学内容。</li>
+<li>在第 15 页后安排一次 2 分钟问答，防止后半段注意力下滑。</li>
+<li>Live demo 不追求全绿输出，优先展示失败定位与证据回填流程。</li>
+</ul>
+<h2 id="素材准备清单"><a class="header" href="#素材准备清单">素材准备清单</a></h2>
+<ol>
+<li>一张图 1-1 高清图（可来自长文封面）。</li>
+<li>一段 <code>run_labs.sh</code> 执行日志（成功样本）。</li>
+<li>一段失败日志（推荐 asm 缺失或断言失败样本）。</li>
+<li>一份附录 F 填写后的审计模板片段。</li>
+<li>一页“扩展引入门禁”评分表（章 11）。</li>
+</ol>
+<h2 id="结尾页建议文案"><a class="header" href="#结尾页建议文案">结尾页建议文案</a></h2>
+<ul>
+<li>标题：<code>没有证据链，就没有发布资格</code></li>
+<li>副标题：<code>性能是结果，语义与治理是前提</code></li>
+<li>行动项：<code>本周提交一次实验报告 + 一次审计模板演练</code></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="90-分钟课程-live-demo-runbook"><a class="header" href="#90-分钟课程-live-demo-runbook">90 分钟课程 Live Demo Runbook</a></h1>
+<h2 id="一针见血原则"><a class="header" href="#一针见血原则">一针见血原则</a></h2>
+<p>现场 demo 的目标不是“证明一切正常”，而是演示：当系统正常或异常时，我们都能给出可复核解释。</p>
+<h2 id="1-demo-前检查t-10-分钟"><a class="header" href="#1-demo-前检查t-10-分钟">1. Demo 前检查（T-10 分钟）</a></h2>
+<h3 id="11-环境与目录"><a class="header" href="#11-环境与目录">1.1 环境与目录</a></h3>
+<pre><code class="language-bash">cd /home/jay/Code/Rust/ckb-vm
+pwd
+rustc --version
+cargo --version
+</code></pre>
+<h3 id="12-脚本可用性"><a class="header" href="#12-脚本可用性">1.2 脚本可用性</a></h3>
+<pre><code class="language-bash">bash docs/riscv-vm-book/tools/run_labs.sh --help
+bash -n docs/riscv-vm-book/tools/run_labs.sh
+</code></pre>
+<h3 id="13-最小预热"><a class="header" href="#13-最小预热">1.3 最小预热</a></h3>
+<pre><code class="language-bash">cargo test --test test_simple -- --nocapture
+</code></pre>
+<h2 id="2-课堂主路径建议-8-10-分钟"><a class="header" href="#2-课堂主路径建议-8-10-分钟">2. 课堂主路径（建议 8-10 分钟）</a></h2>
+<h3 id="21-执行命令"><a class="header" href="#21-执行命令">2.1 执行命令</a></h3>
+<pre><code class="language-bash">bash docs/riscv-vm-book/tools/run_labs.sh --batch 1 --mode smoke --skip-asm
+</code></pre>
+<h3 id="22-讲解要点"><a class="header" href="#22-讲解要点">2.2 讲解要点</a></h3>
+<p>按固定顺序解释：</p>
+<ol>
+<li>为什么选 batch 1：覆盖共识约束基础环节。</li>
+<li>为什么用 smoke：课堂时间受限，先看结构正确性。</li>
+<li>为什么 <code>--skip-asm</code>：避免机器差异打断教学主线。</li>
+</ol>
+<h3 id="23-展示产物"><a class="header" href="#23-展示产物">2.3 展示产物</a></h3>
+<pre><code class="language-bash">ls -lah docs/riscv-vm-book/reports/labs
+# 进入最新目录后展示 md/csv/log
+</code></pre>
+<p>至少展示以下三项：</p>
+<ul>
+<li><code>lab-run-report.md</code>：给评审看的全局视图。</li>
+<li><code>lab-run-report.csv</code>：给自动化分析读取。</li>
+<li><code>logs/*.log</code>：给排障定位使用。</li>
+</ul>
+<h2 id="3-失败样本演示建议-3-4-分钟"><a class="header" href="#3-失败样本演示建议-3-4-分钟">3. 失败样本演示（建议 3-4 分钟）</a></h2>
+<p>如果现场没有自然失败，可用以下方式演示“如何处理失败”：</p>
+<ol>
+<li>打开历史失败日志（提前准备一份）。</li>
+<li>指出失败点属于哪一层：语义、计费、边界或环境。</li>
+<li>在白板写下“下一步动作”：复跑、缩小输入、补测试或回滚。</li>
+</ol>
+<p>讲师禁忌：</p>
+<ul>
+<li>不要说“我本地没复现所以问题不大”。</li>
+<li>不要在课堂临时改代码掩盖失败。</li>
+</ul>
+<h2 id="4-备用路径-aasm-可用场景"><a class="header" href="#4-备用路径-aasm-可用场景">4. 备用路径 A（asm 可用场景）</a></h2>
+<p>若机器支持 asm，可追加 1 条命令强化对比：</p>
+<pre><code class="language-bash">cargo test --features asm --test test_asm -- --nocapture
+</code></pre>
+<p>讲解重点：</p>
+<ul>
+<li>asm 通过并不自动代表语义正确，仍需差分与回归证据。</li>
+</ul>
+<h2 id="5-备用路径-b工具链异常场景"><a class="header" href="#5-备用路径-b工具链异常场景">5. 备用路径 B（工具链异常场景）</a></h2>
+<p>如遇 rustup/权限异常，立即切换到“离线证据教学”：</p>
+<ol>
+<li>直接展示已生成的 <code>lab-run-report.md</code>。</li>
+<li>打开一条日志讲排障路径。</li>
+<li>把重点转回“证据解释能力”，而非“现场跑绿”。</li>
+</ol>
+<p>推荐话术：</p>
+<ul>
+<li>“现场环境失败本身就是工程现实，我们要演示的是如何处理失败，而不是掩盖失败。”</li>
+</ul>
+<h2 id="6-时间控制模板"><a class="header" href="#6-时间控制模板">6. 时间控制模板</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>阶段</th><th style="text-align: right">预算时间</th><th>超时处理</th></tr>
+</thead>
+<tbody>
+<tr><td>运行脚本命令</td><td style="text-align: right">2 分钟</td><td>超时直接切到历史报告</td></tr>
+<tr><td>展示报告结构</td><td style="text-align: right">2 分钟</td><td>只看 md + 1 条 log</td></tr>
+<tr><td>展示失败定位</td><td style="text-align: right">3 分钟</td><td>只讲一条失败路径</td></tr>
+<tr><td>回填审计模板</td><td style="text-align: right">2 分钟</td><td>口头说明，不现场填写完整</td></tr>
+</tbody>
+</table>
+</div>
+<h2 id="7-课堂话术脚本可直接照读"><a class="header" href="#7-课堂话术脚本可直接照读">7. 课堂话术脚本（可直接照读）</a></h2>
+<ul>
+<li>“请注意，我现在不是在验证性能高低，而是在验证证据链是否完整。”</li>
+<li>“报告里每个 case 都有目标语义，这是脚本化实验优于口头演示的关键。”</li>
+<li>“失败日志是资产，不是污点；没有失败样本就很难验证排障能力。”</li>
+</ul>
+<h2 id="8-demo-后收口动作"><a class="header" href="#8-demo-后收口动作">8. Demo 后收口动作</a></h2>
+<ol>
+<li>把报告目录路径发到课堂群。</li>
+<li>指定学员作业：任选 1 个 case，写 200 字失败/通过分析。</li>
+<li>要求学员在附录 F 模板中填写“证据链接”字段。</li>
+</ol>
+<h2 id="9-风险清单与应对"><a class="header" href="#9-风险清单与应对">9. 风险清单与应对</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>风险</th><th>表现</th><th>应对</th></tr>
+</thead>
+<tbody>
+<tr><td>编译慢</td><td>首次运行时间过长</td><td>课前预热一次构建</td></tr>
+<tr><td>asm 不可用</td><td><code>--features asm</code> 失败</td><td>使用 <code>--skip-asm</code> 并说明边界</td></tr>
+<tr><td>权限问题</td><td>rustup 写入失败</td><td>切换离线报告讲解</td></tr>
+<tr><td>输出噪声大</td><td>日志过长难讲解</td><td>预先标注关键行</td></tr>
+</tbody>
+</table>
+</div>
+<h2 id="10-验收标准"><a class="header" href="#10-验收标准">10. 验收标准</a></h2>
+<p>一次课堂 demo 达标的最低标准：</p>
+<ul>
+<li><input disabled="" type="checkbox"> 至少执行 1 次脚本化实验命令</li>
+<li><input disabled="" type="checkbox"> 至少展示 1 份报告与 1 条原始日志</li>
+<li><input disabled="" type="checkbox"> 至少解释 1 个失败场景的定位路径</li>
+<li><input disabled="" type="checkbox"> 明确区分“课堂 smoke”与“发布 full”</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="90-分钟课程评估单课堂测评--评分规则"><a class="header" href="#90-分钟课程评估单课堂测评--评分规则">90 分钟课程评估单（课堂测评 + 评分规则）</a></h1>
+<h2 id="一针见血目的"><a class="header" href="#一针见血目的">一针见血目的</a></h2>
+<p>本评估单不是考记忆点，而是考“能否基于证据做架构判断”。</p>
+<h2 id="1-使用说明"><a class="header" href="#1-使用说明">1. 使用说明</a></h2>
+<ul>
+<li>建议时间：课堂最后 10-12 分钟完成。</li>
+<li>题量结构：选择题 5 题 + 简答题 3 题 + 微型案例 1 题。</li>
+<li>满分 100 分，60 分及格，80 分为“可独立参与评审”。</li>
+</ul>
+<h2 id="2-选择题每题-6-分共-30-分"><a class="header" href="#2-选择题每题-6-分共-30-分">2. 选择题（每题 6 分，共 30 分）</a></h2>
+<h3 id="q1"><a class="header" href="#q1">Q1</a></h3>
+<p>在共识 VM 中，以下哪项优先级最高？</p>
+<p>A. 平均吞吐提升<br>B. 语义确定性<br>C. 指令扩展数量<br>D. 本地机器性能</p>
+<p>正确答案：B</p>
+<h3 id="q2"><a class="header" href="#q2">Q2</a></h3>
+<p><code>--mode smoke</code> 的正确定位是：</p>
+<p>A. 发布前最终结论<br>B. 全量后端一致性证明<br>C. 课堂/本地快速验证链路<br>D. 可替代审计流程</p>
+<p>正确答案：C</p>
+<h3 id="q3"><a class="header" href="#q3">Q3</a></h3>
+<p>以下哪个最能体现 syscall 设计的正确方向？</p>
+<p>A. 尽可能多提供宿主功能<br>B. 最小接口 + 明确错误语义<br>C. 仅看调用速度<br>D. 只做文档约束</p>
+<p>正确答案：B</p>
+<h3 id="q4"><a class="header" href="#q4">Q4</a></h3>
+<p>Rust + ASM 混合方案中，Rust 的核心职责是：</p>
+<p>A. 完全替代 asm<br>B. 仅做性能调优<br>C. 提供可验证语义主线<br>D. 只负责日志输出</p>
+<p>正确答案：C</p>
+<h3 id="q5"><a class="header" href="#q5">Q5</a></h3>
+<p>当 asm 测试被 <code>--skip-asm</code> 跳过后，正确结论是：</p>
+<p>A. 全部后端一致性验证已完成<br>B. 只完成非 asm 路径验证<br>C. 可直接发布<br>D. 与 full 模式等价</p>
+<p>正确答案：B</p>
+<h2 id="3-简答题每题-15-分共-45-分"><a class="header" href="#3-简答题每题-15-分共-45-分">3. 简答题（每题 15 分，共 45 分）</a></h2>
+<h3 id="q6"><a class="header" href="#q6">Q6</a></h3>
+<p>用不超过 120 字说明“图 1-1 四层约束”为什么不能倒置。</p>
+<p>评分点：</p>
+<ul>
+<li>说明语义优先（5 分）</li>
+<li>说明计费/边界属于协议约束（5 分）</li>
+<li>说明优化层可回滚属性（5 分）</li>
+</ul>
+<h3 id="q7"><a class="header" href="#q7">Q7</a></h3>
+<p>解释为什么 <code>run -&gt; pause -&gt; exit</code> 不是普通控制流，而是共识状态机。</p>
+<p>评分点：</p>
+<ul>
+<li>状态差异解释清楚（5 分）</li>
+<li>与可恢复执行关系明确（5 分）</li>
+<li>能联系测试或日志证据（5 分）</li>
+</ul>
+<h3 id="q8"><a class="header" href="#q8">Q8</a></h3>
+<p>说明“RISC-V 的价值在治理，而非口号”的工程含义。</p>
+<p>评分点：</p>
+<ul>
+<li>提到扩展引入门禁（5 分）</li>
+<li>提到兼容/回滚机制（5 分）</li>
+<li>提到长期维护成本（5 分）</li>
+</ul>
+<h2 id="4-微型案例题25-分"><a class="header" href="#4-微型案例题25-分">4. 微型案例题（25 分）</a></h2>
+<h3 id="q9"><a class="header" href="#q9">Q9</a></h3>
+<p>你收到一份优化提案：</p>
+<ul>
+<li>平均 cycles 降低 18%；</li>
+<li>但长尾输入出现更高波动；</li>
+<li>asm 路径通过，部分解释器路径日志缺失。</li>
+</ul>
+<p>请给出是否发布的初步结论，并列出至少 3 条必须补齐的证据。</p>
+<p>评分点：</p>
+<ul>
+<li>结论不盲目“通过”（8 分）</li>
+<li>证据项覆盖语义/计费/后端一致性（9 分）</li>
+<li>明确日志与审计模板回填要求（8 分）</li>
+</ul>
+<h2 id="5-评分等级建议"><a class="header" href="#5-评分等级建议">5. 评分等级建议</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: right">分数段</th><th>能力描述</th><th>建议动作</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align: right">90-100</td><td>可主持小型评审</td><td>指派其带一次实验复盘</td></tr>
+<tr><td style="text-align: right">80-89</td><td>可独立完成审计记录</td><td>安排参与真实 PR 审计</td></tr>
+<tr><td style="text-align: right">60-79</td><td>理解主线但证据意识不足</td><td>补做 1 次 runbook 演练</td></tr>
+<tr><td style="text-align: right">&lt;60</td><td>概念混淆或证据链薄弱</td><td>先补课再参与评审</td></tr>
+</tbody>
+</table>
+</div>
+<h2 id="6-讲师批改模板"><a class="header" href="#6-讲师批改模板">6. 讲师批改模板</a></h2>
+<ul>
+<li>学员姓名：</li>
+<li>班级/组别：</li>
+<li>总分：</li>
+<li>最大短板（1 句话）：</li>
+<li>下一步建议（1 句话）：</li>
+</ul>
+<h2 id="7-课堂复盘问题可选"><a class="header" href="#7-课堂复盘问题可选">7. 课堂复盘问题（可选）</a></h2>
+<p>讲师可在公布分数后追问：</p>
+<ol>
+<li>哪一题最能暴露“只看性能”的思维惯性？</li>
+<li>哪一题最能体现“脚本化证据链”的价值？</li>
+<li>如果明天要评审一个真实优化 PR，你会先补哪项证据？</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="90-分钟课程逐页口播稿可直接照读"><a class="header" href="#90-分钟课程逐页口播稿可直接照读">90 分钟课程逐页口播稿（可直接照读）</a></h1>
+<h2 id="使用说明-1"><a class="header" href="#使用说明-1">使用说明</a></h2>
+<ul>
+<li>本稿对应 <code>05-90min-slide-outline.md</code> 的 26 页结构。</li>
+<li>每页分为三段：<code>开场句</code>、<code>核心阐述</code>、<code>收束句</code>。</li>
+<li>建议每页 1.5-3 分钟，根据课堂互动动态调整。</li>
+</ul>
+<h2 id="slide-1-课程标题"><a class="header" href="#slide-1-课程标题">Slide 1 课程标题</a></h2>
+<ul>
+<li>开场句：
+“今天这堂课我们只做一件事：用工程证据解释为什么区块链 VM 会走向 Rust + RISC-V。”</li>
+<li>核心阐述：
+“请先把注意力从 TPS 口号移开。共识 VM 是可验证系统，先保证语义确定，再谈性能收益。”</li>
+<li>收束句：
+“后面所有内容都围绕一句话：没有证据链，就没有发布资格。”</li>
+</ul>
+<h2 id="slide-2-学习目标"><a class="header" href="#slide-2-学习目标">Slide 2 学习目标</a></h2>
+<ul>
+<li>开场句：
+“90 分钟结束时，你要具备三种能力。”</li>
+<li>核心阐述：
+“第一，分清语义、计费、边界、优化四层约束；第二，能读懂关键执行路径；第三，能给优化提案做初步发布判断。”</li>
+<li>收束句：
+“这三项能力缺任何一项，工程结论都不可靠。”</li>
+</ul>
+<h2 id="slide-3-三个判断问题"><a class="header" href="#slide-3-三个判断问题">Slide 3 三个判断问题</a></h2>
+<ul>
+<li>开场句：
+“以后你看到任何 VM 优化，都先问三句。”</li>
+<li>核心阐述：
+“改动改变了什么语义？改变了多少计费结构？把风险转移给了谁？这三问能把大部分伪优化当场筛掉。”</li>
+<li>收束句：
+“先问问题，再看性能图，顺序不能反。”</li>
+</ul>
+<h2 id="slide-4-图-1-1-全景"><a class="header" href="#slide-4-图-1-1-全景">Slide 4 图 1-1 全景</a></h2>
+<ul>
+<li>开场句：
+“图 1-1 不是教学插图，它是设计宪法。”</li>
+<li>核心阐述：
+“四层顺序是协议语义 -&gt; 经济计费 -&gt; 工程边界 -&gt; 执行优化。你可以在实现上创新，但不能在这个优先级上创新。”</li>
+<li>收束句：
+“一旦倒置顺序，系统就从可治理变成不可解释。”</li>
+</ul>
+<h2 id="slide-5-语义层"><a class="header" href="#slide-5-语义层">Slide 5 语义层</a></h2>
+<ul>
+<li>开场句：
+“语义层只有一个目标：全网重放一致。”</li>
+<li>核心阐述：
+“同输入同初始状态，必须得到同状态迁移与同错误语义。这里容不得‘大多数情况下正确’。”</li>
+<li>收束句：
+“在共识系统里，99.99% 正确和不正确没有本质区别。”</li>
+</ul>
+<h2 id="slide-6-计费层"><a class="header" href="#slide-6-计费层">Slide 6 计费层</a></h2>
+<ul>
+<li>开场句：
+“计费是安全机制，不是商业策略。”</li>
+<li>核心阐述：
+“cycles 把资源消耗转成协议可观察量，目标是把 DoS 成本推给攻击者，而不是推给节点运营者。”</li>
+<li>收束句：
+“只优化速度不校准计费，等于给攻击者发补贴。”</li>
+</ul>
+<h2 id="slide-7-边界层"><a class="header" href="#slide-7-边界层">Slide 7 边界层</a></h2>
+<ul>
+<li>开场句：
+“边界层决定审计成本曲线。”</li>
+<li>核心阐述：
+“syscall 是宿主入口，内存权限是执行边界。接口越少、语义越明确，审计面越可控。”</li>
+<li>收束句：
+“功能多不等于系统强，很多时候只意味着攻击面大。”</li>
+</ul>
+<h2 id="slide-8-优化层"><a class="header" href="#slide-8-优化层">Slide 8 优化层</a></h2>
+<ul>
+<li>开场句：
+“优化层是最后一层，不是第一层。”</li>
+<li>核心阐述：
+“Trace、MOP、ASM 都是好工具，但都必须在语义锚点和回滚机制之内运行。”</li>
+<li>收束句：
+“可回滚，是共识优化和普通优化的分水岭。”</li>
+</ul>
+<h2 id="slide-9-生命周期总览"><a class="header" href="#slide-9-生命周期总览">Slide 9 生命周期总览</a></h2>
+<ul>
+<li>开场句：
+“run 不是一个函数调用，而是一个状态机入口。”</li>
+<li>核心阐述：
+“状态机核心分支包括继续执行、暂停恢复、终止退出。每个分支都要保证可重放、可解释。”</li>
+<li>收束句：
+“状态机讲不清，后面所有性能讨论都不成立。”</li>
+</ul>
+<h2 id="slide-10-fetchdecodeexecute"><a class="header" href="#slide-10-fetchdecodeexecute">Slide 10 fetch/decode/execute</a></h2>
+<ul>
+<li>开场句：
+“热路径和慢路径必须同时设计。”</li>
+<li>核心阐述：
+“快路径负责效率，慢路径负责正确性兜底。快路径失败能平稳回落，才是可发布的工程实现。”</li>
+<li>收束句：
+“把 slowpath 当累赘，是很多性能事故的起点。”</li>
+</ul>
+<h2 id="slide-11-装载器角色"><a class="header" href="#slide-11-装载器角色">Slide 11 装载器角色</a></h2>
+<ul>
+<li>开场句：
+“装载器不是搬运工，而是权限编排器。”</li>
+<li>核心阐述：
+“ELF 段如何映射到页权限，直接决定后续执行边界。这里做错一次，后面所有防线都只是补丁。”</li>
+<li>收束句：
+“W^X 是共识约束，不是可选安全增强。”</li>
+</ul>
+<h2 id="slide-12-syscall-最小集"><a class="header" href="#slide-12-syscall-最小集">Slide 12 syscall 最小集</a></h2>
+<ul>
+<li>开场句：
+“syscall 设计的第一原则是最小化。”</li>
+<li>核心阐述：
+“每增加一个宿主能力，就增加一份跨版本语义负债与攻击面。正确做法是白名单、错误码、计费三位一体。”</li>
+<li>收束句：
+“边界模糊的便利，最终都会变成线上事故。”</li>
+</ul>
+<h2 id="slide-13-快照价值"><a class="header" href="#slide-13-快照价值">Slide 13 快照价值</a></h2>
+<ul>
+<li>开场句：
+“快照不是为了‘看起来高级’，而是为了恢复成本可控。”</li>
+<li>核心阐述：
+“Snapshot2 的结构共享降低复制成本，但前提是恢复语义与计费行为必须等价。”</li>
+<li>收束句：
+“恢复更快不能以恢复更玄学为代价。”</li>
+</ul>
+<h2 id="slide-14-register-trait"><a class="header" href="#slide-14-register-trait">Slide 14 Register trait</a></h2>
+<ul>
+<li>开场句：
+“类型系统在这里承担的是协议职责。”</li>
+<li>核心阐述：
+“Register trait 把寄存器宽度、算术边界、语义约束写成可编译契约，防止后端实现各说各话。”</li>
+<li>收束句：
+“在共识 VM 里，类型约束就是安全边界。”</li>
+</ul>
+<h2 id="slide-15-rust--asm-协同"><a class="header" href="#slide-15-rust--asm-协同">Slide 15 Rust + ASM 协同</a></h2>
+<ul>
+<li>开场句：
+“Rust 与 ASM 不是替代关系，而是主从协作关系。”</li>
+<li>核心阐述：
+“Rust 维持语义主线与可审计结构，ASM 负责热点提速。关键在于入口、状态镜像、回落语义三件事必须锁死。”</li>
+<li>收束句：
+“没有 Rust 锚点的 ASM，很快但不可控。”</li>
+</ul>
+<h2 id="slide-16-后端一致性"><a class="header" href="#slide-16-后端一致性">Slide 16 后端一致性</a></h2>
+<ul>
+<li>开场句：
+“后端一致性不是口头承诺，要靠差分证据。”</li>
+<li>核心阐述：
+“解释器、asm、不同输入集下要对比状态、错误码、计费结果。只要有一项漂移，就不能直接发布。”</li>
+<li>收束句：
+“跳过 asm 测试后，唯一正确结论是：asm 尚未验证。”</li>
+</ul>
+<h2 id="slide-17-为什么-risc-v"><a class="header" href="#slide-17-为什么-risc-v">Slide 17 为什么 RISC-V</a></h2>
+<ul>
+<li>开场句：
+“RISC-V 的核心价值是治理，不是神话。”</li>
+<li>核心阐述：
+“开放规范、可组合扩展、生态可演进，使协议层可以按门禁迭代引入能力，而不是一次性豪赌。”</li>
+<li>收束句：
+“我们选择的是可治理生命周期，不是短期情绪。”</li>
+</ul>
+<h2 id="slide-18-扩展代价模型"><a class="header" href="#slide-18-扩展代价模型">Slide 18 扩展代价模型</a></h2>
+<ul>
+<li>开场句：
+“每个扩展都会带来长期维护账单。”</li>
+<li>核心阐述：
+“新增扩展不仅影响执行层，还影响工具链、测试矩阵、审计成本和回滚路径。评估必须是总成本视角。”</li>
+<li>收束句：
+“没有代价模型的扩展提案，本质上不完整。”</li>
+</ul>
+<h2 id="slide-19-密码学负载分层"><a class="header" href="#slide-19-密码学负载分层">Slide 19 密码学负载分层</a></h2>
+<ul>
+<li>开场句：
+“密码学优化不能一上来就谈新指令。”</li>
+<li>核心阐述：
+“先分清算法层、实现层、指令层、VM 层，再决定该优化落在哪一层，避免责任错位。”</li>
+<li>收束句：
+“层级没分清，优化越做越乱。”</li>
+</ul>
+<h2 id="slide-20-计费校准"><a class="header" href="#slide-20-计费校准">Slide 20 计费校准</a></h2>
+<ul>
+<li>开场句：
+“性能结果必须进入计费校准，否则不可发布。”</li>
+<li>核心阐述：
+“要看短输入、长尾输入、极端输入，不只看平均值。并且要同步审查是否引入侧信道风险。”</li>
+<li>收束句：
+“更快不代表更安全，更不代表更公平。”</li>
+</ul>
+<h2 id="slide-21-决策矩阵"><a class="header" href="#slide-21-决策矩阵">Slide 21 决策矩阵</a></h2>
+<ul>
+<li>开场句：
+“最后的发布决策必须回到矩阵。”</li>
+<li>核心阐述：
+“收益、成本、不可逆风险、治理复杂度要同屏评估。任何单维度最优，都可能是系统级次优。”</li>
+<li>收束句：
+“矩阵不是官僚流程，而是防止误判的最小工具。”</li>
+</ul>
+<h2 id="slide-22-live-demo-入口"><a class="header" href="#slide-22-live-demo-入口">Slide 22 Live Demo 入口</a></h2>
+<ul>
+<li>开场句：
+“现在我们用脚本化实验把结论落到证据。”</li>
+<li>核心阐述：
+“<code>run_labs.sh</code> 固化了批次、命令、日志、报告格式，避免每个人自定义流程造成证据断裂。”</li>
+<li>收束句：
+“工程上可复核，比个人经验更重要。”</li>
+</ul>
+<h2 id="slide-23-demo-结果解读"><a class="header" href="#slide-23-demo-结果解读">Slide 23 Demo 结果解读</a></h2>
+<ul>
+<li>开场句：
+“请看三层产物：报告、CSV、原始日志。”</li>
+<li>核心阐述：
+“报告给评审，CSV 给自动化聚合，日志给排障。三者合起来才是一条完整证据链。”</li>
+<li>收束句：
+“只有通过率，没有日志，不构成可审计结论。”</li>
+</ul>
+<h2 id="slide-24-pr-审计模板"><a class="header" href="#slide-24-pr-审计模板">Slide 24 PR 审计模板</a></h2>
+<ul>
+<li>开场句：
+“我们把失败样本也写进审计模板。”</li>
+<li>核心阐述：
+“优秀团队不是没有失败，而是失败后可以快速定位、解释、回滚，并形成组织记忆。”</li>
+<li>收束句：
+“把日志链接写进模板，是让结论可继承。”</li>
+</ul>
+<h2 id="slide-25-常见误区"><a class="header" href="#slide-25-常见误区">Slide 25 常见误区</a></h2>
+<ul>
+<li>开场句：
+“这里列的是最常见、最昂贵的误区。”</li>
+<li>核心阐述：
+“包括把 smoke 当 full、跳过后端验证仍宣称一致、只报喜不报失败、只看平均性能不看长尾风险。”</li>
+<li>收束句：
+“避开这些误区，比多做一个优化更有价值。”</li>
+</ul>
+<h2 id="slide-26-课后任务"><a class="header" href="#slide-26-课后任务">Slide 26 课后任务</a></h2>
+<ul>
+<li>开场句：
+“最后给出三条作业线，确保今天内容真正落地。”</li>
+<li>核心阐述：
+“读一篇、跑一批、审一次。也就是：读长文、跑脚本、填模板，把理解变成交付。”</li>
+<li>收束句：
+“工程成长不是听懂，而是能复现、能评审、能负责。”</li>
+</ul>
+<h2 id="讲师结尾统一话术30-秒"><a class="header" href="#讲师结尾统一话术30-秒">讲师结尾统一话术（30 秒）</a></h2>
+<p>“今天我们讲的不是某个语言或某套 ISA 的神话，而是共识 VM 的责任边界。Rust 给我们语义可审计的骨架，RISC-V 给我们治理可演进的接口。两者结合的价值，不在宣传语里，而在你明天能不能拿着证据做出正确发布判断。”</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="附录-a-密码学专题工作负载指令映射与审计框架"><a class="header" href="#附录-a-密码学专题工作负载指令映射与审计框架">附录 A 密码学专题：工作负载、指令映射与审计框架</a></h1>
 <h2 id="a1-目标与范围"><a class="header" href="#a1-目标与范围">A.1 目标与范围</a></h2>
@@ -3855,22 +6176,6 @@ Metrics:
         <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
         <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
 
-        <!-- Livereload script (if served using the cli tool) -->
-        <script>
-            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
-            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
-            const socket = new WebSocket(wsAddress);
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload();
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
 
 
         <script>

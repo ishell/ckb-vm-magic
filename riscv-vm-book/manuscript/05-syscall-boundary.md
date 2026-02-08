@@ -17,6 +17,11 @@ guest ecall
          error InvalidEcall
 ```
 
+> 延伸阅读（批次二）：
+> - [图 5-1 长文](../standalone-articles/batch-02/05-ecall-dispatch-boundary.md)
+> - [图 5-1 审计模板](../standalone-articles/audit-templates/05-ecall-dispatch-boundary-audit-template.md)
+> - [对应实验手册](../standalone-articles/labs/batch-02-labs.md)
+
 ## 5.3 代码证据
 
 - `src/machine/mod.rs`：`Machine::ecall` 内核仅处理退出。

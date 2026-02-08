@@ -14,6 +14,11 @@ ISA selection
   -> protocol upgrade flexibility
 ```
 
+> 延伸阅读（批次三）：
+> - [图 9-1 长文](../standalone-articles/batch-03/09-isa-selection-impact-chain.md)
+> - [图 9-1 审计模板](../standalone-articles/audit-templates/09-isa-selection-impact-chain-audit-template.md)
+> - [对应实验手册](../standalone-articles/labs/batch-03-labs.md)
+
 ## 9.3 代码证据
 
 `ckb-vm` 体现了 RISC-V 的三类工程收益：

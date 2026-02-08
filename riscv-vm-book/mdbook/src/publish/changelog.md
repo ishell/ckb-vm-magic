@@ -1,5 +1,74 @@
 # 更新日志
 
+## v0.10.2 - 2026-02-08
+
+### Added
+
+- 第 1-4 章正文新增批次一链接（图示长文 + 审计模板 + 实验手册）。
+
+### Changed
+
+- mdBook 第 1-4 章页头新增批次一延伸阅读链接，形成与第 5-11 章一致的章节导航体验。
+
+## v0.10.1 - 2026-02-08
+
+### Added
+
+- 新增真实仓库锚点审计样例：
+  - `standalone-articles/audit-templates/examples/03-pr-audit-sample-real-anchors-run-exit-cycles.md`
+- mdBook 新增“审计样例 03 真实锚点映射”入口。
+
+### Changed
+
+- 审计样例集从 2 份扩展到 3 份（通过 / 拒绝 / 真实锚点）。
+- 导读页与 README 对审计样例描述升级为“通过/拒绝/真实锚点”。
+
+## v0.10.0 - 2026-02-08
+
+### Added
+
+- 新增审计样例集：`standalone-articles/audit-templates/examples/`。
+  - 样例 01：MOP + secp256k1 优化（有条件通过）。
+  - 样例 02：host time syscall 扩展（拒绝通过）。
+- mdBook 新增“审计样例总览 + 两份已填表示例”导航入口。
+- 教学包新增“逐页口播稿”与审计样例联动使用路径。
+
+### Changed
+
+- 图示审计模板 README 增加样例索引与使用建议。
+- 总 README、图示 README、导读页同步到“模板 + 样例 + 教学演练”结构。
+
+## v0.9.0 - 2026-02-08
+
+### Added
+
+- 新增图示长文审计模板层：`standalone-articles/audit-templates/`，覆盖 13 篇图示长文（每篇一份模板）。
+- mdBook 新增“图示审计模板总览 + 13 份模板”导航入口。
+- 新增教学增强文档：`teaching/08-90min-slide-verbatim-script.md`（90 分钟逐页口播稿，可直接照读）。
+
+### Changed
+
+- 图示路线图批次四状态升级为“已完成”（实验脚本化、审计模板化、教学增强闭环）。
+- 顶层 README、图示 README、教学 README、mdBook 索引全部同步到“读长文 -> 跑实验 -> 填模板 -> 上课交付”链路。
+
+## v0.8.0 - 2026-02-08
+
+### Added
+
+- 新增实验脚本化执行手册：`standalone-articles/labs/runner-script.md`。
+- 新增脚本化入口并接入文档导航：`tools/run_labs.sh` 与 mdBook `labs/runner-script.md`。
+- 新增 90 分钟教学包：
+  - `teaching/04-90min-instructor-script.md`
+  - `teaching/05-90min-slide-outline.md`
+  - `teaching/06-90min-live-demo-runbook.md`
+  - `teaching/07-90min-assessment-sheet.md`
+- mdBook 新增“实验脚本化执行”与“90 分钟教学包”导航入口。
+
+### Changed
+
+- 项目总目录、教学目录与 mdBook README 同步到“实验脚本化 + 课堂可交付”结构。
+- 图示长文路线图批次四状态更新为“第一阶段已完成”。
+
 ## v0.7.0 - 2026-02-08
 
 ### Added
@@ -91,4 +160,3 @@
 ### Added
 
 - 初始大纲与章节规划
-

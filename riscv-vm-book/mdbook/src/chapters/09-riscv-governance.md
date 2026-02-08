@@ -1,5 +1,6 @@
 > 出版版章节 `第 9 章` | 文档版本 `v0.5.0` | 评审状态 `可审阅`
 > 关联附录：术语见 `附录 B` 与 `附录 D`
+> 延伸阅读（批次三）：[图 9-1 长文](../articles/batch-03-09-isa-selection-impact-chain.md) | [图 9-1 审计模板](../articles-audit/09-isa-selection-impact-chain-audit-template.md)
 
 {{#include ../../../manuscript/09-riscv-governance.md}}
 ---

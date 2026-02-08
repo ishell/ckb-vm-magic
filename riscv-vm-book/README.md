@@ -28,13 +28,17 @@
 - `standalone-articles/batch-01/`
 - `standalone-articles/batch-02/`
 - `standalone-articles/batch-03/`
+- `standalone-articles/audit-templates/`（每篇图示长文对应审计模板）
+- `standalone-articles/audit-templates/examples/`（审计样例：通过/拒绝/真实锚点）
 
 ## 3) 可复现实验手册（批次配套）
 
 - `standalone-articles/labs/common-setup.md`
+- `standalone-articles/labs/runner-script.md`
 - `standalone-articles/labs/batch-01-labs.md`
 - `standalone-articles/labs/batch-02-labs.md`
 - `standalone-articles/labs/batch-03-labs.md`
+- `tools/run_labs.sh`（批次执行脚本，自动生成 md/csv/log 报告）
 
 ## 4) 教学版讲义与练习题
 
@@ -42,6 +46,11 @@
 - `teaching/01-lecture-notes.md`
 - `teaching/02-exercises.md`
 - `teaching/03-answer-guide.md`
+- `teaching/04-90min-instructor-script.md`
+- `teaching/05-90min-slide-outline.md`
+- `teaching/06-90min-live-demo-runbook.md`
+- `teaching/07-90min-assessment-sheet.md`
+- `teaching/08-90min-slide-verbatim-script.md`
 
 ## 5) mdBook 可预览版本（发布目录已补齐）
 

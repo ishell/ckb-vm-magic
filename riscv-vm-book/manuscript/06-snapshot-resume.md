@@ -18,6 +18,11 @@ snapshot v2:
   dirty pages + pages_from_source(id,offset,length)
 ```
 
+> 延伸阅读（批次二）：
+> - [图 6-1 长文](../standalone-articles/batch-02/06-snapshot-layering-economics.md)
+> - [图 6-1 审计模板](../standalone-articles/audit-templates/06-snapshot-layering-economics-audit-template.md)
+> - [对应实验手册](../standalone-articles/labs/batch-02-labs.md)
+
 ## 6.3 代码证据
 
 - `src/snapshot.rs`：基础版脏页快照。

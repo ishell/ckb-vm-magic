@@ -17,6 +17,11 @@ ASM execute loop
      -> maybe fallback execute_instruction
 ```
 
+> 延伸阅读（批次二）：
+> - [图 8-1 长文](../standalone-articles/batch-02/08-rust-asm-control-plane.md)
+> - [图 8-1 审计模板](../standalone-articles/audit-templates/08-rust-asm-control-plane-audit-template.md)
+> - [对应实验手册](../standalone-articles/labs/batch-02-labs.md)
+
 ## 8.3 代码证据
 
 - `build.rs`：按目标平台条件启用汇编后端。

@@ -23,6 +23,8 @@ cargo test --test test_versions
 
 脚本位置：`docs/riscv-vm-book/tools/run_labs.sh`
 
+深度说明：`docs/riscv-vm-book/standalone-articles/labs/runner-script.md`
+
 ```bash
 # 仅跑批次一
 bash docs/riscv-vm-book/tools/run_labs.sh --batch 1

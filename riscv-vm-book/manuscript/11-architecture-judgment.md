@@ -14,6 +14,11 @@
 - 渐进式性能优化             - 密码学侧信道防护额外投入
 ```
 
+> 延伸阅读（批次三）：
+> - [图 11-1 长文](../standalone-articles/batch-03/11-benefit-cost-hard-constraints.md)
+> - [图 11-1 审计模板](../standalone-articles/audit-templates/11-benefit-cost-hard-constraints-audit-template.md)
+> - [对应实验手册](../standalone-articles/labs/batch-03-labs.md)
+
 ## 11.3 优势判断
 
 1. 执行边界清晰：装载、执行、syscall、快照职责分离。

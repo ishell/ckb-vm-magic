@@ -34,3 +34,13 @@
   - 一份实验记录表（最少 3 个实验）
   - 一份 PR 审计模板演练结果（附录 F）
 
+## 快速开课路径（90 分钟）
+
+适用于短训或技术分享，建议使用以下五份材料：
+
+- `04-90min-instructor-script.md`
+- `05-90min-slide-outline.md`
+- `06-90min-live-demo-runbook.md`
+- `07-90min-assessment-sheet.md`
+- `08-90min-slide-verbatim-script.md`
+
