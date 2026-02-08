@@ -35,10 +35,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-d690288d.js";
+            window.path_to_searchindex_js = "../searchindex-ec952b10.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-f0310a65.js"></script>
+        <script src="../toc-076badc4.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -252,7 +252,31 @@
 <li>错误模型显式化是否与共识安全建立联系？</li>
 <li>本章结论是否支持跨平台一致性评审？</li>
 </ol>
-<hr>
+<h2 id="713-语义接口设计原则可复用到其他-vm"><a class="header" href="#713-语义接口设计原则可复用到其他-vm">7.13 语义接口设计原则（可复用到其他 VM）</a></h2>
+<p><code>Register</code> trait 的设计可抽象为三条原则：</p>
+<ol>
+<li>把 ISA 边界行为显式函数化</li>
+<li>把平台相关行为隔离在实现层</li>
+<li>把默认行为写成不可变约束（如 x0）</li>
+</ol>
+<p>这三条原则可直接迁移到其他执行器项目。</p>
+<h2 id="714-风险提示trait-抽象并不自动免疫错误"><a class="header" href="#714-风险提示trait-抽象并不自动免疫错误">7.14 风险提示：trait 抽象并不自动免疫错误</a></h2>
+<p>即使有 trait，仍可能出现：</p>
+<ul>
+<li>某个实现忘记保持边界语义</li>
+<li>新增方法未被所有实现覆盖</li>
+<li>优化路径绕过 trait 直接操作底层值</li>
+</ul>
+<p>因此需要配套“trait 合约测试集”，不是只靠编译通过。</p>
+<h2 id="715-合约测试建议"><a class="header" href="#715-合约测试建议">7.15 合约测试建议</a></h2>
+<p>建议为 <code>u32</code> 与 <code>u64</code> 分别构建同一批向量：</p>
+<ul>
+<li>除零</li>
+<li>有符号最小值溢出</li>
+<li>位扩展边界</li>
+<li>旋转与位计数</li>
+</ul>
+<h2 id="并验证跨位宽的语义对应关系"><a class="header" href="#并验证跨位宽的语义对应关系">并验证跨位宽的语义对应关系。</a></h2>
 <blockquote>
 <p>章末核查：本章已包含 <code>反例分析</code>、<code>架构评审清单</code>、<code>参考实现清单</code>、<code>术语索引交叉</code>、<code>审稿人问题清单</code>。</p>
 </blockquote>
@@ -292,22 +316,6 @@
         <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
         <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
 
-        <!-- Livereload script (if served using the cli tool) -->
-        <script>
-            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
-            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
-            const socket = new WebSocket(wsAddress);
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload();
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
 
 
         <script>

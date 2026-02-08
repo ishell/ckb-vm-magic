@@ -1,6 +1,6 @@
 # Rust + RISC-V 区块链虚拟机书稿
 
-本目录包含三层产物，均已升级。
+本目录包含五层产物，均已升级。
 
 ## 1) 完整章节版（出版版）
 
@@ -13,8 +13,37 @@
   - 参考实现清单（代码锚点）
   - 术语索引交叉
   - 审稿人问题清单（出版评审）
+  - 深度扩展段落（`X.13+`）
 
-## 2) mdBook 可预览版本（发布目录已补齐）
+## 2) 图示拆解长文系列（分批）
+
+- 总目录：`standalone-articles/README.md`
+- 路线图：`standalone-articles/ROADMAP.md`
+- 已完成批次一（1-1 到 4-1）
+- 已完成批次二（5-1 到 8-1）
+- 已完成批次三（9-1、10-1、11-1、A-1、C-1）
+
+详见：
+
+- `standalone-articles/batch-01/`
+- `standalone-articles/batch-02/`
+- `standalone-articles/batch-03/`
+
+## 3) 可复现实验手册（批次配套）
+
+- `standalone-articles/labs/common-setup.md`
+- `standalone-articles/labs/batch-01-labs.md`
+- `standalone-articles/labs/batch-02-labs.md`
+- `standalone-articles/labs/batch-03-labs.md`
+
+## 4) 教学版讲义与练习题
+
+- `teaching/00-course-map.md`
+- `teaching/01-lecture-notes.md`
+- `teaching/02-exercises.md`
+- `teaching/03-answer-guide.md`
+
+## 5) mdBook 可预览版本（发布目录已补齐）
 
 - 目录：`mdbook/`
 - 配置：`mdbook/book.toml`
@@ -32,16 +61,12 @@ cd docs/riscv-vm-book/mdbook
 mdbook serve
 ```
 
-若未安装：
-
-```bash
-cargo install mdbook
-```
-
-## 3) 专题附录（增强）
+## 专题附录（增强）
 
 - 密码学专题附录：`manuscript/A-crypto-workload-mapping.md`
 - 密码学 PR 审计模板：`manuscript/F-crypto-implementation-audit-template.md`
+- secp256k1 端到端案例：`manuscript/H-end-to-end-case-study-secp256k1.md`
+- 哈希/Merkle 端到端案例：`manuscript/I-end-to-end-case-study-hash-merkle.md`
 - RISC-V 专题附录：`manuscript/C-riscv-isa-and-os-appendix.md`
 - 术语总表（带锚点）：`manuscript/B-glossary.md`
 - 术语交叉索引：`manuscript/D-term-cross-index.md`

@@ -35,10 +35,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-d690288d.js";
+            window.path_to_searchindex_js = "../searchindex-ec952b10.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-f0310a65.js"></script>
+        <script src="../toc-076badc4.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -182,36 +182,34 @@
                     <main>
                         <h1 id="审稿人变更摘要页"><a class="header" href="#审稿人变更摘要页">审稿人变更摘要页</a></h1>
 <blockquote>
-<p>版本范围：<code>v0.4.0</code> -&gt; <code>v0.5.0</code><br>评审目标：在最短时间内识别“语义风险、计费风险、治理风险”。</p>
+<p>版本范围：<code>v0.6.0</code> -&gt; <code>v0.7.0</code><br>评审目标：确认“图示长文 -&gt; 实验 -&gt; 教学”三层链路已闭环。</p>
 </blockquote>
 <h2 id="一这次改了什么按影响度排序"><a class="header" href="#一这次改了什么按影响度排序">一、这次改了什么（按影响度排序）</a></h2>
 <ol>
-<li>主体第 1-11 章新增“审稿人问题清单（出版评审）”。</li>
-<li>mdBook 新增发布目录体系：封面、版本、更新日志、审稿人摘要。</li>
-<li>所有章节 wrapper 统一页眉页脚与章末核查提示。</li>
-<li>新增附录 F（密码学 PR 审计模板），补齐工程审查落地文档。</li>
-<li>新增附录 G（作者改稿检查清单），补齐终版交付门禁。</li>
+<li>新增实验层：每个图示批次均有可复现实验手册。</li>
+<li>新增教学层：课程地图、讲义、练习题、答案评分。</li>
+<li>mdBook 索引升级：支持“阅读 + 实验 +授课”三种使用路径。</li>
+<li>文档结构升级为五层：主文、图示长文、实验、教学、附录。</li>
 </ol>
 <h2 id="二审稿建议路径30-45-分钟快速审"><a class="header" href="#二审稿建议路径30-45-分钟快速审">二、审稿建议路径（30-45 分钟快速审）</a></h2>
 <ul>
-<li>第一步：读 <code>第 1 章</code> 与 <code>第 11 章</code>，确认总论与风险评估是否一致。</li>
-<li>第二步：读 <code>第 10 章</code> + <code>附录 A</code> + <code>附录 F</code>，检查密码学主线是否闭环。</li>
-<li>第三步：读 <code>第 9 章</code> + <code>附录 C</code>，确认 RISC-V 治理逻辑是否可执行。</li>
-<li>第四步：抽查任意 2 章的“代码锚点”是否能定位到源码事实。</li>
+<li>第一步：查看 <code>实验总准备</code> 与 <code>实验手册-批次一/二/三</code>。</li>
+<li>第二步：查看 <code>教学地图</code> 与 <code>教学讲义</code> 是否覆盖主文核心脉络。</li>
+<li>第三步：抽查 2 个练习题与答案是否与主文结论一致。</li>
+<li>第四步：确认实验命令与测试文件在仓库中可定位。</li>
 </ul>
 <h2 id="三重点审稿问题高优先级"><a class="header" href="#三重点审稿问题高优先级">三、重点审稿问题（高优先级）</a></h2>
 <ol>
-<li>主体章节的“一针见血结论”是否都能被代码锚点支撑？</li>
-<li>cycles/计费讨论是否区分了“估算模型”与“协议约束”？</li>
-<li>Rust/ASM 双后端一致性风险是否被充分揭示？</li>
-<li>密码学部分是否明确区分“确定性”与“恒时安全”？</li>
-<li>RISC-V 扩展引入是否具备可回滚、可校准、可审计路径？</li>
+<li>实验步骤是否具备可复现性（命令、输入、预期）？</li>
+<li>教学材料是否保持“证据优先”，避免口号化？</li>
+<li>练习题是否覆盖语义、计费、治理三类能力？</li>
+<li>答案评分标准是否可执行、可复核？</li>
 </ol>
 <h2 id="四签署建议"><a class="header" href="#四签署建议">四、签署建议</a></h2>
 <ul>
-<li><input disabled="" type="checkbox"> 通过：可进入下一轮语言润色</li>
-<li><input disabled="" type="checkbox"> 条件通过：需补充证据后合并</li>
-<li><input disabled="" type="checkbox"> 拒绝通过：存在结构性缺陷需重写</li>
+<li><input disabled="" type="checkbox"> 通过：可进入终版排版</li>
+<li><input disabled="" type="checkbox"> 条件通过：需补充实验记录样本</li>
+<li><input disabled="" type="checkbox"> 拒绝通过：实验或教学链路存在断点</li>
 </ul>
 <p>签署人：<br>日期：</p>
 
@@ -250,22 +248,6 @@
         <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
         <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
 
-        <!-- Livereload script (if served using the cli tool) -->
-        <script>
-            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
-            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
-            const socket = new WebSocket(wsAddress);
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload();
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
 
 
         <script>

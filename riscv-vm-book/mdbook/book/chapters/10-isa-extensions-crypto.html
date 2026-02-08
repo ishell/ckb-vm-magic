@@ -35,10 +35,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-d690288d.js";
+            window.path_to_searchindex_js = "../searchindex-ec952b10.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-f0310a65.js"></script>
+        <script src="../toc-076badc4.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -254,7 +254,29 @@ Atomic handshakes     -&gt; A (LR/SC/AMO)
 <li>代码锚点是否足以复核核心论点？</li>
 <li>本章是否能指导性能优化 PR 的审查？</li>
 </ol>
-<hr>
+<h2 id="1013-案例展开一次签名验证的大致执行剖面"><a class="header" href="#1013-案例展开一次签名验证的大致执行剖面">10.13 案例展开：一次签名验证的大致执行剖面</a></h2>
+<p>以 secp256k1 验签为例，执行热点通常分布在：</p>
+<ul>
+<li>标量与点运算的大整数乘加链</li>
+<li>模约简循环</li>
+<li>少量控制流与内存搬运</li>
+</ul>
+<p>若记录 opcode 统计，常见现象是算术与位操作长期占据前列，这也是 B/M/MOP 优化优先级高的原因。</p>
+<h2 id="1014-计费校准的常见误区"><a class="header" href="#1014-计费校准的常见误区">10.14 计费校准的常见误区</a></h2>
+<ul>
+<li>只看总耗时，不看 opcode 结构</li>
+<li>只看单机，不看跨平台偏差</li>
+<li>只看平均值，不看长尾交易</li>
+</ul>
+<p>正确方式应是“结构化统计 + 跨后端对拍 + 长尾分析”。</p>
+<h2 id="1015-优化发布建议"><a class="header" href="#1015-优化发布建议">10.15 优化发布建议</a></h2>
+<p>优化 PR 应至少附三份报告：</p>
+<ol>
+<li>语义等价报告</li>
+<li>性能收益报告（真实 workload）</li>
+<li>计费影响报告（费用曲线变化）</li>
+</ol>
+<h2 id="缺一不可"><a class="header" href="#缺一不可">缺一不可。</a></h2>
 <blockquote>
 <p>章末核查：本章已包含 <code>反例分析</code>、<code>架构评审清单</code>、<code>参考实现清单</code>、<code>术语索引交叉</code>、<code>审稿人问题清单</code>。</p>
 </blockquote>
@@ -294,22 +316,6 @@ Atomic handshakes     -&gt; A (LR/SC/AMO)
         <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
         <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
 
-        <!-- Livereload script (if served using the cli tool) -->
-        <script>
-            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
-            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
-            const socket = new WebSocket(wsAddress);
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload();
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
 
 
         <script>

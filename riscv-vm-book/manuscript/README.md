@@ -19,6 +19,8 @@
 
 - `A-crypto-workload-mapping.md`（密码学专题扩展版）
 - `F-crypto-implementation-audit-template.md`（密码学 PR 审计模板）
+- `H-end-to-end-case-study-secp256k1.md`（secp256k1 端到端案例）
+- `I-end-to-end-case-study-hash-merkle.md`（哈希/Merkle 端到端案例）
 - `C-riscv-isa-and-os-appendix.md`（RISC-V 专题扩展版）
 - `B-glossary.md`（术语总表，带锚点）
 - `D-term-cross-index.md`（术语交叉索引）
@@ -35,5 +37,5 @@
   5. 术语索引交叉
   6. 审稿人问题清单（出版评审）
 - 图号已统一为章内规范（`图 X-Y`）。
-- 专题附录已覆盖“工程落地 + 审计模板 + 发布门禁 + 改稿闭环”。
+- 专题附录已覆盖“工程落地 + 审计模板 + 发布门禁 + 改稿闭环 + 端到端案例”。
 

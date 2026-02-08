@@ -35,10 +35,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-d690288d.js";
+            window.path_to_searchindex_js = "../searchindex-ec952b10.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-f0310a65.js"></script>
+        <script src="../toc-076badc4.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -269,7 +269,37 @@
 <li>本章代码锚点是否覆盖了入口、循环、退出三段？</li>
 <li>章节结论是否可用于指导实际架构评审？</li>
 </ol>
-<hr>
+<h2 id="213-状态机细化从入口到退出的关键状态点"><a class="header" href="#213-状态机细化从入口到退出的关键状态点">2.13 状态机细化：从入口到退出的关键状态点</a></h2>
+<p>可以把执行生命周期形式化为 7 个状态：</p>
+<ol>
+<li><code>Created</code>：机器已构造，未加载程序</li>
+<li><code>LoadedELF</code>：段已装载，入口已写入 PC</li>
+<li><code>StackReady</code>：参数与栈 ABI 完成</li>
+<li><code>Running</code>：循环取指执行</li>
+<li><code>Trapped</code>：发生 ecall/ebreak/pause</li>
+<li><code>Exited</code>：exit_code 已稳定</li>
+<li><code>Errored</code>：返回结构化 Error</li>
+</ol>
+<p>其中 <code>Running -&gt; Trapped -&gt; Running</code> 是可循环路径，<code>Exited/Errored</code> 为终态。</p>
+<h2 id="214-栈布局示例64-位"><a class="header" href="#214-栈布局示例64-位">2.14 栈布局示例（64 位）</a></h2>
+<p>以 <code>argc=2</code>、参数 <code>['foo','bar']</code> 为例，初始化后栈从高地址向低地址大致包含：</p>
+<ul>
+<li>对齐填充</li>
+<li><code>argv[2]=NULL</code></li>
+<li><code>argv[1]=ptr('bar')</code></li>
+<li><code>argv[0]=ptr('foo')</code></li>
+<li><code>argc=2</code></li>
+<li>字符串区域 <code>foo bar </code></li>
+</ul>
+<p>这解释了为何 <code>initialize_stack</code> 需要先写字符串再倒序压入指针与 <code>argc</code>。</p>
+<h2 id="215-读者实验手工追踪一次-run"><a class="header" href="#215-读者实验手工追踪一次-run">2.15 读者实验：手工追踪一次 <code>run()</code></a></h2>
+<p>建议做一次最小实验：</p>
+<ol>
+<li>用 <code>examples/ckb_vm_runner.rs</code> 跑一个会 <code>exit(0)</code> 的最小程序。</li>
+<li>在 <code>load_program</code> 后打印 PC/SP。</li>
+<li>在每次 step 后打印 <code>pc/cycles/a0/a7</code>。</li>
+</ol>
+<h2 id="这个实验能快速建立代码-状态-结果的直觉映射"><a class="header" href="#这个实验能快速建立代码-状态-结果的直觉映射">这个实验能快速建立“代码-状态-结果”的直觉映射。</a></h2>
 <blockquote>
 <p>章末核查：本章已包含 <code>反例分析</code>、<code>架构评审清单</code>、<code>参考实现清单</code>、<code>术语索引交叉</code>、<code>审稿人问题清单</code>。</p>
 </blockquote>
@@ -309,22 +339,6 @@
         <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
         <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
 
-        <!-- Livereload script (if served using the cli tool) -->
-        <script>
-            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
-            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
-            const socket = new WebSocket(wsAddress);
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload();
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
 
 
         <script>
