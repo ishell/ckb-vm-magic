@@ -4,6 +4,7 @@
 - [版本页](publish/version.md)
 - [更新日志](publish/changelog.md)
 - [审稿人变更摘要](publish/reviewer-brief.md)
+- [章节链接点击检查清单](publish/chapter-link-checklist.md)
 - [导读页](index.md)
 - [前言](preface.md)
 - [第 1 章 共识机器优先](chapters/01-consensus-first.md)

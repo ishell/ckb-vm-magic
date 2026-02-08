@@ -18,9 +18,9 @@ ELF bytes
 ```
 
 > 延伸阅读（批次一）：
-> - [图 3-1 长文](../standalone-articles/batch-01/03-elf-to-page-actions.md)
-> - [图 3-1 审计模板](../standalone-articles/audit-templates/03-elf-to-page-actions-audit-template.md)
-> - [对应实验手册](../standalone-articles/labs/batch-01-labs.md)
+> - [图 3-1 长文](../articles/batch-01-03-elf-to-page-actions.md)
+> - [图 3-1 审计模板](../articles-audit/03-elf-to-page-actions-audit-template.md)
+> - [对应实验手册](../labs/batch-01-labs.md)
 
 ## 3.3 代码证据
 

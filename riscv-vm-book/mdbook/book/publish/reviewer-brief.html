@@ -35,10 +35,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-7306d098.js";
+            window.path_to_searchindex_js = "../searchindex-c339ff25.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-feb77f24.js"></script>
+        <script src="../toc-125b3528.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -182,34 +182,34 @@
                     <main>
                         <h1 id="审稿人变更摘要页"><a class="header" href="#审稿人变更摘要页">审稿人变更摘要页</a></h1>
 <blockquote>
-<p>版本范围：<code>v0.10.1</code> -&gt; <code>v0.10.2</code><br>评审目标：确认第 1-4 章已同步批次一链接，章节导航覆盖 1-11 章。</p>
+<p>版本范围：<code>v0.10.3</code> -&gt; <code>v0.10.4</code><br>评审目标：确认文档回归流程已接入 Make 统一入口，便于日常与 CI 执行。</p>
 </blockquote>
 <h2 id="一这次改了什么按影响度排序"><a class="header" href="#一这次改了什么按影响度排序">一、这次改了什么（按影响度排序）</a></h2>
 <ol>
-<li>第 1-4 章正文新增批次一链接（长文/审计模板/实验手册）。</li>
-<li>mdBook 第 1-4 章页头新增批次一延伸阅读链接。</li>
-<li>第 1-11 章现已形成完整“章节 -&gt; 长文 -&gt; 审计模板 -&gt; 实验手册”导航闭环。</li>
-<li>读者不再需要跨目录手工定位批次一资料。</li>
+<li>Makefile 新增 <code>docs-link-check</code> / <code>docs-mdbook-build</code> / <code>docs-check</code> / <code>docs-serve</code> 四个文档目标。</li>
+<li>质量清单与 README 新增 <code>make docs-check</code> 一键命令。</li>
+<li>文档检查从分散命令统一为 Make 入口，便于 CI 与团队协作。</li>
+<li>原有脚本 <code>check_chapter_links.sh</code> 仍保留并由 Make 目标复用。</li>
 </ol>
 <h2 id="二审稿建议路径30-45-分钟快速审"><a class="header" href="#二审稿建议路径30-45-分钟快速审">二、审稿建议路径（30-45 分钟快速审）</a></h2>
 <ul>
-<li>第一步：抽查第 1 章与第 2 章，确认正文已出现批次一三类链接。</li>
-<li>第二步：抽查第 3 章与第 4 章，确认 mdBook 页头延伸阅读可点击。</li>
-<li>第三步：抽查第 5 章与第 10 章，确认旧有批次二/三链接未回归。</li>
+<li>第一步：在仓库根目录执行 <code>make docs-check</code>。</li>
+<li>第二步：确认链接检查与 mdBook 构建都通过。</li>
+<li>第三步：可选执行 <code>make docs-serve</code> 抽查点击路径。</li>
 <li>第四步：核对版本页、更新日志、审稿摘要的一致性。</li>
 </ul>
 <h2 id="三重点审稿问题高优先级"><a class="header" href="#三重点审稿问题高优先级">三、重点审稿问题（高优先级）</a></h2>
 <ol>
-<li>第 1-4 章链接是否都指向批次一且无错链？</li>
-<li>章节正文与 mdBook 页头链接是否保持一致？</li>
-<li>第 5-11 章既有链接是否受本次改动影响？</li>
-<li>是否形成“看章节即可跳到对应批次材料”的统一体验？</li>
+<li><code>make docs-check</code> 是否在干净环境下稳定通过？</li>
+<li><code>docs-link-check</code> 是否仍能拦截 <code>standalone-articles/*</code> 回归？</li>
+<li>团队是否可以只记住一个命令完成主要回归？</li>
+<li>文档入口说明（README / mdBook README / 清单）是否一致？</li>
 </ol>
 <h2 id="四签署建议"><a class="header" href="#四签署建议">四、签署建议</a></h2>
 <ul>
 <li><input disabled="" type="checkbox"> 通过：可进入终版排版</li>
-<li><input disabled="" type="checkbox"> 条件通过：需补充一次全章链接点击回归记录</li>
-<li><input disabled="" type="checkbox"> 拒绝通过：样例无法指导真实评审</li>
+<li><input disabled="" type="checkbox"> 条件通过：需补充一次 CI 中执行 <code>make docs-check</code> 的日志归档</li>
+<li><input disabled="" type="checkbox"> 拒绝通过：检查清单或自动脚本不可执行</li>
 </ul>
 <p>签署人：<br>日期：</p>
 
@@ -221,7 +221,7 @@
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                             </a>
 
-                            <a rel="next prefetch" href="../index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../publish/chapter-link-checklist.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                             </a>
 
@@ -235,7 +235,7 @@
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                     </a>
 
-                    <a rel="next prefetch" href="../index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../publish/chapter-link-checklist.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                     </a>
             </nav>

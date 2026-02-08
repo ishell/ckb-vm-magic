@@ -1,5 +1,32 @@
 # 更新日志
 
+## v0.10.4 - 2026-02-08
+
+### Added
+
+- Makefile 新增文档质量目标：
+  - `make docs-link-check`
+  - `make docs-mdbook-build`
+  - `make docs-check`
+  - `make docs-serve`
+
+### Changed
+
+- 质量清单与 README 同步增加 `make docs-check` 一键命令。
+- 文档回归流程从“脚本命令”升级为“Make 统一入口”。
+
+## v0.10.3 - 2026-02-08
+
+### Added
+
+- 新增章节链接点击检查清单：`quality/01-chapter-link-click-checklist.md`。
+- 新增自动检查脚本：`tools/check_chapter_links.sh`。
+- mdBook 发布页新增“章节链接点击检查清单”入口。
+
+### Changed
+
+- 顶层 README 与 mdBook README 同步增加质量检查入口说明。
+
 ## v0.10.2 - 2026-02-08
 
 ### Added
@@ -9,6 +36,8 @@
 ### Changed
 
 - mdBook 第 1-4 章页头新增批次一延伸阅读链接，形成与第 5-11 章一致的章节导航体验。
+- 修正章节内链接目标：从 `standalone-articles/*` 统一改为 mdBook 路由 `articles/*` / `articles-audit/*` / `labs/*`。
+- 修复 `manuscript/02-run-to-exit.md` 中的 NUL 字符（`foo\0bar\0` 文本化），避免被识别为二进制文件。
 
 ## v0.10.1 - 2026-02-08
 

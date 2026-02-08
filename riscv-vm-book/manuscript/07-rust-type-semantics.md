@@ -15,9 +15,9 @@ Instruction handlers
 ```
 
 > 延伸阅读（批次二）：
-> - [图 7-1 长文](../standalone-articles/batch-02/07-register-trait-semantics.md)
-> - [图 7-1 审计模板](../standalone-articles/audit-templates/07-register-trait-semantics-audit-template.md)
-> - [对应实验手册](../standalone-articles/labs/batch-02-labs.md)
+> - [图 7-1 长文](../articles/batch-02-07-register-trait-semantics.md)
+> - [图 7-1 审计模板](../articles-audit/07-register-trait-semantics-audit-template.md)
+> - [对应实验手册](../labs/batch-02-labs.md)
 
 ## 7.3 代码证据
 

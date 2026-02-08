@@ -15,9 +15,9 @@
 ```
 
 > 延伸阅读（批次三）：
-> - [图 11-1 长文](../standalone-articles/batch-03/11-benefit-cost-hard-constraints.md)
-> - [图 11-1 审计模板](../standalone-articles/audit-templates/11-benefit-cost-hard-constraints-audit-template.md)
-> - [对应实验手册](../standalone-articles/labs/batch-03-labs.md)
+> - [图 11-1 长文](../articles/batch-03-11-benefit-cost-hard-constraints.md)
+> - [图 11-1 审计模板](../articles-audit/11-benefit-cost-hard-constraints-audit-template.md)
+> - [对应实验手册](../labs/batch-03-labs.md)
 
 ## 11.3 优势判断
 

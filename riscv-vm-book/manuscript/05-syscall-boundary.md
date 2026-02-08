@@ -18,9 +18,9 @@ guest ecall
 ```
 
 > 延伸阅读（批次二）：
-> - [图 5-1 长文](../standalone-articles/batch-02/05-ecall-dispatch-boundary.md)
-> - [图 5-1 审计模板](../standalone-articles/audit-templates/05-ecall-dispatch-boundary-audit-template.md)
-> - [对应实验手册](../standalone-articles/labs/batch-02-labs.md)
+> - [图 5-1 长文](../articles/batch-02-05-ecall-dispatch-boundary.md)
+> - [图 5-1 审计模板](../articles-audit/05-ecall-dispatch-boundary-audit-template.md)
+> - [对应实验手册](../labs/batch-02-labs.md)
 
 ## 5.3 代码证据
 

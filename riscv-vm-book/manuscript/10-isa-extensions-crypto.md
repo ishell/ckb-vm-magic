@@ -14,9 +14,9 @@ Atomic handshakes     -> A (LR/SC/AMO)
 ```
 
 > 延伸阅读（批次三）：
-> - [图 10-1 长文](../standalone-articles/batch-03/10-crypto-extension-real-division.md)
-> - [图 10-1 审计模板](../standalone-articles/audit-templates/10-crypto-extension-real-division-audit-template.md)
-> - [对应实验手册](../standalone-articles/labs/batch-03-labs.md)
+> - [图 10-1 长文](../articles/batch-03-10-crypto-extension-real-division.md)
+> - [图 10-1 审计模板](../articles-audit/10-crypto-extension-real-division-audit-template.md)
+> - [对应实验手册](../labs/batch-03-labs.md)
 
 ## 10.3 代码证据
 

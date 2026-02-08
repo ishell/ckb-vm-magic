@@ -35,10 +35,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-7306d098.js";
+            window.path_to_searchindex_js = "../searchindex-c339ff25.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-feb77f24.js"></script>
+        <script src="../toc-125b3528.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -181,17 +181,47 @@
                 <div id="mdbook-content" class="content">
                     <main>
                         <h1 id="更新日志"><a class="header" href="#更新日志">更新日志</a></h1>
-<h2 id="v0102---2026-02-08"><a class="header" href="#v0102---2026-02-08">v0.10.2 - 2026-02-08</a></h2>
+<h2 id="v0104---2026-02-08"><a class="header" href="#v0104---2026-02-08">v0.10.4 - 2026-02-08</a></h2>
 <h3 id="added"><a class="header" href="#added">Added</a></h3>
 <ul>
-<li>第 1-4 章正文新增批次一链接（图示长文 + 审计模板 + 实验手册）。</li>
+<li>Makefile 新增文档质量目标：
+<ul>
+<li><code>make docs-link-check</code></li>
+<li><code>make docs-mdbook-build</code></li>
+<li><code>make docs-check</code></li>
+<li><code>make docs-serve</code></li>
+</ul>
+</li>
 </ul>
 <h3 id="changed"><a class="header" href="#changed">Changed</a></h3>
 <ul>
+<li>质量清单与 README 同步增加 <code>make docs-check</code> 一键命令。</li>
+<li>文档回归流程从“脚本命令”升级为“Make 统一入口”。</li>
+</ul>
+<h2 id="v0103---2026-02-08"><a class="header" href="#v0103---2026-02-08">v0.10.3 - 2026-02-08</a></h2>
+<h3 id="added-1"><a class="header" href="#added-1">Added</a></h3>
+<ul>
+<li>新增章节链接点击检查清单：<code>quality/01-chapter-link-click-checklist.md</code>。</li>
+<li>新增自动检查脚本：<code>tools/check_chapter_links.sh</code>。</li>
+<li>mdBook 发布页新增“章节链接点击检查清单”入口。</li>
+</ul>
+<h3 id="changed-1"><a class="header" href="#changed-1">Changed</a></h3>
+<ul>
+<li>顶层 README 与 mdBook README 同步增加质量检查入口说明。</li>
+</ul>
+<h2 id="v0102---2026-02-08"><a class="header" href="#v0102---2026-02-08">v0.10.2 - 2026-02-08</a></h2>
+<h3 id="added-2"><a class="header" href="#added-2">Added</a></h3>
+<ul>
+<li>第 1-4 章正文新增批次一链接（图示长文 + 审计模板 + 实验手册）。</li>
+</ul>
+<h3 id="changed-2"><a class="header" href="#changed-2">Changed</a></h3>
+<ul>
 <li>mdBook 第 1-4 章页头新增批次一延伸阅读链接，形成与第 5-11 章一致的章节导航体验。</li>
+<li>修正章节内链接目标：从 <code>standalone-articles/*</code> 统一改为 mdBook 路由 <code>articles/*</code> / <code>articles-audit/*</code> / <code>labs/*</code>。</li>
+<li>修复 <code>manuscript/02-run-to-exit.md</code> 中的 NUL 字符（<code>foo\0bar\0</code> 文本化），避免被识别为二进制文件。</li>
 </ul>
 <h2 id="v0101---2026-02-08"><a class="header" href="#v0101---2026-02-08">v0.10.1 - 2026-02-08</a></h2>
-<h3 id="added-1"><a class="header" href="#added-1">Added</a></h3>
+<h3 id="added-3"><a class="header" href="#added-3">Added</a></h3>
 <ul>
 <li>新增真实仓库锚点审计样例：
 <ul>
@@ -200,13 +230,13 @@
 </li>
 <li>mdBook 新增“审计样例 03 真实锚点映射”入口。</li>
 </ul>
-<h3 id="changed-1"><a class="header" href="#changed-1">Changed</a></h3>
+<h3 id="changed-3"><a class="header" href="#changed-3">Changed</a></h3>
 <ul>
 <li>审计样例集从 2 份扩展到 3 份（通过 / 拒绝 / 真实锚点）。</li>
 <li>导读页与 README 对审计样例描述升级为“通过/拒绝/真实锚点”。</li>
 </ul>
 <h2 id="v0100---2026-02-08"><a class="header" href="#v0100---2026-02-08">v0.10.0 - 2026-02-08</a></h2>
-<h3 id="added-2"><a class="header" href="#added-2">Added</a></h3>
+<h3 id="added-4"><a class="header" href="#added-4">Added</a></h3>
 <ul>
 <li>新增审计样例集：<code>standalone-articles/audit-templates/examples/</code>。
 <ul>
@@ -217,25 +247,25 @@
 <li>mdBook 新增“审计样例总览 + 两份已填表示例”导航入口。</li>
 <li>教学包新增“逐页口播稿”与审计样例联动使用路径。</li>
 </ul>
-<h3 id="changed-2"><a class="header" href="#changed-2">Changed</a></h3>
+<h3 id="changed-4"><a class="header" href="#changed-4">Changed</a></h3>
 <ul>
 <li>图示审计模板 README 增加样例索引与使用建议。</li>
 <li>总 README、图示 README、导读页同步到“模板 + 样例 + 教学演练”结构。</li>
 </ul>
 <h2 id="v090---2026-02-08"><a class="header" href="#v090---2026-02-08">v0.9.0 - 2026-02-08</a></h2>
-<h3 id="added-3"><a class="header" href="#added-3">Added</a></h3>
+<h3 id="added-5"><a class="header" href="#added-5">Added</a></h3>
 <ul>
 <li>新增图示长文审计模板层：<code>standalone-articles/audit-templates/</code>，覆盖 13 篇图示长文（每篇一份模板）。</li>
 <li>mdBook 新增“图示审计模板总览 + 13 份模板”导航入口。</li>
 <li>新增教学增强文档：<code>teaching/08-90min-slide-verbatim-script.md</code>（90 分钟逐页口播稿，可直接照读）。</li>
 </ul>
-<h3 id="changed-3"><a class="header" href="#changed-3">Changed</a></h3>
+<h3 id="changed-5"><a class="header" href="#changed-5">Changed</a></h3>
 <ul>
 <li>图示路线图批次四状态升级为“已完成”（实验脚本化、审计模板化、教学增强闭环）。</li>
 <li>顶层 README、图示 README、教学 README、mdBook 索引全部同步到“读长文 -&gt; 跑实验 -&gt; 填模板 -&gt; 上课交付”链路。</li>
 </ul>
 <h2 id="v080---2026-02-08"><a class="header" href="#v080---2026-02-08">v0.8.0 - 2026-02-08</a></h2>
-<h3 id="added-4"><a class="header" href="#added-4">Added</a></h3>
+<h3 id="added-6"><a class="header" href="#added-6">Added</a></h3>
 <ul>
 <li>新增实验脚本化执行手册：<code>standalone-articles/labs/runner-script.md</code>。</li>
 <li>新增脚本化入口并接入文档导航：<code>tools/run_labs.sh</code> 与 mdBook <code>labs/runner-script.md</code>。</li>
@@ -249,13 +279,13 @@
 </li>
 <li>mdBook 新增“实验脚本化执行”与“90 分钟教学包”导航入口。</li>
 </ul>
-<h3 id="changed-4"><a class="header" href="#changed-4">Changed</a></h3>
+<h3 id="changed-6"><a class="header" href="#changed-6">Changed</a></h3>
 <ul>
 <li>项目总目录、教学目录与 mdBook README 同步到“实验脚本化 + 课堂可交付”结构。</li>
 <li>图示长文路线图批次四状态更新为“第一阶段已完成”。</li>
 </ul>
 <h2 id="v070---2026-02-08"><a class="header" href="#v070---2026-02-08">v0.7.0 - 2026-02-08</a></h2>
-<h3 id="added-5"><a class="header" href="#added-5">Added</a></h3>
+<h3 id="added-7"><a class="header" href="#added-7">Added</a></h3>
 <ul>
 <li>新增图示长文实验层（labs）：
 <ul>
@@ -275,13 +305,13 @@
 </li>
 <li>mdBook 新增实验与教学导航入口。</li>
 </ul>
-<h3 id="changed-5"><a class="header" href="#changed-5">Changed</a></h3>
+<h3 id="changed-7"><a class="header" href="#changed-7">Changed</a></h3>
 <ul>
 <li>项目总目录结构升级为“主文 + 图示长文 + 实验 + 教学 + 附录”。</li>
 <li>导读页和 README 文档同步到新结构。</li>
 </ul>
 <h2 id="v060---2026-02-08"><a class="header" href="#v060---2026-02-08">v0.6.0 - 2026-02-08</a></h2>
-<h3 id="added-6"><a class="header" href="#added-6">Added</a></h3>
+<h3 id="added-8"><a class="header" href="#added-8">Added</a></h3>
 <ul>
 <li>图示拆解长文批次三（5 篇）并接入 mdBook：
 <ul>
@@ -292,13 +322,13 @@
 <li>新增 <code>standalone-articles/batch-03/</code> 目录与批次说明。</li>
 <li>mdBook 目录增加批次三长文入口。</li>
 </ul>
-<h3 id="changed-6"><a class="header" href="#changed-6">Changed</a></h3>
+<h3 id="changed-8"><a class="header" href="#changed-8">Changed</a></h3>
 <ul>
 <li>图示长文路线图更新为“批次一/二/三已完成”。</li>
 <li>导读、README、索引页同步到批次三状态。</li>
 </ul>
 <h2 id="v050---2026-02-08"><a class="header" href="#v050---2026-02-08">v0.5.0 - 2026-02-08</a></h2>
-<h3 id="added-7"><a class="header" href="#added-7">Added</a></h3>
+<h3 id="added-9"><a class="header" href="#added-9">Added</a></h3>
 <ul>
 <li>新增 mdBook 发布页体系：
 <ul>
@@ -312,13 +342,13 @@
 <li>新增附录 G（作者改稿检查清单）。</li>
 <li>新增附录 F（密码学 PR 审计模板）并接入目录。</li>
 </ul>
-<h3 id="changed-7"><a class="header" href="#changed-7">Changed</a></h3>
+<h3 id="changed-9"><a class="header" href="#changed-9">Changed</a></h3>
 <ul>
 <li>第 1-11 章新增“审稿人问题清单（出版评审）”。</li>
 <li>顶层 README、manuscript README、mdBook README 全部同步到新结构。</li>
 </ul>
 <h2 id="v040---2026-02-08"><a class="header" href="#v040---2026-02-08">v0.4.0 - 2026-02-08</a></h2>
-<h3 id="added-8"><a class="header" href="#added-8">Added</a></h3>
+<h3 id="added-10"><a class="header" href="#added-10">Added</a></h3>
 <ul>
 <li>主体第 1-11 章新增出版收口结构：
 <ul>
@@ -332,25 +362,25 @@
 <li>新增附录 D（术语交叉索引）</li>
 <li>新增附录 E（出版规范与合规矩阵）</li>
 </ul>
-<h3 id="changed-8"><a class="header" href="#changed-8">Changed</a></h3>
+<h3 id="changed-10"><a class="header" href="#changed-10">Changed</a></h3>
 <ul>
 <li>术语总表升级为带锚点版本，支持章节交叉引用。</li>
 <li>目录结构按“主线阅读 + 专题附录 + 审计辅助”重排。</li>
 </ul>
 <h2 id="v030---2026-02-08"><a class="header" href="#v030---2026-02-08">v0.3.0 - 2026-02-08</a></h2>
-<h3 id="added-9"><a class="header" href="#added-9">Added</a></h3>
+<h3 id="added-11"><a class="header" href="#added-11">Added</a></h3>
 <ul>
 <li>第 1-11 章完整稿（严肃专业版）</li>
 <li>附录 A 密码学专题初版</li>
 <li>mdBook 基础可读结构</li>
 </ul>
 <h2 id="v020---2026-02-08"><a class="header" href="#v020---2026-02-08">v0.2.0 - 2026-02-08</a></h2>
-<h3 id="added-10"><a class="header" href="#added-10">Added</a></h3>
+<h3 id="added-12"><a class="header" href="#added-12">Added</a></h3>
 <ul>
 <li>分批扩展稿：执行主线、Rust/RISC-V 论证、架构评估</li>
 </ul>
 <h2 id="v010---2026-02-08"><a class="header" href="#v010---2026-02-08">v0.1.0 - 2026-02-08</a></h2>
-<h3 id="added-11"><a class="header" href="#added-11">Added</a></h3>
+<h3 id="added-13"><a class="header" href="#added-13">Added</a></h3>
 <ul>
 <li>初始大纲与章节规划</li>
 </ul>

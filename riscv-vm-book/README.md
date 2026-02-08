@@ -70,6 +70,13 @@ cd docs/riscv-vm-book/mdbook
 mdbook serve
 ```
 
+
+## 6) 质量检查与回归清单
+
+- `quality/01-chapter-link-click-checklist.md`（第 1-11 章链接点击检查）
+- `tools/check_chapter_links.sh`（自动检查章节链接是否指向 `articles/articles-audit/labs`）
+- `make docs-check`（一键执行链接检查 + mdBook 构建）
+
 ## 专题附录（增强）
 
 - 密码学专题附录：`manuscript/A-crypto-workload-mapping.md`

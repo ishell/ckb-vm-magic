@@ -25,9 +25,9 @@
 关键判断：性能优化位于最底层，必须服从上层约束。
 
 > 延伸阅读（批次一）：
-> - [图 1-1 长文](../standalone-articles/batch-01/01-constraint-hierarchy.md)
-> - [图 1-1 审计模板](../standalone-articles/audit-templates/01-constraint-hierarchy-audit-template.md)
-> - [对应实验手册](../standalone-articles/labs/batch-01-labs.md)
+> - [图 1-1 长文](../articles/batch-01-01-constraint-hierarchy.md)
+> - [图 1-1 审计模板](../articles-audit/01-constraint-hierarchy-audit-template.md)
+> - [对应实验手册](../labs/batch-01-labs.md)
 
 ## 1.3 代码证据
 
