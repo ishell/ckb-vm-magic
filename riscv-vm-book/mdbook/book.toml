@@ -1,0 +1,16 @@
+[book]
+title = "Rust 与 RISC-V：区块链虚拟机的工程必然性"
+authors = ["OpenCode + Jay"]
+language = "zh-CN"
+multilingual = false
+src = "src"
+
+[build]
+build-dir = "book"
+create-missing = false
+
+[output.html]
+default-theme = "light"
+preferred-dark-theme = "navy"
+git-repository-url = "https://github.com/nervosnetwork/ckb-vm"
+edit-url-template = "https://github.com/nervosnetwork/ckb-vm/edit/develop/{path}"
