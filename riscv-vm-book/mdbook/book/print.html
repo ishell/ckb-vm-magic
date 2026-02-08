@@ -1,0 +1,2050 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Rust 与 RISC-V：区块链虚拟机的工程必然性</title>
+        <meta name="robots" content="noindex">
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="favicon-8114d1fc.png">
+        <link rel="stylesheet" href="css/variables-8adf115d.css">
+        <link rel="stylesheet" href="css/general-2459343d.css">
+        <link rel="stylesheet" href="css/chrome-ae938929.css">
+        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex-d690288d.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc-f0310a65.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Rust 与 RISC-V：区块链虚拟机的工程必然性</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+                        <a href="https://github.com/nervosnetwork/ckb-vm" title="Git repository" aria-label="Git repository">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="封面页"><a class="header" href="#封面页">封面页</a></h1>
+<h2 id="rust-与-risc-v区块链虚拟机的工程必然性"><a class="header" href="#rust-与-risc-v区块链虚拟机的工程必然性">Rust 与 RISC-V：区块链虚拟机的工程必然性</a></h2>
+<ul>
+<li>副标题：从共识确定性到密码学执行路径的系统化分析</li>
+<li>基础代码：<code>nervosnetwork/ckb-vm</code></li>
+<li>文档形态：工程出版版（可审计、可复现、可演进）</li>
+</ul>
+<h3 id="核心主张"><a class="header" href="#核心主张">核心主张</a></h3>
+<ol>
+<li>区块链 VM 首先是共识机器，不是本地性能机器。</li>
+<li>Rust 的关键价值是语义边界前移，不是语言流行度。</li>
+<li>RISC-V 的关键价值是长期治理能力，不是短期跑分。</li>
+</ol>
+<h3 id="使用说明"><a class="header" href="#使用说明">使用说明</a></h3>
+<ul>
+<li>阅读主线：第 1-11 章</li>
+<li>专题扩展：附录 A（密码学）与附录 C（RISC-V）</li>
+<li>交叉检索：附录 B + 附录 D</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="版本页"><a class="header" href="#版本页">版本页</a></h1>
+<h2 id="文档版本信息"><a class="header" href="#文档版本信息">文档版本信息</a></h2>
+<ul>
+<li>文档名称：Rust 与 RISC-V：区块链虚拟机的工程必然性</li>
+<li>当前版本：v0.5.0</li>
+<li>发布阶段：出版评审版（增强）</li>
+<li>发布日期：2026-02-08</li>
+<li>语言：zh-CN</li>
+</ul>
+<h2 id="对应代码基线"><a class="header" href="#对应代码基线">对应代码基线</a></h2>
+<ul>
+<li>仓库：<code>https://github.com/nervosnetwork/ckb-vm</code></li>
+<li>代码分析范围：<code>src/</code>、<code>examples/</code>、<code>definitions/</code> 相关实现</li>
+<li>主题覆盖：执行主线、内存权限、syscall 边界、快照、Rust 语义、RISC-V 扩展</li>
+</ul>
+<h2 id="版本策略"><a class="header" href="#版本策略">版本策略</a></h2>
+<ul>
+<li><code>major</code>：结构性重写（章节体系调整）</li>
+<li><code>minor</code>：新增专题附录或新增审计框架</li>
+<li><code>patch</code>：错别字、引用修复、术语澄清</li>
+</ul>
+<h2 id="维护策略"><a class="header" href="#维护策略">维护策略</a></h2>
+<ul>
+<li>每次内容变更应同步更新：
+<ol>
+<li>版本页</li>
+<li>更新日志</li>
+<li>审稿人摘要页</li>
+<li>相关附录（术语索引、审计模板）</li>
+</ol>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="更新日志"><a class="header" href="#更新日志">更新日志</a></h1>
+<h2 id="v050---2026-02-08"><a class="header" href="#v050---2026-02-08">v0.5.0 - 2026-02-08</a></h2>
+<h3 id="added"><a class="header" href="#added">Added</a></h3>
+<ul>
+<li>新增 mdBook 发布页体系：
+<ul>
+<li>封面页</li>
+<li>版本页</li>
+<li>更新日志页</li>
+<li>审稿人变更摘要页</li>
+</ul>
+</li>
+<li>11 个章节 wrapper 统一页眉页脚，形成一致出版展示。</li>
+<li>新增附录 G（作者改稿检查清单）。</li>
+<li>新增附录 F（密码学 PR 审计模板）并接入目录。</li>
+</ul>
+<h3 id="changed"><a class="header" href="#changed">Changed</a></h3>
+<ul>
+<li>第 1-11 章新增“审稿人问题清单（出版评审）”。</li>
+<li>顶层 README、manuscript README、mdBook README 全部同步到新结构。</li>
+</ul>
+<h2 id="v040---2026-02-08"><a class="header" href="#v040---2026-02-08">v0.4.0 - 2026-02-08</a></h2>
+<h3 id="added-1"><a class="header" href="#added-1">Added</a></h3>
+<ul>
+<li>主体第 1-11 章新增出版收口结构：
+<ul>
+<li>反例分析</li>
+<li>架构评审清单</li>
+<li>参考实现清单</li>
+<li>术语交叉索引</li>
+</ul>
+</li>
+<li>新增附录 C（RISC-V 专题扩展版）</li>
+<li>新增附录 D（术语交叉索引）</li>
+<li>新增附录 E（出版规范与合规矩阵）</li>
+</ul>
+<h3 id="changed-1"><a class="header" href="#changed-1">Changed</a></h3>
+<ul>
+<li>术语总表升级为带锚点版本，支持章节交叉引用。</li>
+<li>目录结构按“主线阅读 + 专题附录 + 审计辅助”重排。</li>
+</ul>
+<h2 id="v030---2026-02-08"><a class="header" href="#v030---2026-02-08">v0.3.0 - 2026-02-08</a></h2>
+<h3 id="added-2"><a class="header" href="#added-2">Added</a></h3>
+<ul>
+<li>第 1-11 章完整稿（严肃专业版）</li>
+<li>附录 A 密码学专题初版</li>
+<li>mdBook 基础可读结构</li>
+</ul>
+<h2 id="v020---2026-02-08"><a class="header" href="#v020---2026-02-08">v0.2.0 - 2026-02-08</a></h2>
+<h3 id="added-3"><a class="header" href="#added-3">Added</a></h3>
+<ul>
+<li>分批扩展稿：执行主线、Rust/RISC-V 论证、架构评估</li>
+</ul>
+<h2 id="v010---2026-02-08"><a class="header" href="#v010---2026-02-08">v0.1.0 - 2026-02-08</a></h2>
+<h3 id="added-4"><a class="header" href="#added-4">Added</a></h3>
+<ul>
+<li>初始大纲与章节规划</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="审稿人变更摘要页"><a class="header" href="#审稿人变更摘要页">审稿人变更摘要页</a></h1>
+<blockquote>
+<p>版本范围：<code>v0.4.0</code> -&gt; <code>v0.5.0</code><br>评审目标：在最短时间内识别“语义风险、计费风险、治理风险”。</p>
+</blockquote>
+<h2 id="一这次改了什么按影响度排序"><a class="header" href="#一这次改了什么按影响度排序">一、这次改了什么（按影响度排序）</a></h2>
+<ol>
+<li>主体第 1-11 章新增“审稿人问题清单（出版评审）”。</li>
+<li>mdBook 新增发布目录体系：封面、版本、更新日志、审稿人摘要。</li>
+<li>所有章节 wrapper 统一页眉页脚与章末核查提示。</li>
+<li>新增附录 F（密码学 PR 审计模板），补齐工程审查落地文档。</li>
+<li>新增附录 G（作者改稿检查清单），补齐终版交付门禁。</li>
+</ol>
+<h2 id="二审稿建议路径30-45-分钟快速审"><a class="header" href="#二审稿建议路径30-45-分钟快速审">二、审稿建议路径（30-45 分钟快速审）</a></h2>
+<ul>
+<li>第一步：读 <code>第 1 章</code> 与 <code>第 11 章</code>，确认总论与风险评估是否一致。</li>
+<li>第二步：读 <code>第 10 章</code> + <code>附录 A</code> + <code>附录 F</code>，检查密码学主线是否闭环。</li>
+<li>第三步：读 <code>第 9 章</code> + <code>附录 C</code>，确认 RISC-V 治理逻辑是否可执行。</li>
+<li>第四步：抽查任意 2 章的“代码锚点”是否能定位到源码事实。</li>
+</ul>
+<h2 id="三重点审稿问题高优先级"><a class="header" href="#三重点审稿问题高优先级">三、重点审稿问题（高优先级）</a></h2>
+<ol>
+<li>主体章节的“一针见血结论”是否都能被代码锚点支撑？</li>
+<li>cycles/计费讨论是否区分了“估算模型”与“协议约束”？</li>
+<li>Rust/ASM 双后端一致性风险是否被充分揭示？</li>
+<li>密码学部分是否明确区分“确定性”与“恒时安全”？</li>
+<li>RISC-V 扩展引入是否具备可回滚、可校准、可审计路径？</li>
+</ol>
+<h2 id="四签署建议"><a class="header" href="#四签署建议">四、签署建议</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"> 通过：可进入下一轮语言润色</li>
+<li><input disabled="" type="checkbox"> 条件通过：需补充证据后合并</li>
+<li><input disabled="" type="checkbox"> 拒绝通过：存在结构性缺陷需重写</li>
+</ul>
+<p>签署人：<br>日期：</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="rust-与-risc-v区块链虚拟机的工程必然性-1"><a class="header" href="#rust-与-risc-v区块链虚拟机的工程必然性-1">Rust 与 RISC-V：区块链虚拟机的工程必然性</a></h1>
+<p>本书基于 <code>ckb-vm</code> 源码，系统分析区块链 VM 的操作系统化设计，并回答两个核心问题：</p>
+<ol>
+<li>为什么共识执行层倾向选择 Rust？</li>
+<li>为什么 RISC-V 能成为可治理的长期 ISA 方案？</li>
+</ol>
+<h2 id="结构说明"><a class="header" href="#结构说明">结构说明</a></h2>
+<ul>
+<li>发布页：封面、版本、更新日志、审稿人摘要</li>
+<li>主体：第 1-11 章（出版版）</li>
+<li>附录 A：密码学专题（工作负载映射、计费校准、发布门禁）</li>
+<li>附录 F：密码学实现审计模板（PR 直用）</li>
+<li>附录 C：RISC-V 专题（ISA 治理链、扩展引入路线）</li>
+<li>附录 B+D：术语定义与交叉索引</li>
+<li>附录 E：图号与出版规范</li>
+<li>附录 G：作者终版改稿清单</li>
+</ul>
+<h2 id="本地预览"><a class="header" href="#本地预览">本地预览</a></h2>
+<pre><code class="language-bash">cd docs/riscv-vm-book/mdbook
+mdbook serve
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="前言"><a class="header" href="#前言">前言</a></h1>
+<p>这本书不是在讲“某个虚拟机项目如何实现”，而是在回答一个长期问题：</p>
+<ul>
+<li>为什么区块链执行层最终会收敛到“可验证的小型操作系统”形态？</li>
+<li>为什么在这类系统中，Rust 与 RISC-V 组合会成为高概率选择？</li>
+</ul>
+<p>全书采用“代码证据 -&gt; 架构判断 -&gt; 风险评估”的写法。</p>
+<ul>
+<li>代码证据来自 <code>ckb-vm</code> 仓库中的核心实现。</li>
+<li>架构判断聚焦共识安全、可维护性和长期治理。</li>
+<li>风险评估强调真实代价，而不是宣传口径。</li>
+</ul>
+<h2 id="读者收益"><a class="header" href="#读者收益">读者收益</a></h2>
+<p>读完本书，你将掌握三件事：</p>
+<ol>
+<li>能从操作系统视角拆解区块链 VM 的执行主线。</li>
+<li>能独立评估 Rust + RISC-V 方案在共识系统中的利弊。</li>
+<li>能把“性能优化”与“共识确定性”放在同一个分析框架里。</li>
+</ol>
+<h2 id="阅读建议"><a class="header" href="#阅读建议">阅读建议</a></h2>
+<ul>
+<li>工程读者：按章节顺序阅读，重点看第 2、3、4、8、11 章。</li>
+<li>密码学读者：重点看第 10 章与附录 A。</li>
+<li>架构评审读者：重点看第 1 章与第 11 章。</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<blockquote>
+<p>出版版章节 <code>第 1 章</code> | 文档版本 <code>v0.5.0</code> | 评审状态 <code>可审阅</code>
+关联附录：术语见 <code>附录 B</code> 与 <code>附录 D</code></p>
+</blockquote>
+<h1 id="第-1-章-共识机器优先区块链-vm-的第一性原理"><a class="header" href="#第-1-章-共识机器优先区块链-vm-的第一性原理">第 1 章 共识机器优先：区块链 VM 的第一性原理</a></h1>
+<h2 id="11-核心问题"><a class="header" href="#11-核心问题">1.1 核心问题</a></h2>
+<p>区块链虚拟机到底是什么？它不是“跑得越快越好”的通用执行器，而是一个共识状态机的一部分。它的首要目标是：</p>
+<ul>
+<li>同输入下的确定输出</li>
+<li>可计费的资源消耗</li>
+<li>可重放的错误与中断路径</li>
+</ul>
+<h2 id="12-图-1-1共识-vm-的约束层级"><a class="header" href="#12-图-1-1共识-vm-的约束层级">1.2 图 1-1：共识 VM 的约束层级</a></h2>
+<pre><code class="language-text">+------------------------------+
+| 协议约束: 可验证/可回放      |
++------------------------------+
+| 经济约束: 可计费/抗 DoS      |
++------------------------------+
+| 工程约束: 可维护/可审计      |
++------------------------------+
+| 执行优化: Trace/ASM/MOP      |
++------------------------------+
+</code></pre>
+<p>关键判断：性能优化位于最底层，必须服从上层约束。</p>
+<h2 id="13-代码证据"><a class="header" href="#13-代码证据">1.3 代码证据</a></h2>
+<p><code>src/machine/mod.rs</code> 的 <code>SupportMachine::add_cycles</code> 直接把“执行动作”和“计费上限”耦合在一起：</p>
+<ul>
+<li>溢出即 <code>CyclesOverflow</code></li>
+<li>超上限即 <code>CyclesExceeded</code></li>
+</ul>
+<p><code>src/error.rs</code> 将这些状态提升为协议可观察错误，而非日志级事件。</p>
+<h2 id="14-深度分析"><a class="header" href="#14-深度分析">1.4 深度分析</a></h2>
+<p>传统本地 VM 可以容忍“某些极端路径行为差异”，但共识 VM 不行。只要某个节点在边界条件上产生不同结果，就可能触发分叉。<code>ckb-vm</code> 的策略是：</p>
+<ul>
+<li>先定义不可变语义边界</li>
+<li>再在边界内做性能优化</li>
+</ul>
+<p>这就是为什么它同时强调 <code>Pause</code>、<code>reset_signal</code>、<code>cycles</code>：这些不是运行时“便捷功能”，而是共识控制面。</p>
+<h2 id="15-案例dos-防护不是防火墙而是计费模型"><a class="header" href="#15-案例dos-防护不是防火墙而是计费模型">1.5 案例：DoS 防护不是防火墙，而是计费模型</a></h2>
+<p>若某条指令链在不同节点上消耗可变、且无上限约束，攻击者可构造输入拖慢部分节点。<code>ckb-vm</code> 的 cycles 模型让这种攻击从“技术问题”变成“经济问题”：你可以发起重计算，但必须按协议付费。</p>
+<h2 id="16-术语表本章"><a class="header" href="#16-术语表本章">1.6 术语表（本章）</a></h2>
+<ul>
+<li><code>Determinism</code>：同输入同输出同错误路径。</li>
+<li><code>Cycle Budget</code>：执行预算上限。</li>
+<li><code>Consensus Safety</code>：不因实现差异引发状态分歧。</li>
+</ul>
+<h2 id="17-一针见血结论"><a class="header" href="#17-一针见血结论">1.7 一针见血结论</a></h2>
+<p>区块链 VM 的第一性原理不是吞吐率，而是可证明的一致执行。</p>
+<h2 id="18-反例分析把高-tps当成唯一目标"><a class="header" href="#18-反例分析把高-tps当成唯一目标">1.8 反例分析：把“高 TPS”当成唯一目标</a></h2>
+<p>反例场景：某 VM 团队只追求吞吐，弱化确定性与计费边界，结果出现两类问题：</p>
+<ul>
+<li>不同硬件节点在边界输入上出现行为差异，触发共识风险。</li>
+<li>资源消耗缺乏稳定上限，攻击者可利用低成本构造 DoS 交易。</li>
+</ul>
+<p>教训：区块链 VM 的正确目标函数是“确定性 + 可定价 + 可维护”，性能必须在该约束内优化。</p>
+<h2 id="19-架构评审清单出版版"><a class="header" href="#19-架构评审清单出版版">1.9 架构评审清单（出版版）</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"> 是否存在全局一致的 cycles 预算模型与超限错误语义。</li>
+<li><input disabled="" type="checkbox"> 是否保证相同输入在不同平台上得到相同输出和错误码。</li>
+<li><input disabled="" type="checkbox"> 是否将中断、恢复、失败路径显式纳入状态机。</li>
+<li><input disabled="" type="checkbox"> 是否为 DoS 场景建立了经济成本防线（而非仅靠节点配置）。</li>
+</ul>
+<h2 id="110-参考实现清单代码锚点"><a class="header" href="#110-参考实现清单代码锚点">1.10 参考实现清单（代码锚点）</a></h2>
+<ul>
+<li><code>src/machine/mod.rs</code>: <code>SupportMachine::add_cycles</code>, <code>Pause</code></li>
+<li><code>src/error.rs</code>: <code>Error::CyclesExceeded</code>, <code>Error::CyclesOverflow</code></li>
+<li><code>src/cost_model.rs</code>: <code>estimate_cycles</code>（计费模型入口）</li>
+</ul>
+<h2 id="111-术语索引交叉参见附录-b-与附录-d"><a class="header" href="#111-术语索引交叉参见附录-b-与附录-d">1.11 术语索引交叉（参见附录 B 与附录 D）</a></h2>
+<ul>
+<li><code>Determinism</code></li>
+<li><code>Cycle Budget</code></li>
+<li><code>Consensus Safety</code></li>
+</ul>
+<h2 id="112-审稿人问题清单出版评审"><a class="header" href="#112-审稿人问题清单出版评审">1.12 审稿人问题清单（出版评审）</a></h2>
+<ol>
+<li>本章是否明确区分了“确定性目标”与“性能目标”的优先级？</li>
+<li>cycles 上限与错误语义是否被解释为协议约束而非实现细节？</li>
+<li>是否给出了至少一个 DoS 经济学层面的反证场景？</li>
+<li>论证是否可由 <code>src/machine/mod.rs</code> 与 <code>src/error.rs</code> 直接验证？</li>
+<li>“一针见血结论”是否与前文证据严格对应？</li>
+<li>本章结论是否对后续章节形成约束关系而非口号？</li>
+</ol>
+<hr>
+<blockquote>
+<p>章末核查：本章已包含 <code>反例分析</code>、<code>架构评审清单</code>、<code>参考实现清单</code>、<code>术语索引交叉</code>、<code>审稿人问题清单</code>。</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div>
+<blockquote>
+<p>出版版章节 <code>第 2 章</code> | 文档版本 <code>v0.5.0</code> | 评审状态 <code>可审阅</code>
+关联附录：术语见 <code>附录 B</code> 与 <code>附录 D</code></p>
+</blockquote>
+<h1 id="第-2-章-从-run-到-exit执行主流程的可审计链条"><a class="header" href="#第-2-章-从-run-到-exit执行主流程的可审计链条">第 2 章 从 run 到 exit：执行主流程的可审计链条</a></h1>
+<h2 id="21-核心问题"><a class="header" href="#21-核心问题">2.1 核心问题</a></h2>
+<p>一段合约二进制在 <code>ckb-vm</code> 中如何从字节变成退出码？</p>
+<h2 id="22-图-2-1最短执行链"><a class="header" href="#22-图-2-1最短执行链">2.2 图 2-1：最短执行链</a></h2>
+<pre><code class="language-text">run_with_memory
+  -&gt; DefaultCoreMachine::new_with_memory
+  -&gt; RustDefaultMachineBuilder::build
+  -&gt; TraceMachine::new
+  -&gt; load_program
+       -&gt; load_elf
+       -&gt; initialize_stack
+  -&gt; run_with_decoder loop
+       -&gt; decode
+       -&gt; add_cycles
+       -&gt; execute
+       -&gt; ecall/ebreak
+  -&gt; exit_code
+</code></pre>
+<p>代码入口位于 <code>src/lib.rs</code>。</p>
+<h2 id="23-代码证据"><a class="header" href="#23-代码证据">2.3 代码证据</a></h2>
+<p><code>DefaultMachine::load_program</code>（<code>src/machine/mod.rs</code>）将装载拆成两段：</p>
+<ul>
+<li><code>load_elf</code>：写入代码与数据页</li>
+<li><code>initialize</code>：初始化 syscall/debugger + stack</li>
+</ul>
+<p><code>DefaultMachineRunner::run_with_decoder</code> 保证每轮执行都经过三道门：</p>
+<ol>
+<li>中断检查（<code>Pause</code>）</li>
+<li>重置检查（<code>reset_signal</code>）</li>
+<li>指令步进（<code>step</code>）</li>
+</ol>
+<h2 id="24-深度分析"><a class="header" href="#24-深度分析">2.4 深度分析</a></h2>
+<p>这条链条的价值在于“层次边界清晰”：</p>
+<ul>
+<li>装载层只处理映像和内存状态。</li>
+<li>执行层只处理取指、解码、执行。</li>
+<li>系统调用层只在 <code>ecall</code> 发生时介入。</li>
+</ul>
+<p>这种分层减少了隐藏副作用，提升了审计效率。</p>
+<h2 id="25-案例为什么-exit93-是内建而不是插件"><a class="header" href="#25-案例为什么-exit93-是内建而不是插件">2.5 案例：为什么 <code>exit(93)</code> 是内建而不是插件</a></h2>
+<p><code>Machine::ecall</code> 中只内建处理 93 号 syscall（退出），其余交由外部 <code>Syscalls</code> 插件处理。原因是：退出语义属于 VM 最小闭环能力，必须由内核稳定定义；外部能力应该是可替换模块，而非核心耦合逻辑。</p>
+<h2 id="26-术语表本章"><a class="header" href="#26-术语表本章">2.6 术语表（本章）</a></h2>
+<ul>
+<li><code>Runner</code>：驱动 VM 生命周期的循环控制器。</li>
+<li><code>CoreMachine</code>：寄存器、PC、内存等基础状态接口。</li>
+<li><code>SupportMachine</code>：在 CoreMachine 之上增加 cycles、load、reset 等能力。</li>
+</ul>
+<h2 id="27-一针见血结论"><a class="header" href="#27-一针见血结论">2.7 一针见血结论</a></h2>
+<p><code>ckb-vm</code> 的主流程不是“调用方便”，而是“审计友好”：路径短、状态少、边界硬。</p>
+<h2 id="28-反例分析单体运行循环与隐式副作用"><a class="header" href="#28-反例分析单体运行循环与隐式副作用">2.8 反例分析：单体运行循环与隐式副作用</a></h2>
+<p>反例场景：把装载、执行、宿主调用、调试输出混在同一循环里，短期开发快，但长期出现：</p>
+<ul>
+<li>状态修改路径难追踪，审计复杂度指数上升。</li>
+<li>线上 bug 难复现，尤其在异常路径和重入路径。</li>
+</ul>
+<p>教训：主流程必须分层，且每层职责可单独验证。</p>
+<h2 id="29-架构评审清单出版版"><a class="header" href="#29-架构评审清单出版版">2.9 架构评审清单（出版版）</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"> 主流程是否可画出无歧义状态图（load/run/exit）。</li>
+<li><input disabled="" type="checkbox"> <code>load_program</code> 与 <code>run</code> 的副作用边界是否清晰。</li>
+<li><input disabled="" type="checkbox"> <code>ecall</code> 和异常返回码是否有稳定定义。</li>
+<li><input disabled="" type="checkbox"> 是否支持在中断点安全恢复并保持结果一致。</li>
+</ul>
+<h2 id="210-参考实现清单代码锚点"><a class="header" href="#210-参考实现清单代码锚点">2.10 参考实现清单（代码锚点）</a></h2>
+<ul>
+<li><code>src/lib.rs</code>: <code>run</code>, <code>run_with_memory</code></li>
+<li><code>src/machine/mod.rs</code>: <code>DefaultMachine::load_program</code>, <code>DefaultMachineRunner::run_with_decoder</code>, <code>Machine::ecall</code></li>
+<li><code>src/decoder.rs</code>: <code>InstDecoder</code>, <code>DefaultDecoder</code></li>
+</ul>
+<h2 id="211-术语索引交叉参见附录-b-与附录-d"><a class="header" href="#211-术语索引交叉参见附录-b-与附录-d">2.11 术语索引交叉（参见附录 B 与附录 D）</a></h2>
+<ul>
+<li><code>Runner</code></li>
+<li><code>CoreMachine</code></li>
+<li><code>SupportMachine</code></li>
+<li><code>Ecall</code></li>
+</ul>
+<h2 id="212-审稿人问题清单出版评审"><a class="header" href="#212-审稿人问题清单出版评审">2.12 审稿人问题清单（出版评审）</a></h2>
+<ol>
+<li>执行主线是否在单张流程中闭环到 <code>exit_code</code>？</li>
+<li>是否清晰解释了 load/run/ecall 的边界职责？</li>
+<li>是否指出了中断与重置路径的审计价值？</li>
+<li>是否避免把宿主逻辑混入 VM 主循环叙事？</li>
+<li>本章代码锚点是否覆盖了入口、循环、退出三段？</li>
+<li>章节结论是否可用于指导实际架构评审？</li>
+</ol>
+<hr>
+<blockquote>
+<p>章末核查：本章已包含 <code>反例分析</code>、<code>架构评审清单</code>、<code>参考实现清单</code>、<code>术语索引交叉</code>、<code>审稿人问题清单</code>。</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div>
+<blockquote>
+<p>出版版章节 <code>第 3 章</code> | 文档版本 <code>v0.5.0</code> | 评审状态 <code>可审阅</code>
+关联附录：术语见 <code>附录 B</code> 与 <code>附录 D</code></p>
+</blockquote>
+<h1 id="第-3-章-elf-装载与内存权限把外部程序变成受控状态"><a class="header" href="#第-3-章-elf-装载与内存权限把外部程序变成受控状态">第 3 章 ELF 装载与内存权限：把外部程序变成受控状态</a></h1>
+<h2 id="31-核心问题"><a class="header" href="#31-核心问题">3.1 核心问题</a></h2>
+<p>为什么 VM 装载器是安全边界的一部分，而不仅是工具函数？</p>
+<h2 id="32-图-3-1elf-到页动作的转换"><a class="header" href="#32-图-3-1elf-到页动作的转换">3.2 图 3-1：ELF 到页动作的转换</a></h2>
+<pre><code class="language-text">ELF bytes
+  -&gt; parse_elf
+      -&gt; ProgramMetadata
+          -&gt; [LoadingAction...]
+              (addr,size,flags,source,offset)
+  -&gt; load_binary_inner
+      -&gt; init_pages per action
+      -&gt; set PC = entry
+</code></pre>
+<h2 id="33-代码证据"><a class="header" href="#33-代码证据">3.3 代码证据</a></h2>
+<p><code>src/elf.rs</code> 的 <code>parse_elf</code> 明确生成 <code>ProgramMetadata</code>，不是直接把 ELF 结构散用在执行路径里。</p>
+<p><code>convert_flags</code> 实施两项硬拒绝：</p>
+<ul>
+<li>段不可读，拒绝</li>
+<li>段可写且可执行，拒绝</li>
+</ul>
+<p><code>src/memory/wxorx.rs</code> 的 <code>WXorXMemory</code> 在运行期继续强制权限：</p>
+<ul>
+<li>取指必须落在 <code>FLAG_EXECUTABLE</code></li>
+<li>写入必须落在 <code>FLAG_WRITABLE</code></li>
+</ul>
+<h2 id="34-深度分析"><a class="header" href="#34-深度分析">3.4 深度分析</a></h2>
+<p>这是一种“操作系统式”装载模型：</p>
+<ul>
+<li>映像装载阶段决定页级权限</li>
+<li>执行阶段持续检查权限</li>
+<li>违规立即终止</li>
+</ul>
+<p>好处是把“代码注入”和“越权写入”从潜在漏洞变成确定错误。</p>
+<h2 id="35-案例wx-为什么对链上-vm-尤其关键"><a class="header" href="#35-案例wx-为什么对链上-vm-尤其关键">3.5 案例：W^X 为什么对链上 VM 尤其关键</a></h2>
+<p>在链上环境，攻击者可反复提交精心构造输入。若 VM 允许同页可写可执行，攻击面会从“输入漏洞”升级为“执行模型漏洞”。<code>WXorXMemory</code> 把这条路堵死，代价是需要更严格的装载策略，但这是共识层必须承担的代价。</p>
+<h2 id="36-术语表本章"><a class="header" href="#36-术语表本章">3.6 术语表（本章）</a></h2>
+<ul>
+<li><code>W^X</code>：页不可同时写且执行。</li>
+<li><code>LoadingAction</code>：一次页初始化动作描述。</li>
+<li><code>Entry Point</code>：程序入口 PC。</li>
+</ul>
+<h2 id="37-一针见血结论"><a class="header" href="#37-一针见血结论">3.7 一针见血结论</a></h2>
+<p>安全的 VM 装载器不是“读文件”，而是“建立可验证地址空间契约”。</p>
+<h2 id="38-反例分析先写后验的权限模型"><a class="header" href="#38-反例分析先写后验的权限模型">3.8 反例分析：先写后验的权限模型</a></h2>
+<p>反例场景：先把段写进内存，再在运行时“尽量检查权限”，会导致：</p>
+<ul>
+<li>历史脏数据与权限信息耦合，难以证明不存在执行注入路径。</li>
+<li>检查逻辑分散在指令实现中，容易遗漏边界页。</li>
+</ul>
+<p>教训：权限应在装载期建模，在执行期强校验，且以页为单位统一处理。</p>
+<h2 id="39-架构评审清单出版版"><a class="header" href="#39-架构评审清单出版版">3.9 架构评审清单（出版版）</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"> 是否拒绝可写且可执行段（W^X）。</li>
+<li><input disabled="" type="checkbox"> ELF <code>PT_LOAD</code> 的地址/长度/偏移是否有越界保护。</li>
+<li><input disabled="" type="checkbox"> 页对齐与跨页访问是否有一致语义。</li>
+<li><input disabled="" type="checkbox"> 栈初始化是否有版本兼容与对齐保证。</li>
+</ul>
+<h2 id="310-参考实现清单代码锚点"><a class="header" href="#310-参考实现清单代码锚点">3.10 参考实现清单（代码锚点）</a></h2>
+<ul>
+<li><code>src/elf.rs</code>: <code>parse_elf</code>, <code>convert_flags</code>, <code>ProgramMetadata</code></li>
+<li><code>src/memory/wxorx.rs</code>: <code>WXorXMemory::init_pages</code>, <code>execute_load32</code>, <code>store_bytes</code></li>
+<li><code>src/machine/mod.rs</code>: <code>load_binary_inner</code>, <code>initialize_stack</code></li>
+</ul>
+<h2 id="311-术语索引交叉参见附录-b-与附录-d"><a class="header" href="#311-术语索引交叉参见附录-b-与附录-d">3.11 术语索引交叉（参见附录 B 与附录 D）</a></h2>
+<ul>
+<li><code>ELF</code></li>
+<li><code>W^X</code></li>
+<li><code>ProgramMetadata</code></li>
+<li><code>WXorXMemory</code></li>
+</ul>
+<h2 id="312-审稿人问题清单出版评审"><a class="header" href="#312-审稿人问题清单出版评审">3.12 审稿人问题清单（出版评审）</a></h2>
+<ol>
+<li>ELF 到 <code>ProgramMetadata</code> 的转换是否解释了可验证性价值？</li>
+<li>W^X 约束是否被说明为装载期 + 运行期双重机制？</li>
+<li>是否覆盖了页对齐、越界、权限冲突三类边界错误？</li>
+<li>栈初始化的版本兼容语义是否解释充分？</li>
+<li>是否避免将“加载文件”误写成“单纯 I/O 操作”？</li>
+<li>本章是否给出可执行的装载审计清单？</li>
+</ol>
+<hr>
+<blockquote>
+<p>章末核查：本章已包含 <code>反例分析</code>、<code>架构评审清单</code>、<code>参考实现清单</code>、<code>术语索引交叉</code>、<code>审稿人问题清单</code>。</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div>
+<blockquote>
+<p>出版版章节 <code>第 4 章</code> | 文档版本 <code>v0.5.0</code> | 评审状态 <code>可审阅</code>
+关联附录：术语见 <code>附录 B</code> 与 <code>附录 D</code></p>
+</blockquote>
+<h1 id="第-4-章-解码执行与-trace确定性边界内的性能工程"><a class="header" href="#第-4-章-解码执行与-trace确定性边界内的性能工程">第 4 章 解码、执行与 Trace：确定性边界内的性能工程</a></h1>
+<h2 id="41-核心问题"><a class="header" href="#41-核心问题">4.1 核心问题</a></h2>
+<p>解释器真的只能“慢速逐条执行”吗？</p>
+<h2 id="42-图-4-1取指与解码快路径"><a class="header" href="#42-图-4-1取指与解码快路径">4.2 图 4-1：取指与解码快路径</a></h2>
+<pre><code class="language-text">pc -&gt; decode_bits
+  if not near page end:
+     execute_load32 + RVC check
+  else:
+     execute_load16 (+ optional second load16)
+
+-&gt; decode_raw (cache lookup)
+-&gt; optional decode_mop fusion
+-&gt; execute_instruction
+</code></pre>
+<h2 id="43-代码证据"><a class="header" href="#43-代码证据">4.3 代码证据</a></h2>
+<ul>
+<li><code>src/decoder.rs</code>：<code>decode_bits</code> 对页尾跨页场景做专门路径。</li>
+<li><code>src/decoder.rs</code>：<code>instructions_cache</code> 避免重复解码热点地址。</li>
+<li><code>src/decoder.rs</code>：<code>decode_mop</code> 将常见指令序列融合为宏操作。</li>
+<li><code>src/machine/trace.rs</code>：Trace 缓存“基本块 + 处理函数指针”。</li>
+</ul>
+<h2 id="44-深度分析"><a class="header" href="#44-深度分析">4.4 深度分析</a></h2>
+<p><code>ckb-vm</code> 的优化策略非常克制：</p>
+<ul>
+<li>不做不可解释的 speculative 优化</li>
+<li>只做可审计的结构化优化</li>
+</ul>
+<p>它不是 JIT，但通过 <code>TraceMachine</code> 获取了局部线程化执行收益；通过 MOP 降低调度与解码开销；通过 decode cache 减少热点路径重复工作。</p>
+<h2 id="45-案例密码学大整数路径上的收益来源"><a class="header" href="#45-案例密码学大整数路径上的收益来源">4.5 案例：密码学大整数路径上的收益来源</a></h2>
+<p>大整数算法常出现固定算术模板（乘法、除法、进位链）。MOP 不是“换 ISA”，而是把“已知安全的指令组合”打包为同语义的复合动作，从而减少解释器开销。</p>
+<h2 id="46-术语表本章"><a class="header" href="#46-术语表本章">4.6 术语表（本章）</a></h2>
+<ul>
+<li><code>RVC</code>：RISC-V 压缩指令集（16 位）。</li>
+<li><code>MOP</code>：宏操作融合，把多条指令映射为一条复合操作。</li>
+<li><code>Trace</code>：按基本块缓存的执行片段。</li>
+</ul>
+<h2 id="47-一针见血结论"><a class="header" href="#47-一针见血结论">4.7 一针见血结论</a></h2>
+<p>在共识 VM 里，最好的性能优化不是最激进，而是最可证明。</p>
+<h2 id="48-反例分析激进优化先行语义验证后补"><a class="header" href="#48-反例分析激进优化先行语义验证后补">4.8 反例分析：激进优化先行、语义验证后补</a></h2>
+<p>反例场景：先上复杂 JIT，再补一致性校验，常见后果：</p>
+<ul>
+<li>优化命中路径与冷路径语义偏移。</li>
+<li>cache/trace 失效策略不完整，出现不可重现错误。</li>
+</ul>
+<p>教训：共识执行器中，优化必须建立在可证明等价关系上。</p>
+<h2 id="49-架构评审清单出版版"><a class="header" href="#49-架构评审清单出版版">4.9 架构评审清单（出版版）</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"> decode cache 的失效条件是否完整（reset/版本切换/写代码页）。</li>
+<li><input disabled="" type="checkbox"> MOP 融合是否有等价性测试与反例测试。</li>
+<li><input disabled="" type="checkbox"> Trace 命中与未命中路径是否严格同语义。</li>
+<li><input disabled="" type="checkbox"> slowpath 回退是否覆盖所有未优化 opcode。</li>
+</ul>
+<h2 id="410-参考实现清单代码锚点"><a class="header" href="#410-参考实现清单代码锚点">4.10 参考实现清单（代码锚点）</a></h2>
+<ul>
+<li><code>src/decoder.rs</code>: <code>decode_bits</code>, <code>decode_raw</code>, <code>decode_mop</code></li>
+<li><code>src/machine/trace.rs</code>: <code>TraceMachine</code>, <code>run_with_decoder</code></li>
+<li><code>src/instructions/execute.rs</code>: <code>execute_instruction</code>, <code>execute</code></li>
+</ul>
+<h2 id="411-术语索引交叉参见附录-b-与附录-d"><a class="header" href="#411-术语索引交叉参见附录-b-与附录-d">4.11 术语索引交叉（参见附录 B 与附录 D）</a></h2>
+<ul>
+<li><code>RVC</code></li>
+<li><code>MOP</code></li>
+<li><code>Trace</code></li>
+<li><code>Fast Path</code></li>
+<li><code>Slow Path</code></li>
+</ul>
+<h2 id="412-审稿人问题清单出版评审"><a class="header" href="#412-审稿人问题清单出版评审">4.12 审稿人问题清单（出版评审）</a></h2>
+<ol>
+<li>是否区分了解码优化与语义优化，避免概念混淆？</li>
+<li>MOP/Trace 的收益是否建立在等价性前提上？</li>
+<li>是否解释了 slowpath 回退对正确性的意义？</li>
+<li>是否覆盖了页尾取指等边界路径？</li>
+<li>本章是否提供了可复用的性能评审问题？</li>
+<li>结论是否避免夸大为“解释器等同 JIT”？</li>
+</ol>
+<hr>
+<blockquote>
+<p>章末核查：本章已包含 <code>反例分析</code>、<code>架构评审清单</code>、<code>参考实现清单</code>、<code>术语索引交叉</code>、<code>审稿人问题清单</code>。</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div>
+<blockquote>
+<p>出版版章节 <code>第 5 章</code> | 文档版本 <code>v0.5.0</code> | 评审状态 <code>可审阅</code>
+关联附录：术语见 <code>附录 B</code> 与 <code>附录 D</code></p>
+</blockquote>
+<h1 id="第-5-章-syscall-与宿主边界最小可信计算基"><a class="header" href="#第-5-章-syscall-与宿主边界最小可信计算基">第 5 章 Syscall 与宿主边界：最小可信计算基</a></h1>
+<h2 id="51-核心问题"><a class="header" href="#51-核心问题">5.1 核心问题</a></h2>
+<p>VM 与宿主系统如何交互，才能既可扩展又不牺牲确定性？</p>
+<h2 id="52-图-5-1ecall-分发路径"><a class="header" href="#52-图-5-1ecall-分发路径">5.2 图 5-1：<code>ecall</code> 分发路径</a></h2>
+<pre><code class="language-text">guest ecall
+  -&gt; Machine::ecall
+      if A7 == 93:
+         set exit_code, stop running
+      else:
+         for syscall module in syscalls:
+            if module.ecall() handled: return
+         error InvalidEcall
+</code></pre>
+<h2 id="53-代码证据"><a class="header" href="#53-代码证据">5.3 代码证据</a></h2>
+<ul>
+<li><code>src/machine/mod.rs</code>：<code>Machine::ecall</code> 内核仅处理退出。</li>
+<li><code>src/syscalls/mod.rs</code>：<code>Syscalls</code> trait 规定 <code>initialize</code> + <code>ecall</code>。</li>
+</ul>
+<p>设计重点：内核只保留最小语义闭环，其余全部插件化。</p>
+<h2 id="54-深度分析"><a class="header" href="#54-深度分析">5.4 深度分析</a></h2>
+<p>这种设计像微内核：</p>
+<ul>
+<li>内核职责小：执行状态、陷入、错误语义</li>
+<li>外部模块大：宿主能力、环境访问、I/O 代理</li>
+</ul>
+<p>优点：可信计算基收敛，安全评审范围更可控。缺点：宿主集成要显式实现更多桥接逻辑。</p>
+<h2 id="55-案例调试输出-syscall"><a class="header" href="#55-案例调试输出-syscall">5.5 案例：调试输出 syscall</a></h2>
+<p>示例 <code>examples/ckb_vm_runner.rs</code> 里的 <code>DebugSyscall</code> 读取 VM 内存字符串并输出日志。该能力不是 VM 内建，而是由宿主注入。这样既保留可扩展性，也避免把调试能力污染到共识内核。</p>
+<h2 id="56-术语表本章"><a class="header" href="#56-术语表本章">5.6 术语表（本章）</a></h2>
+<ul>
+<li><code>Ecall</code>：从 guest 到 host 的系统调用陷入。</li>
+<li><code>TCB</code>：Trusted Computing Base，可信计算基。</li>
+<li><code>Module Chaining</code>：syscall 模块串行尝试处理。</li>
+</ul>
+<h2 id="57-一针见血结论"><a class="header" href="#57-一针见血结论">5.7 一针见血结论</a></h2>
+<p>系统调用边界做得越小，协议安全边界就越清晰。</p>
+<h2 id="58-反例分析把宿主能力塞进-vm-内核"><a class="header" href="#58-反例分析把宿主能力塞进-vm-内核">5.8 反例分析：把宿主能力塞进 VM 内核</a></h2>
+<p>反例场景：为了“易用”，把文件系统、网络、时间等能力内建到 VM 核心，结果：</p>
+<ul>
+<li>TCB 快速膨胀，安全审计范围失控。</li>
+<li>共识执行依赖宿主环境细节，跨节点一致性下降。</li>
+</ul>
+<p>教训：宿主能力必须模块化注入，核心只保留最小陷入语义。</p>
+<h2 id="59-架构评审清单出版版"><a class="header" href="#59-架构评审清单出版版">5.9 架构评审清单（出版版）</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"> 内核默认 syscall 集是否最小化。</li>
+<li><input disabled="" type="checkbox"> syscall 编号、参数、返回码是否有稳定 ABI。</li>
+<li><input disabled="" type="checkbox"> 外部 syscall 模块是否可禁用、可替换、可审计。</li>
+<li><input disabled="" type="checkbox"> 是否禁止宿主隐式副作用影响共识结果。</li>
+</ul>
+<h2 id="510-参考实现清单代码锚点"><a class="header" href="#510-参考实现清单代码锚点">5.10 参考实现清单（代码锚点）</a></h2>
+<ul>
+<li><code>src/machine/mod.rs</code>: <code>Machine::ecall</code>, <code>DefaultMachine::initialize</code></li>
+<li><code>src/syscalls/mod.rs</code>: <code>Syscalls</code> trait</li>
+<li><code>examples/ckb_vm_runner.rs</code>: <code>DebugSyscall</code> 参考实现</li>
+</ul>
+<h2 id="511-术语索引交叉参见附录-b-与附录-d"><a class="header" href="#511-术语索引交叉参见附录-b-与附录-d">5.11 术语索引交叉（参见附录 B 与附录 D）</a></h2>
+<ul>
+<li><code>Ecall</code></li>
+<li><code>Syscalls Trait</code></li>
+<li><code>TCB</code></li>
+<li><code>Determinism</code></li>
+</ul>
+<h2 id="512-审稿人问题清单出版评审"><a class="header" href="#512-审稿人问题清单出版评审">5.12 审稿人问题清单（出版评审）</a></h2>
+<ol>
+<li>是否明确内核与宿主能力的责任分界？</li>
+<li><code>ecall</code> 默认最小语义是否解释到位？</li>
+<li>插件式 syscall 的风险与收益是否平衡呈现？</li>
+<li>是否讨论了 TCB 收敛与可扩展性的张力？</li>
+<li>案例是否足够说明“能力注入而非内建堆叠”？</li>
+<li>本章是否形成可执行的边界审计 checklist？</li>
+</ol>
+<hr>
+<blockquote>
+<p>章末核查：本章已包含 <code>反例分析</code>、<code>架构评审清单</code>、<code>参考实现清单</code>、<code>术语索引交叉</code>、<code>审稿人问题清单</code>。</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div>
+<blockquote>
+<p>出版版章节 <code>第 6 章</code> | 文档版本 <code>v0.5.0</code> | 评审状态 <code>可审阅</code>
+关联附录：术语见 <code>附录 B</code> 与 <code>附录 D</code></p>
+</blockquote>
+<h1 id="第-6-章-快照与恢复把执行过程对象化"><a class="header" href="#第-6-章-快照与恢复把执行过程对象化">第 6 章 快照与恢复：把执行过程对象化</a></h1>
+<h2 id="61-核心问题"><a class="header" href="#61-核心问题">6.1 核心问题</a></h2>
+<p>为什么区块链 VM 需要快照能力，而不仅是“跑完一次即结束”？</p>
+<h2 id="62-图-6-1快照数据分层"><a class="header" href="#62-图-6-1快照数据分层">6.2 图 6-1：快照数据分层</a></h2>
+<pre><code class="language-text">VM state
+  = registers + pc + cycles + lr
+  + memory pages
+
+snapshot v1:
+  dirty pages only
+
+snapshot v2:
+  dirty pages + pages_from_source(id,offset,length)
+</code></pre>
+<h2 id="63-代码证据"><a class="header" href="#63-代码证据">6.3 代码证据</a></h2>
+<ul>
+<li><code>src/snapshot.rs</code>：基础版脏页快照。</li>
+<li><code>src/snapshot2.rs</code>：引入 <code>DataSource</code>，支持页面引用与去重。</li>
+</ul>
+<p><code>Snapshot2Context::make_snapshot</code> 会把内存页拆成两类：</p>
+<ol>
+<li>已知稳定来源页（不重复存内容）</li>
+<li>真正写脏页（存增量内容）</li>
+</ol>
+<h2 id="64-深度分析"><a class="header" href="#64-深度分析">6.4 深度分析</a></h2>
+<p>这背后的思想是“增量状态传输”：</p>
+<ul>
+<li>稳定数据不重复序列化</li>
+<li>可变数据精准记录</li>
+</ul>
+<p>收益直接体现在：</p>
+<ul>
+<li>更小快照体积</li>
+<li>更低网络/存储开销</li>
+<li>更快恢复速度</li>
+</ul>
+<h2 id="65-案例长任务分段执行"><a class="header" href="#65-案例长任务分段执行">6.5 案例：长任务分段执行</a></h2>
+<p>当单笔预算不足以完成复杂合约执行时，可以：</p>
+<ol>
+<li>运行至预算耗尽</li>
+<li>生成快照</li>
+<li>提高预算恢复执行</li>
+</ol>
+<p>只要快照语义确定，分段与一次性执行应得到同样状态结果。这是链上“长任务可支付化”的关键能力。</p>
+<h2 id="66-术语表本章"><a class="header" href="#66-术语表本章">6.6 术语表（本章）</a></h2>
+<ul>
+<li><code>Dirty Page</code>：执行期间被写入的页。</li>
+<li><code>DataSource</code>：外部稳定数据源抽象。</li>
+<li><code>Resume</code>：从快照恢复执行状态。</li>
+</ul>
+<h2 id="67-一针见血结论"><a class="header" href="#67-一针见血结论">6.7 一针见血结论</a></h2>
+<p>快照不是调试功能，而是区块链执行经济学的基础设施。</p>
+<h2 id="68-反例分析全量快照与无版本恢复"><a class="header" href="#68-反例分析全量快照与无版本恢复">6.8 反例分析：全量快照与无版本恢复</a></h2>
+<p>反例场景：每次保存全内存快照且恢复时不校验版本，短期简单，长期问题明显：</p>
+<ul>
+<li>快照体积大，网络与存储成本不可控。</li>
+<li>升级后恢复语义可能偏移，埋下一致性风险。</li>
+</ul>
+<p>教训：快照要分层（来源页/脏页），恢复要强版本校验。</p>
+<h2 id="69-架构评审清单出版版"><a class="header" href="#69-架构评审清单出版版">6.9 架构评审清单（出版版）</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"> 恢复时是否强制校验 VM 版本与关键参数。</li>
+<li><input disabled="" type="checkbox"> 是否只保存必要增量状态而非全量内存。</li>
+<li><input disabled="" type="checkbox"> 脏页标记与 source 页追踪是否可证明正确。</li>
+<li><input disabled="" type="checkbox"> 分段执行与一次性执行是否可对拍验证。</li>
+</ul>
+<h2 id="610-参考实现清单代码锚点"><a class="header" href="#610-参考实现清单代码锚点">6.10 参考实现清单（代码锚点）</a></h2>
+<ul>
+<li><code>src/snapshot.rs</code>: <code>make_snapshot</code>, <code>resume</code></li>
+<li><code>src/snapshot2.rs</code>: <code>Snapshot2Context</code>, <code>DataSource</code>, <code>make_snapshot</code>, <code>resume</code></li>
+<li><code>src/memory/mod.rs</code>: <code>FLAG_DIRTY</code>, <code>get_page_indices</code></li>
+</ul>
+<h2 id="611-术语索引交叉参见附录-b-与附录-d"><a class="header" href="#611-术语索引交叉参见附录-b-与附录-d">6.11 术语索引交叉（参见附录 B 与附录 D）</a></h2>
+<ul>
+<li><code>Snapshot</code></li>
+<li><code>Dirty Page</code></li>
+<li><code>DataSource</code></li>
+<li><code>ProgramMetadata</code></li>
+</ul>
+<h2 id="612-审稿人问题清单出版评审"><a class="header" href="#612-审稿人问题清单出版评审">6.12 审稿人问题清单（出版评审）</a></h2>
+<ol>
+<li>快照被定位为“执行经济工具”而非调试工具，论证是否充分？</li>
+<li>是否清晰比较 snapshot v1 与 snapshot2 的适用差异？</li>
+<li>是否解释了 <code>DataSource</code> 对体积和恢复成本的影响？</li>
+<li>恢复路径是否强调了版本校验与一致性验证？</li>
+<li>是否给出分段执行与一次性执行对拍建议？</li>
+<li>章节清单是否可直接用于上线前检查？</li>
+</ol>
+<hr>
+<blockquote>
+<p>章末核查：本章已包含 <code>反例分析</code>、<code>架构评审清单</code>、<code>参考实现清单</code>、<code>术语索引交叉</code>、<code>审稿人问题清单</code>。</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div>
+<blockquote>
+<p>出版版章节 <code>第 7 章</code> | 文档版本 <code>v0.5.0</code> | 评审状态 <code>可审阅</code>
+关联附录：术语见 <code>附录 B</code> 与 <code>附录 D</code></p>
+</blockquote>
+<h1 id="第-7-章-rust-类型系统把-isa-语义固定在编译期"><a class="header" href="#第-7-章-rust-类型系统把-isa-语义固定在编译期">第 7 章 Rust 类型系统：把 ISA 语义固定在编译期</a></h1>
+<h2 id="71-核心问题"><a class="header" href="#71-核心问题">7.1 核心问题</a></h2>
+<p>为什么 Rust 在这里是“语义工具”，不是“语法偏好”？</p>
+<h2 id="72-图-7-1语义约束下沉到-trait"><a class="header" href="#72-图-7-1语义约束下沉到-trait">7.2 图 7-1：语义约束下沉到 trait</a></h2>
+<pre><code class="language-text">Instruction handlers
+   -&gt; Register trait methods
+      -&gt; u32 / u64 concrete semantics
+
+(no hidden cast / no UB shortcut)
+</code></pre>
+<h2 id="73-代码证据"><a class="header" href="#73-代码证据">7.3 代码证据</a></h2>
+<p><code>src/instructions/register.rs</code> 的 <code>Register</code> trait 明确要求实现：</p>
+<ul>
+<li>溢出加减乘除与余数</li>
+<li>signed/unsigned 比较</li>
+<li>扩展位操作（B 扩展相关）</li>
+<li><code>sign_extend</code> / <code>zero_extend</code></li>
+</ul>
+<p><code>src/instructions/utils.rs</code> 的 <code>update_register</code> 统一处理 x0 不可写不变量。</p>
+<h2 id="74-深度分析"><a class="header" href="#74-深度分析">7.4 深度分析</a></h2>
+<p>在共识系统里，最危险的错误不是崩溃，而是“不同节点得到不同结果”。Rust 的价值在于把大量语义边界变为编译期接口契约，并通过 <code>Result&lt;_, Error&gt;</code> 把失败路径显式化。</p>
+<p>这并不自动等于“无 bug”，但显著降低了“隐式未定义行为”进入共识层的概率。</p>
+<h2 id="75-案例除零与有符号溢出"><a class="header" href="#75-案例除零与有符号溢出">7.5 案例：除零与有符号溢出</a></h2>
+<p>RISC-V 对除零、最小负数除以 -1 有严格规定。<code>Register</code> 的 <code>overflowing_div_*</code> 系列将这些规则固化，不依赖平台 CPU 的默认行为，从源头减少跨平台偏差。</p>
+<h2 id="76-术语表本章"><a class="header" href="#76-术语表本章">7.6 术语表（本章）</a></h2>
+<ul>
+<li><code>Semantic Contract</code>：语义契约。</li>
+<li><code>UB</code>：Undefined Behavior，未定义行为。</li>
+<li><code>Zero Register</code>：RISC-V x0，恒为 0。</li>
+</ul>
+<h2 id="77-一针见血结论"><a class="header" href="#77-一针见血结论">7.7 一针见血结论</a></h2>
+<p>Rust 在共识 VM 的核心收益是“把语义边界前移到类型系统”。</p>
+<h2 id="78-反例分析依赖宿主整数默认行为"><a class="header" href="#78-反例分析依赖宿主整数默认行为">7.8 反例分析：依赖宿主整数默认行为</a></h2>
+<p>反例场景：在指令实现中直接使用宿主语言隐式转换与未约束溢出行为：</p>
+<ul>
+<li>边界输入在不同编译器/平台可能产生差异。</li>
+<li>语义分散在代码细节里，难以系统验证。</li>
+</ul>
+<p>教训：ISA 边界语义必须集中到统一抽象层（如 <code>Register</code> trait）。</p>
+<h2 id="79-架构评审清单出版版"><a class="header" href="#79-架构评审清单出版版">7.9 架构评审清单（出版版）</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"> 除零、溢出、符号扩展是否由统一接口定义。</li>
+<li><input disabled="" type="checkbox"> x0 等架构不变量是否有单点实现。</li>
+<li><input disabled="" type="checkbox"> 错误是否通过结构化类型而非字符串传播。</li>
+<li><input disabled="" type="checkbox"> 32/64 位路径是否共享同一语义模型。</li>
+</ul>
+<h2 id="710-参考实现清单代码锚点"><a class="header" href="#710-参考实现清单代码锚点">7.10 参考实现清单（代码锚点）</a></h2>
+<ul>
+<li><code>src/instructions/register.rs</code>: <code>Register</code> trait 与 <code>u32/u64</code> 语义实现</li>
+<li><code>src/instructions/utils.rs</code>: <code>update_register</code>（x0 不变量）</li>
+<li><code>src/error.rs</code>: 结构化错误模型</li>
+</ul>
+<h2 id="711-术语索引交叉参见附录-b-与附录-d"><a class="header" href="#711-术语索引交叉参见附录-b-与附录-d">7.11 术语索引交叉（参见附录 B 与附录 D）</a></h2>
+<ul>
+<li><code>Determinism</code></li>
+<li><code>Semantic Drift</code></li>
+<li><code>Zero Register</code></li>
+<li><code>Consensus Safety</code></li>
+</ul>
+<h2 id="712-审稿人问题清单出版评审"><a class="header" href="#712-审稿人问题清单出版评审">7.12 审稿人问题清单（出版评审）</a></h2>
+<ol>
+<li><code>Register</code> trait 是否被阐明为语义契约而非抽象技巧？</li>
+<li>除零/溢出/符号扩展的边界语义是否可代码验证？</li>
+<li>是否避免把 Rust 优势泛化为“天然无 bug”？</li>
+<li>x0 不变量的单点实现是否解释清楚？</li>
+<li>错误模型显式化是否与共识安全建立联系？</li>
+<li>本章结论是否支持跨平台一致性评审？</li>
+</ol>
+<hr>
+<blockquote>
+<p>章末核查：本章已包含 <code>反例分析</code>、<code>架构评审清单</code>、<code>参考实现清单</code>、<code>术语索引交叉</code>、<code>审稿人问题清单</code>。</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div>
+<blockquote>
+<p>出版版章节 <code>第 8 章</code> | 文档版本 <code>v0.5.0</code> | 评审状态 <code>可审阅</code>
+关联附录：术语见 <code>附录 B</code> 与 <code>附录 D</code></p>
+</blockquote>
+<h1 id="第-8-章-rust--asm-混合执行性能路径与语义锚点"><a class="header" href="#第-8-章-rust--asm-混合执行性能路径与语义锚点">第 8 章 Rust + ASM 混合执行：性能路径与语义锚点</a></h1>
+<h2 id="81-核心问题"><a class="header" href="#81-核心问题">8.1 核心问题</a></h2>
+<p>为什么不选“纯 Rust”或“纯汇编”，而是混合架构？</p>
+<h2 id="82-图-8-1混合执行控制流"><a class="header" href="#82-图-8-1混合执行控制流">8.2 图 8-1：混合执行控制流</a></h2>
+<pre><code class="language-text">ASM execute loop
+  -&gt; return RET_* status
+     - RET_DECODE_TRACE
+     - RET_ECALL
+     - RET_SLOWPATH
+     - ...
+  -&gt; Rust side handles status
+     -&gt; maybe fallback execute_instruction
+</code></pre>
+<h2 id="83-代码证据"><a class="header" href="#83-代码证据">8.3 代码证据</a></h2>
+<ul>
+<li><code>build.rs</code>：按目标平台条件启用汇编后端。</li>
+<li><code>src/machine/asm/mod.rs</code>：汇编返回状态码，Rust 统一处理。</li>
+<li><code>src/machine/asm/traces.rs</code>：固定 trace 与动态 trace 支持。</li>
+</ul>
+<h2 id="84-深度分析"><a class="header" href="#84-深度分析">8.4 深度分析</a></h2>
+<p>这种架构的分工是：</p>
+<ul>
+<li>Rust：语义中心、错误模型、边界控制</li>
+<li>ASM：热点执行器、低层性能实现</li>
+</ul>
+<p>这是一种“以语义安全为中心的性能外包”模型。不是追求极致裸金属速度，而是追求“可控加速”。</p>
+<h2 id="85-案例ret_slowpath-的设计意义"><a class="header" href="#85-案例ret_slowpath-的设计意义">8.5 案例：<code>RET_SLOWPATH</code> 的设计意义</a></h2>
+<p>当汇编路径遇到慢路径指令，系统回退到 Rust <code>execute_instruction</code>。这保证了即使汇编快路径未覆盖所有情况，语义依旧闭环。工程上它降低了“汇编全覆盖”压力，也避免了性能优化绑架语义完整性。</p>
+<h2 id="86-术语表本章"><a class="header" href="#86-术语表本章">8.6 术语表（本章）</a></h2>
+<ul>
+<li><code>Fast Path</code>：高频快路径。</li>
+<li><code>Slow Path</code>：低频或复杂路径。</li>
+<li><code>Semantic Anchor</code>：语义锚点，指最终正确性归属层。</li>
+</ul>
+<h2 id="87-一针见血结论"><a class="header" href="#87-一针见血结论">8.7 一针见血结论</a></h2>
+<p>混合架构的正确姿势不是“让汇编统治一切”，而是“让汇编服务于 Rust 语义边界”。</p>
+<h2 id="88-反例分析纯汇编快跑语义文档缺失"><a class="header" href="#88-反例分析纯汇编快跑语义文档缺失">8.8 反例分析：纯汇编快跑、语义文档缺失</a></h2>
+<p>反例场景：性能后端快速迭代，但缺少与语义后端的对齐机制：</p>
+<ul>
+<li>新 opcode 在某后端生效、另一个后端未同步。</li>
+<li>边界错误只能在线上暴露，回溯成本高。</li>
+</ul>
+<p>教训：快路径必须服从语义锚点，并配置长期差分测试。</p>
+<h2 id="89-架构评审清单出版版"><a class="header" href="#89-架构评审清单出版版">8.9 架构评审清单（出版版）</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"> 汇编返回码与错误语义是否完整映射。</li>
+<li><input disabled="" type="checkbox"> <code>RET_SLOWPATH</code> 回退链是否稳定可测。</li>
+<li><input disabled="" type="checkbox"> Rust/ASM 是否有常态化差分回归。</li>
+<li><input disabled="" type="checkbox"> 构建系统是否明确支持矩阵与回退策略。</li>
+</ul>
+<h2 id="810-参考实现清单代码锚点"><a class="header" href="#810-参考实现清单代码锚点">8.10 参考实现清单（代码锚点）</a></h2>
+<ul>
+<li><code>build.rs</code>: 汇编后端启用矩阵</li>
+<li><code>src/machine/asm/mod.rs</code>: <code>RET_*</code> 状态码处理、<code>RET_SLOWPATH</code> 回退</li>
+<li><code>src/machine/asm/traces.rs</code>: <code>TraceDecoder</code> 与 fixed/dynamic trace</li>
+</ul>
+<h2 id="811-术语索引交叉参见附录-b-与附录-d"><a class="header" href="#811-术语索引交叉参见附录-b-与附录-d">8.11 术语索引交叉（参见附录 B 与附录 D）</a></h2>
+<ul>
+<li><code>Fast Path</code></li>
+<li><code>Slow Path</code></li>
+<li><code>Differential Testing</code></li>
+<li><code>Semantic Drift</code></li>
+</ul>
+<h2 id="812-审稿人问题清单出版评审"><a class="header" href="#812-审稿人问题清单出版评审">8.12 审稿人问题清单（出版评审）</a></h2>
+<ol>
+<li>是否明确 Rust 与 ASM 的职责边界与主从关系？</li>
+<li>是否解释 <code>RET_SLOWPATH</code> 对语义闭环的价值？</li>
+<li>双后端一致性成本是否被充分揭示？</li>
+<li>构建矩阵与平台限制是否说明完整？</li>
+<li>是否给出差分测试作为长期治理机制？</li>
+<li>结论是否避免“性能优先于语义”的误导？</li>
+</ol>
+<hr>
+<blockquote>
+<p>章末核查：本章已包含 <code>反例分析</code>、<code>架构评审清单</code>、<code>参考实现清单</code>、<code>术语索引交叉</code>、<code>审稿人问题清单</code>。</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div>
+<blockquote>
+<p>出版版章节 <code>第 9 章</code> | 文档版本 <code>v0.5.0</code> | 评审状态 <code>可审阅</code>
+关联附录：术语见 <code>附录 B</code> 与 <code>附录 D</code></p>
+</blockquote>
+<h1 id="第-9-章-为什么是-risc-v开放-isa-的长期治理价值"><a class="header" href="#第-9-章-为什么是-risc-v开放-isa-的长期治理价值">第 9 章 为什么是 RISC-V：开放 ISA 的长期治理价值</a></h1>
+<h2 id="91-核心问题"><a class="header" href="#91-核心问题">9.1 核心问题</a></h2>
+<p>ISA 选择对区块链协议意味着什么？</p>
+<h2 id="92-图-9-1isa-选择影响链路"><a class="header" href="#92-图-9-1isa-选择影响链路">9.2 图 9-1：ISA 选择影响链路</a></h2>
+<pre><code class="language-text">ISA selection
+  -&gt; compiler/toolchain
+  -&gt; contract ecosystem
+  -&gt; verifier/auditor cost
+  -&gt; protocol upgrade flexibility
+</code></pre>
+<h2 id="93-代码证据"><a class="header" href="#93-代码证据">9.3 代码证据</a></h2>
+<p><code>ckb-vm</code> 体现了 RISC-V 的三类工程收益：</p>
+<ul>
+<li>规整编码：<code>src/decoder.rs</code> 能高效区分 RVC 与 32 位指令。</li>
+<li>扩展可组合：IMC/B/A/MOP 通过 <code>isa</code> 位图控制。</li>
+<li>32/64 统一框架：同一执行器通过 <code>Register</code> trait 兼容。</li>
+</ul>
+<h2 id="94-深度分析"><a class="header" href="#94-深度分析">9.4 深度分析</a></h2>
+<p>在十年级协议生命周期里，ISA 不只是技术决策，也是治理决策：</p>
+<ul>
+<li>封闭 ISA 会引入长期法律和生态不确定性。</li>
+<li>规整 ISA 更容易形成多实现与交叉验证。</li>
+<li>开放 ISA 更利于教育、审计和工具链扩展。</li>
+</ul>
+<p>RISC-V 的价值更多是“降低长期维护摩擦”，而不是单次 benchmark 的优势。</p>
+<h2 id="95-案例跨团队实现一致性"><a class="header" href="#95-案例跨团队实现一致性">9.5 案例：跨团队实现一致性</a></h2>
+<p>当不同团队实现同一 VM 后端时，最难的是边界语义对齐。RISC-V 的公开规范与清晰编码有助于建立一致测试基线，降低“实现各自正确、系统整体分叉”的风险。</p>
+<h2 id="96-术语表本章"><a class="header" href="#96-术语表本章">9.6 术语表（本章）</a></h2>
+<ul>
+<li><code>Open ISA</code>：开放指令集架构。</li>
+<li><code>Multi-implementation</code>：同协议多实现并存。</li>
+<li><code>Governance Cost</code>：长期治理成本。</li>
+</ul>
+<h2 id="97-一针见血结论"><a class="header" href="#97-一针见血结论">9.7 一针见血结论</a></h2>
+<p>RISC-V 在共识 VM 中的核心优势，是长期可治理性，而非短期跑分胜负。</p>
+<h2 id="98-反例分析把-isa-当作短期性能开关"><a class="header" href="#98-反例分析把-isa-当作短期性能开关">9.8 反例分析：把 ISA 当作短期性能开关</a></h2>
+<p>反例场景：仅以短期 benchmark 选 ISA，忽略规范开放性与工具链治理：</p>
+<ul>
+<li>长期升级受制于外部授权或生态锁定。</li>
+<li>多实现一致性验证成本居高不下。</li>
+</ul>
+<p>教训：共识系统的 ISA 选择首先是治理问题，其次才是性能问题。</p>
+<h2 id="99-架构评审清单出版版"><a class="header" href="#99-架构评审清单出版版">9.9 架构评审清单（出版版）</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"> 是否存在公开、稳定、可引用的 ISA 规范。</li>
+<li><input disabled="" type="checkbox"> 编译器/链接器/调试链路是否可重复构建。</li>
+<li><input disabled="" type="checkbox"> 是否支持多实现对拍与生态扩展。</li>
+<li><input disabled="" type="checkbox"> 协议升级是否有 ISA 层兼容策略。</li>
+</ul>
+<h2 id="910-参考实现清单代码锚点"><a class="header" href="#910-参考实现清单代码锚点">9.10 参考实现清单（代码锚点）</a></h2>
+<ul>
+<li><code>src/lib.rs</code>: ISA 组合默认启用位（IMC/B/A/MOP）</li>
+<li><code>src/decoder.rs</code>: RVC + 32 位解码路径</li>
+<li><code>README.md</code>: 目标 ISA 与使用模式说明</li>
+</ul>
+<h2 id="911-术语索引交叉参见附录-b-与附录-d"><a class="header" href="#911-术语索引交叉参见附录-b-与附录-d">9.11 术语索引交叉（参见附录 B 与附录 D）</a></h2>
+<ul>
+<li><code>Open ISA</code></li>
+<li><code>Governance Cost</code></li>
+<li><code>RVC</code></li>
+<li><code>Execution Governance</code></li>
+</ul>
+<h2 id="912-审稿人问题清单出版评审"><a class="header" href="#912-审稿人问题清单出版评审">9.12 审稿人问题清单（出版评审）</a></h2>
+<ol>
+<li>是否将 ISA 选择上升到治理成本层面？</li>
+<li>是否阐明开放规范对多实现对拍的意义？</li>
+<li>RISC-V 的优势是否避免流于口号（仅“开放”）？</li>
+<li>章节是否连接到工具链与升级策略现实？</li>
+<li>是否提出了可落地的 ISA 评估标准？</li>
+<li>本章是否为附录 C 做了清晰铺垫？</li>
+</ol>
+<hr>
+<blockquote>
+<p>章末核查：本章已包含 <code>反例分析</code>、<code>架构评审清单</code>、<code>参考实现清单</code>、<code>术语索引交叉</code>、<code>审稿人问题清单</code>。</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div>
+<blockquote>
+<p>出版版章节 <code>第 10 章</code> | 文档版本 <code>v0.5.0</code> | 评审状态 <code>可审阅</code>
+关联附录：术语见 <code>附录 B</code> 与 <code>附录 D</code></p>
+</blockquote>
+<h1 id="第-10-章-密码学负载与指令扩展从-bma-到-mop"><a class="header" href="#第-10-章-密码学负载与指令扩展从-bma-到-mop">第 10 章 密码学负载与指令扩展：从 B/M/A 到 MOP</a></h1>
+<h2 id="101-核心问题"><a class="header" href="#101-核心问题">10.1 核心问题</a></h2>
+<p>为什么密码学合约需要的不只是“能跑”，而是“跑得可定价”？</p>
+<h2 id="102-图-10-1密码学操作到扩展映射"><a class="header" href="#102-图-10-1密码学操作到扩展映射">10.2 图 10-1：密码学操作到扩展映射</a></h2>
+<pre><code class="language-text">Big-int mul/div chain -&gt; M + MOP (WIDE_MUL/WIDE_DIV)
+Bit permutation       -&gt; B (REV8/ORCB)
+Carry-less arithmetic -&gt; B (CLMUL/CLMULH/CLMULR)
+Atomic handshakes     -&gt; A (LR/SC/AMO)
+</code></pre>
+<h2 id="103-代码证据"><a class="header" href="#103-代码证据">10.3 代码证据</a></h2>
+<ul>
+<li><code>src/instructions/b.rs</code>：位操作与无进位乘法相关指令解码。</li>
+<li><code>src/instructions/execute.rs</code>：<code>handle_wide_mul</code>, <code>handle_wide_div</code>, <code>handle_add3*</code>。</li>
+<li><code>src/decoder.rs</code>：<code>decode_mop</code> 识别并融合高频序列。</li>
+<li><code>src/cost_model.rs</code>：不同指令映射不同 cycle 开销。</li>
+</ul>
+<h2 id="104-深度分析"><a class="header" href="#104-深度分析">10.4 深度分析</a></h2>
+<p>密码学负载常见瓶颈并不在“单条指令速度”，而在“长链操作的调度开销和计费公平性”。MOP 的意义在于：</p>
+<ul>
+<li>不改变最终语义</li>
+<li>缩短解释层调度链</li>
+<li>让计费模型更贴近真实复杂度</li>
+</ul>
+<h2 id="105-案例大整数乘加进位链"><a class="header" href="#105-案例大整数乘加进位链">10.5 案例：大整数乘加进位链</a></h2>
+<p>大整数库中，<code>mul + add + carry</code> 模式极高频。若全部走单指令解释分发，会产生大量 dispatch 成本。MOP 将固定模式压缩后，能够在不破坏确定性的前提下降低单位计算成本。</p>
+<h2 id="106-术语表本章"><a class="header" href="#106-术语表本章">10.6 术语表（本章）</a></h2>
+<ul>
+<li><code>Carry-less Multiply</code>：无进位乘法，常用于 GF(2) 运算。</li>
+<li><code>Macro-Op Fusion</code>：宏操作融合。</li>
+<li><code>Gas Fairness</code>：计费公平性。</li>
+</ul>
+<h2 id="107-一针见血结论"><a class="header" href="#107-一针见血结论">10.7 一针见血结论</a></h2>
+<p>密码学友好 VM 的核心，不是指令“多”，而是把高频模式压缩成可预测成本。</p>
+<h2 id="108-反例分析只做微基准不做真实负载画像"><a class="header" href="#108-反例分析只做微基准不做真实负载画像">10.8 反例分析：只做微基准，不做真实负载画像</a></h2>
+<p>反例场景：通过单指令 microbenchmark 宣称优化成功，但上线后费用模型失真：</p>
+<ul>
+<li>热点负载并非该指令，实际收益有限。</li>
+<li>cycles 估值偏差导致 DoS 面或过度收费。</li>
+</ul>
+<p>教训：密码学优化必须基于真实合约路径与端到端计费验证。</p>
+<h2 id="109-架构评审清单出版版"><a class="header" href="#109-架构评审清单出版版">10.9 架构评审清单（出版版）</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"> 是否有 secp/hash/Merkle 等代表性 workload 的 profiling。</li>
+<li><input disabled="" type="checkbox"> MOP 融合是否附带等价证明与回归测试。</li>
+<li><input disabled="" type="checkbox"> cycles 参数是否按版本持续校准。</li>
+<li><input disabled="" type="checkbox"> 是否明确区分确定性保证与恒时安全保证。</li>
+</ul>
+<h2 id="1010-参考实现清单代码锚点"><a class="header" href="#1010-参考实现清单代码锚点">10.10 参考实现清单（代码锚点）</a></h2>
+<ul>
+<li><code>src/instructions/b.rs</code>: B 扩展解码</li>
+<li><code>src/instructions/execute.rs</code>: <code>handle_wide_mul</code>, <code>handle_wide_div</code>, <code>handle_add3*</code></li>
+<li><code>src/decoder.rs</code>: <code>decode_mop</code></li>
+<li><code>src/cost_model.rs</code>: <code>estimate_cycles</code></li>
+</ul>
+<h2 id="1011-术语索引交叉参见附录-b-与附录-d"><a class="header" href="#1011-术语索引交叉参见附录-b-与附录-d">10.11 术语索引交叉（参见附录 B 与附录 D）</a></h2>
+<ul>
+<li><code>B Extension</code></li>
+<li><code>M Extension</code></li>
+<li><code>MOP</code></li>
+<li><code>Gas Fairness</code></li>
+</ul>
+<h2 id="1012-审稿人问题清单出版评审"><a class="header" href="#1012-审稿人问题清单出版评审">10.12 审稿人问题清单（出版评审）</a></h2>
+<ol>
+<li>密码学负载画像是否覆盖 secp/hash/Merkle 三类典型路径？</li>
+<li>MOP 与扩展指令收益是否基于真实 workload 而非微基准？</li>
+<li>计费公平性是否与安全风险绑定讨论？</li>
+<li>是否区分了确定性与恒时安全的边界？</li>
+<li>代码锚点是否足以复核核心论点？</li>
+<li>本章是否能指导性能优化 PR 的审查？</li>
+</ol>
+<hr>
+<blockquote>
+<p>章末核查：本章已包含 <code>反例分析</code>、<code>架构评审清单</code>、<code>参考实现清单</code>、<code>术语索引交叉</code>、<code>审稿人问题清单</code>。</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div>
+<blockquote>
+<p>出版版章节 <code>第 11 章</code> | 文档版本 <code>v0.5.0</code> | 评审状态 <code>可审阅</code>
+关联附录：术语见 <code>附录 B</code> 与 <code>附录 D</code></p>
+</blockquote>
+<h1 id="第-11-章-架构总评优势代价与下一步"><a class="header" href="#第-11-章-架构总评优势代价与下一步">第 11 章 架构总评：优势、代价与下一步</a></h1>
+<h2 id="111-核心问题"><a class="header" href="#111-核心问题">11.1 核心问题</a></h2>
+<p>这套架构真正赢在哪里？真实代价又是什么？</p>
+<h2 id="112-图-11-1收益与成本矩阵"><a class="header" href="#112-图-11-1收益与成本矩阵">11.2 图 11-1：收益与成本矩阵</a></h2>
+<pre><code class="language-text">收益侧:                       成本侧:
+- 可验证执行                 - 双后端一致性维护
+- 清晰权限边界               - cycles 模型校准压力
+- 可恢复执行                 - syscall 生态集成复杂
+- 渐进式性能优化             - 密码学侧信道防护额外投入
+</code></pre>
+<h2 id="113-优势判断"><a class="header" href="#113-优势判断">11.3 优势判断</a></h2>
+<ol>
+<li>执行边界清晰：装载、执行、syscall、快照职责分离。</li>
+<li>协议兼容策略明确：<code>VERSION0/1/2</code> 保留历史语义。</li>
+<li>优化路径可审计：trace/MOP/ASM 都可被代码定位和验证。</li>
+<li>权限模型扎实：W^X 与冻结页机制降低注入面。</li>
+</ol>
+<h2 id="114-风险判断"><a class="header" href="#114-风险判断">11.4 风险判断</a></h2>
+<ol>
+<li>双执行后端一旦测试覆盖不足，存在分歧风险。</li>
+<li><code>estimate_cycles</code> 需要持续与真实负载校准，否则会出现计费失真。</li>
+<li>宿主扩展能力越多，边界管理复杂度越高。</li>
+<li>当前确定性模型不自动提供恒时安全，需要密码学专项治理。</li>
+</ol>
+<h2 id="115-案例最容易被误判的优化方向"><a class="header" href="#115-案例最容易被误判的优化方向">11.5 案例：最容易被误判的优化方向</a></h2>
+<p>常见误判是“先追求更激进 JIT，再补安全验证”。在共识场景里应反过来：</p>
+<ul>
+<li>先证明边界可控</li>
+<li>再增量引入优化</li>
+</ul>
+<p>否则短期提速可能换来长期分叉风险。</p>
+<h2 id="116-术语表本章"><a class="header" href="#116-术语表本章">11.6 术语表（本章）</a></h2>
+<ul>
+<li><code>Differential Testing</code>：差分测试，比较多后端结果一致性。</li>
+<li><code>Semantic Drift</code>：语义漂移，指实现与规范逐渐偏离。</li>
+<li><code>Execution Governance</code>：执行层治理，指升级与兼容策略体系。</li>
+</ul>
+<h2 id="117-一针见血结论"><a class="header" href="#117-一针见血结论">11.7 一针见血结论</a></h2>
+<p><code>ckb-vm</code> 的护城河不是“某项黑科技优化”，而是把共识执行做成了可治理的系统工程。</p>
+<h2 id="118-反例分析没有升级护栏的快速演进"><a class="header" href="#118-反例分析没有升级护栏的快速演进">11.8 反例分析：没有升级护栏的“快速演进”</a></h2>
+<p>反例场景：频繁升级执行层却缺少版本兼容和发布门禁：</p>
+<ul>
+<li>历史交易重放结果漂移，破坏链上可验证性。</li>
+<li>运维侧难以判断升级影响半径。</li>
+</ul>
+<p>教训：执行层升级必须以可回滚、可验证、可量化影响为前提。</p>
+<h2 id="119-架构评审清单出版版"><a class="header" href="#119-架构评审清单出版版">11.9 架构评审清单（出版版）</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"> 是否有版本分层与历史语义保留策略。</li>
+<li><input disabled="" type="checkbox"> 发布前是否进行跨后端、跨平台差分验证。</li>
+<li><input disabled="" type="checkbox"> 是否有 cycles 模型与经济参数的联动评审。</li>
+<li><input disabled="" type="checkbox"> 是否具备回滚预案与兼容性公告模板。</li>
+</ul>
+<h2 id="1110-参考实现清单代码锚点"><a class="header" href="#1110-参考实现清单代码锚点">11.10 参考实现清单（代码锚点）</a></h2>
+<ul>
+<li><code>src/machine/mod.rs</code>: <code>VERSION0/1/2</code>, <code>run_with_decoder</code></li>
+<li><code>src/machine/asm/mod.rs</code>: 汇编后端返回码与慢路径回退</li>
+<li><code>src/memory/wxorx.rs</code>: W^X 权限模型</li>
+<li><code>src/cost_model.rs</code>: 计费模型参数化</li>
+</ul>
+<h2 id="1111-术语索引交叉参见附录-b-与附录-d"><a class="header" href="#1111-术语索引交叉参见附录-b-与附录-d">11.11 术语索引交叉（参见附录 B 与附录 D）</a></h2>
+<ul>
+<li><code>Differential Testing</code></li>
+<li><code>Semantic Drift</code></li>
+<li><code>Execution Governance</code></li>
+<li><code>Cycle Budget</code></li>
+</ul>
+<h2 id="1112-审稿人问题清单出版评审"><a class="header" href="#1112-审稿人问题清单出版评审">11.12 审稿人问题清单（出版评审）</a></h2>
+<ol>
+<li>优势与代价是否对称呈现，避免单边叙事？</li>
+<li>是否将“版本兼容”作为首要治理约束？</li>
+<li>是否提供了可执行的发布门禁逻辑？</li>
+<li>是否强调了差分测试与回滚预案的必要性？</li>
+<li>章节结论是否能直接转化为架构决策标准？</li>
+<li>本章是否与附录 E 的出版规范形成闭环？</li>
+</ol>
+<hr>
+<blockquote>
+<p>章末核查：本章已包含 <code>反例分析</code>、<code>架构评审清单</code>、<code>参考实现清单</code>、<code>术语索引交叉</code>、<code>审稿人问题清单</code>。</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="附录-a-密码学专题工作负载指令映射与审计框架"><a class="header" href="#附录-a-密码学专题工作负载指令映射与审计框架">附录 A 密码学专题：工作负载、指令映射与审计框架</a></h1>
+<h2 id="a1-目标与范围"><a class="header" href="#a1-目标与范围">A.1 目标与范围</a></h2>
+<p>本附录回答三个实战问题：</p>
+<ol>
+<li>链上密码学负载在 VM 中到底花在哪些指令类型上？</li>
+<li><code>ckb-vm</code> 的 B/M/A/MOP 设计分别解决了什么真实瓶颈？</li>
+<li>如何把“优化”转化为“可验证、可计费、可审计”的发布资产？</li>
+</ol>
+<p>本文聚焦三类工作负载：</p>
+<ul>
+<li>secp256k1（大整数和椭圆曲线主导）</li>
+<li>哈希族（SHA-256/BLAKE2b）</li>
+<li>Merkle 验证与序列化路径</li>
+</ul>
+<h2 id="a2-图-a-1密码学执行分层"><a class="header" href="#a2-图-a-1密码学执行分层">A.2 图 A-1：密码学执行分层</a></h2>
+<pre><code class="language-text">算法层:   ECDSA/Schnorr, SHA-2, BLAKE2b, Merkle proof
+算子层:   mul/div/addcarry, bit-mix, permutation, memory moves
+指令层:   IMC + B + M + A + MOP
+执行层:   decode cache + trace + asm fastpath
+计费层:   cycles model + max_cycles guard
+</code></pre>
+<p>核心判断：密码学优化不是单指令竞速，而是跨层协同。</p>
+<h2 id="a3-secp256k1-负载画像"><a class="header" href="#a3-secp256k1-负载画像">A.3 secp256k1 负载画像</a></h2>
+<h3 id="a31-高占比算子"><a class="header" href="#a31-高占比算子">A.3.1 高占比算子</a></h3>
+<ul>
+<li>256 位乘法扩展（结果 512 位）</li>
+<li>模约简（乘加、减法、条件选择）</li>
+<li>点加/点倍的有限域链式运算</li>
+</ul>
+<h3 id="a32-ckb-vm-指令映射"><a class="header" href="#a32-ckb-vm-指令映射">A.3.2 <code>ckb-vm</code> 指令映射</a></h3>
+<ul>
+<li><code>M</code> 扩展：基础乘除语义</li>
+<li><code>MOP</code>：<code>WIDE_MUL/WIDE_DIV/ADD3*</code> 压缩高频算术模板</li>
+<li><code>Trace</code>：降低循环体重复解码和分发开销</li>
+</ul>
+<p>对应代码锚点：</p>
+<ul>
+<li><code>src/instructions/execute.rs</code></li>
+<li><code>src/decoder.rs</code></li>
+<li><code>src/machine/trace.rs</code></li>
+</ul>
+<h3 id="a33-关键结论"><a class="header" href="#a33-关键结论">A.3.3 关键结论</a></h3>
+<p>大整数路径常见瓶颈是“调度开销 + 指令链长度”，而非单算子理论峰值。</p>
+<h2 id="a4-哈希负载画像sha-256blake2b"><a class="header" href="#a4-哈希负载画像sha-256blake2b">A.4 哈希负载画像（SHA-256/BLAKE2b）</a></h2>
+<h3 id="a41-高占比算子"><a class="header" href="#a41-高占比算子">A.4.1 高占比算子</a></h3>
+<ul>
+<li>rotate/shift/xor</li>
+<li>字节重排与消息扩展</li>
+<li>固定轮函数的高频循环</li>
+</ul>
+<h3 id="a42-指令映射"><a class="header" href="#a42-指令映射">A.4.2 指令映射</a></h3>
+<ul>
+<li><code>B</code> 扩展：<code>REV8/ORCB/CLMUL*</code> 与各类位操作</li>
+<li>IMC：基础加载存储和算术逻辑</li>
+<li><code>Trace</code>：稳定循环体高命中，收益可观</li>
+</ul>
+<h3 id="a43-关键结论"><a class="header" href="#a43-关键结论">A.4.3 关键结论</a></h3>
+<p>哈希路径收益来自“位操作收敛 + 循环体命中”，不是某一条魔法指令。</p>
+<h2 id="a5-merkle-验证与序列化路径"><a class="header" href="#a5-merkle-验证与序列化路径">A.5 Merkle 验证与序列化路径</a></h2>
+<p>Merkle 负载常由“频繁小块哈希 + 边界拼接”组成。主要风险在于：</p>
+<ul>
+<li>不必要的数据拷贝</li>
+<li>syscall 边界过细导致陷入频率过高</li>
+<li>计费模型未覆盖小块高频模式</li>
+</ul>
+<p>建议优先优化数据布局与调用边界，再优化单条算术路径。</p>
+<h2 id="a6-扩展价值矩阵"><a class="header" href="#a6-扩展价值矩阵">A.6 扩展价值矩阵</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>扩展/机制</th><th>主要收益点</th><th>典型负载</th><th>风险点</th></tr>
+</thead>
+<tbody>
+<tr><td>B</td><td>位操作压缩</td><td>哈希、比特域计算</td><td>指令覆盖不完整导致回退频繁</td></tr>
+<tr><td>M</td><td>乘除语义原生化</td><td>大整数、模运算</td><td>cycles 估值偏差</td></tr>
+<tr><td>A</td><td>原子语义支持</td><td>并发协议/锁语义模拟</td><td>非核心密码学热点</td></tr>
+<tr><td>MOP</td><td>高频模式融合</td><td>乘加进位链</td><td>等价性验证复杂</td></tr>
+<tr><td>Trace</td><td>降低解释器噪声</td><td>稳定循环体</td><td>cache 命中退化</td></tr>
+</tbody>
+</table>
+</div>
+<h2 id="a7-计费校准框架出版版"><a class="header" href="#a7-计费校准框架出版版">A.7 计费校准框架（出版版）</a></h2>
+<h3 id="a71-校准流程"><a class="header" href="#a71-校准流程">A.7.1 校准流程</a></h3>
+<ol>
+<li>采集真实合约 trace（而非 microbenchmark）。</li>
+<li>统计 opcode 和融合 opcode 占比。</li>
+<li>比较“cycles 估值”与“实际执行成本”偏差。</li>
+<li>回归更新 <code>estimate_cycles</code>，并做跨版本对拍。</li>
+</ol>
+<h3 id="a72-需长期追踪的指标"><a class="header" href="#a72-需长期追踪的指标">A.7.2 需长期追踪的指标</a></h3>
+<ul>
+<li><code>cycles_per_tx</code> 分布</li>
+<li>opcode 热点排名变化</li>
+<li>DoS 可疑交易的成本密度</li>
+<li>版本升级前后费用漂移</li>
+</ul>
+<h2 id="a8-恒时安全与确定性的边界"><a class="header" href="#a8-恒时安全与确定性的边界">A.8 恒时安全与确定性的边界</a></h2>
+<p>需要明确：</p>
+<ul>
+<li>VM 确定性保证的是“结果一致”。</li>
+<li>恒时安全关注的是“执行轨迹不泄露秘密”。</li>
+</ul>
+<p>两者相关但不等价。密码学库仍需：</p>
+<ul>
+<li>避免 secret-dependent 分支</li>
+<li>避免 secret-dependent 访存</li>
+<li>用审计与测试验证恒时性质</li>
+</ul>
+<h2 id="a9-反例分析优化-kpi-与安全-kpi-断裂"><a class="header" href="#a9-反例分析优化-kpi-与安全-kpi-断裂">A.9 反例分析：优化 KPI 与安全 KPI 断裂</a></h2>
+<p>反例场景：团队仅追求“TPS 提升 20%”，不做等价验证与计费校准。</p>
+<p>后果通常是：</p>
+<ul>
+<li>热点负载性能提升不明显，冷路径语义反而漂移。</li>
+<li>费用模型失真，出现低成本重计算窗口。</li>
+</ul>
+<p>教训：密码学优化必须同时满足“功能等价 + 计费一致 + 安全边界不退化”。</p>
+<h2 id="a10-审计清单出版版"><a class="header" href="#a10-审计清单出版版">A.10 审计清单（出版版）</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"> 是否覆盖 secp/hash/Merkle 三类代表性 workload。</li>
+<li><input disabled="" type="checkbox"> MOP 融合是否有等价性测试与反例测试。</li>
+<li><input disabled="" type="checkbox"> Rust/ASM 双后端是否做密码学路径差分回归。</li>
+<li><input disabled="" type="checkbox"> cycles 模型是否按版本持续校准。</li>
+<li><input disabled="" type="checkbox"> 是否单独评估恒时风险，不与确定性测试混用。</li>
+</ul>
+<h2 id="a11-采样模板可直接落地"><a class="header" href="#a11-采样模板可直接落地">A.11 采样模板（可直接落地）</a></h2>
+<pre><code class="language-text">Workload: secp256k1_verify_batch
+Input size: N signatures
+Backend: rust-trace / asm
+VM version: VERSION2
+ISA flags: IMC|B|A|MOP
+
+Metrics:
+- total cycles
+- top 20 opcodes
+- MOP hit ratio
+- trace miss ratio
+- syscall count
+</code></pre>
+<h2 id="a12-发布门禁建议"><a class="header" href="#a12-发布门禁建议">A.12 发布门禁建议</a></h2>
+<ol>
+<li>性能门禁：关键 workload 不低于基线。</li>
+<li>语义门禁：跨后端、跨平台差分一致。</li>
+<li>计费门禁：费用曲线变化在阈值内。</li>
+<li>安全门禁：新增路径完成侧信道风险复核。</li>
+</ol>
+<h2 id="a13-一针见血结论"><a class="header" href="#a13-一针见血结论">A.13 一针见血结论</a></h2>
+<p>密码学专题的本质不是“让几条指令更快”，而是把高频密码学模式收敛成可预测成本、可证明语义、可持续治理的执行体系。</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="附录-f-密码学实现审计模板pr-直用版"><a class="header" href="#附录-f-密码学实现审计模板pr-直用版">附录 F 密码学实现审计模板（PR 直用版）</a></h1>
+<blockquote>
+<p>用途：用于审查任何引入或修改密码学实现（签名、哈希、Merkle、大整数）的 PR。<br>结论必须可复现、可对拍、可回滚。</p>
+</blockquote>
+<h2 id="f1-pr-基本信息"><a class="header" href="#f1-pr-基本信息">F.1 PR 基本信息</a></h2>
+<ul>
+<li>PR 标题：</li>
+<li>PR 链接：</li>
+<li>负责人：</li>
+<li>审计人：</li>
+<li>目标模块：</li>
+<li>关联 issue/RFC：</li>
+<li>影响范围（合约/VM/宿主）：</li>
+</ul>
+<h2 id="f2-变更分类必选"><a class="header" href="#f2-变更分类必选">F.2 变更分类（必选）</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"> 新增算法实现</li>
+<li><input disabled="" type="checkbox"> 现有算法重构</li>
+<li><input disabled="" type="checkbox"> 性能优化（无语义变更）</li>
+<li><input disabled="" type="checkbox"> 指令映射调整（如 MOP/B 扩展路径）</li>
+<li><input disabled="" type="checkbox"> 计费模型调整（cycles/gas）</li>
+<li><input disabled="" type="checkbox"> 汇编快路径变更</li>
+</ul>
+<h2 id="f3-威胁模型与安全目标"><a class="header" href="#f3-威胁模型与安全目标">F.3 威胁模型与安全目标</a></h2>
+<h3 id="f31-资产"><a class="header" href="#f31-资产">F.3.1 资产</a></h3>
+<ul>
+<li>需要保护的秘密数据：</li>
+<li>需要保证的一致性状态：</li>
+</ul>
+<h3 id="f32-攻击面"><a class="header" href="#f32-攻击面">F.3.2 攻击面</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> 输入构造攻击</li>
+<li><input disabled="" type="checkbox"> 计费绕过/DoS</li>
+<li><input disabled="" type="checkbox"> 侧信道（时序/访存）</li>
+<li><input disabled="" type="checkbox"> 多后端语义漂移</li>
+<li><input disabled="" type="checkbox"> 宿主边界滥用</li>
+</ul>
+<h3 id="f33-安全目标"><a class="header" href="#f33-安全目标">F.3.3 安全目标</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> 功能正确性</li>
+<li><input disabled="" type="checkbox"> 共识确定性</li>
+<li><input disabled="" type="checkbox"> 计费公平性</li>
+<li><input disabled="" type="checkbox"> 恒时约束（如适用）</li>
+</ul>
+<h2 id="f4-规范一致性检查"><a class="header" href="#f4-规范一致性检查">F.4 规范一致性检查</a></h2>
+<ul>
+<li>参考规范文档：</li>
+<li>关键边界行为（除零/溢出/无效输入）说明：</li>
+<li>与既有实现兼容性说明：</li>
+</ul>
+<p>检查项：</p>
+<ul>
+<li><input disabled="" type="checkbox"> 边界条件均有测试向量</li>
+<li><input disabled="" type="checkbox"> 与规范语义逐条映射</li>
+<li><input disabled="" type="checkbox"> 无未定义行为依赖</li>
+</ul>
+<h2 id="f5-共识一致性检查"><a class="header" href="#f5-共识一致性检查">F.5 共识一致性检查</a></h2>
+<h3 id="f51-跨后端对拍"><a class="header" href="#f51-跨后端对拍">F.5.1 跨后端对拍</a></h3>
+<ul>
+<li>后端矩阵：<code>rust-trace</code> / <code>asm</code></li>
+<li>对拍范围：</li>
+<li>结果：</li>
+</ul>
+<h3 id="f52-跨平台对拍如可用"><a class="header" href="#f52-跨平台对拍如可用">F.5.2 跨平台对拍（如可用）</a></h3>
+<ul>
+<li>平台矩阵：</li>
+<li>结果：</li>
+</ul>
+<p>检查项：</p>
+<ul>
+<li><input disabled="" type="checkbox"> 相同输入 -&gt; 相同输出</li>
+<li><input disabled="" type="checkbox"> 相同输入 -&gt; 相同错误码</li>
+<li><input disabled="" type="checkbox"> 相同输入 -&gt; 相同关键状态（寄存器/内存）</li>
+</ul>
+<h2 id="f6-恒时与侧信道检查密码学必看"><a class="header" href="#f6-恒时与侧信道检查密码学必看">F.6 恒时与侧信道检查（密码学必看）</a></h2>
+<ul>
+<li>secret-dependent 分支评估：</li>
+<li>secret-dependent 访存评估：</li>
+<li>汇编路径是否保持恒时约束：</li>
+</ul>
+<p>检查项：</p>
+<ul>
+<li><input disabled="" type="checkbox"> 无基于秘密的分支路径差异</li>
+<li><input disabled="" type="checkbox"> 无基于秘密的内存访问模式差异</li>
+<li><input disabled="" type="checkbox"> 性能优化未破坏恒时约束</li>
+</ul>
+<h2 id="f7-内存与权限模型检查"><a class="header" href="#f7-内存与权限模型检查">F.7 内存与权限模型检查</a></h2>
+<ul>
+<li>是否触及 <code>WXorXMemory</code> 边界：</li>
+<li>是否新增页权限转换：</li>
+<li>是否新增 unsafe 或指针操作：</li>
+</ul>
+<p>检查项：</p>
+<ul>
+<li><input disabled="" type="checkbox"> 无写可执行页行为</li>
+<li><input disabled="" type="checkbox"> 越界路径有明确错误返回</li>
+<li><input disabled="" type="checkbox"> unsafe 代码有最小化与注释说明</li>
+</ul>
+<h2 id="f8-计费与经济安全检查"><a class="header" href="#f8-计费与经济安全检查">F.8 计费与经济安全检查</a></h2>
+<ul>
+<li>cycles 变化摘要：</li>
+<li>代表性 workload：</li>
+<li>校准方法：</li>
+</ul>
+<p>检查项：</p>
+<ul>
+<li><input disabled="" type="checkbox"> 提供前后对比基线</li>
+<li><input disabled="" type="checkbox"> 热点负载费用变化可解释</li>
+<li><input disabled="" type="checkbox"> 无明显低成本高计算窗口</li>
+</ul>
+<h2 id="f9-测试与验证证据"><a class="header" href="#f9-测试与验证证据">F.9 测试与验证证据</a></h2>
+<h3 id="f91-必要测试"><a class="header" href="#f91-必要测试">F.9.1 必要测试</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> 单元测试</li>
+<li><input disabled="" type="checkbox"> 属性测试（proptest/fuzz）</li>
+<li><input disabled="" type="checkbox"> 回归测试</li>
+<li><input disabled="" type="checkbox"> 差分测试</li>
+<li><input disabled="" type="checkbox"> 代表性 workload 基准</li>
+</ul>
+<h3 id="f92-产物链接"><a class="header" href="#f92-产物链接">F.9.2 产物链接</a></h3>
+<ul>
+<li>测试报告：</li>
+<li>对拍报告：</li>
+<li>基准报告：</li>
+</ul>
+<h2 id="f10-代码审查重点逐项结论"><a class="header" href="#f10-代码审查重点逐项结论">F.10 代码审查重点（逐项结论）</a></h2>
+<ol>
+<li>正确性结论：</li>
+<li>一致性结论：</li>
+<li>计费结论：</li>
+<li>侧信道结论：</li>
+<li>可维护性结论：</li>
+</ol>
+<h2 id="f11-发布门禁"><a class="header" href="#f11-发布门禁">F.11 发布门禁</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"> 通过语义门禁（正确 + 一致）</li>
+<li><input disabled="" type="checkbox"> 通过经济门禁（计费 + DoS）</li>
+<li><input disabled="" type="checkbox"> 通过安全门禁（侧信道 + 边界）</li>
+<li><input disabled="" type="checkbox"> 通过回滚门禁（可撤回 + 可恢复）</li>
+</ul>
+<p>发布建议：</p>
+<ul>
+<li><input disabled="" type="checkbox"> 可发布</li>
+<li><input disabled="" type="checkbox"> 有条件发布（需补充）</li>
+<li><input disabled="" type="checkbox"> 拒绝发布</li>
+</ul>
+<h2 id="f12-审计签署"><a class="header" href="#f12-审计签署">F.12 审计签署</a></h2>
+<ul>
+<li>负责人签名：</li>
+<li>审计人签名：</li>
+<li>日期：</li>
+</ul>
+<h2 id="f13-一针见血结论"><a class="header" href="#f13-一针见血结论">F.13 一针见血结论</a></h2>
+<p>密码学 PR 的“通过标准”不是跑得快，而是：语义不漂移、计费不失真、安全边界不退化。</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="附录-c-risc-v-专题isa-选择操作系统语义与落地策略"><a class="header" href="#附录-c-risc-v-专题isa-选择操作系统语义与落地策略">附录 C RISC-V 专题：ISA 选择、操作系统语义与落地策略</a></h1>
+<h2 id="c1-目标"><a class="header" href="#c1-目标">C.1 目标</a></h2>
+<p>本附录聚焦 RISC-V 在区块链 VM 中的“工程可治理性”，不是做教科书式 ISA 介绍。</p>
+<p>核心问题：</p>
+<ol>
+<li>为什么 RISC-V 特别适合共识执行层？</li>
+<li><code>ckb-vm</code> 目前采用的 ISA 组合意味着什么？</li>
+<li>后续扩展（如 V）应如何分阶段引入？</li>
+</ol>
+<h2 id="c2-图-c-1从-isa-到协议治理的影响链"><a class="header" href="#c2-图-c-1从-isa-到协议治理的影响链">C.2 图 C-1：从 ISA 到协议治理的影响链</a></h2>
+<pre><code class="language-text">ISA semantics
+  -&gt; decoder/loader complexity
+  -&gt; multi-backend consistency
+  -&gt; tooling &amp; audit cost
+  -&gt; protocol upgrade governance
+</code></pre>
+<h2 id="c3-ckb-vm-的-isa-画像"><a class="header" href="#c3-ckb-vm-的-isa-画像">C.3 <code>ckb-vm</code> 的 ISA 画像</a></h2>
+<p>从 <code>src/lib.rs</code> 与 <code>src/machine/mod.rs</code> 可见，当前常用组合是：</p>
+<ul>
+<li><code>IMC</code>：基础执行与压缩指令</li>
+<li><code>B</code>：位操作扩展</li>
+<li><code>A</code>：原子语义</li>
+<li><code>MOP</code>：宏操作融合（实现层扩展）</li>
+</ul>
+<p>这套组合体现出明确价值取向：</p>
+<ul>
+<li>既要支持密码学高频路径</li>
+<li>又要保持解释执行和审计可控</li>
+</ul>
+<h2 id="c4-指令编码规整性与解码收益"><a class="header" href="#c4-指令编码规整性与解码收益">C.4 指令编码规整性与解码收益</a></h2>
+<p><code>src/decoder.rs</code> 利用 RISC-V 编码规律处理：</p>
+<ul>
+<li>RVC/32 位指令判别</li>
+<li>页尾跨界取指</li>
+<li>decode cache 与 MOP 识别</li>
+</ul>
+<p>规整编码的实际收益是：</p>
+<ul>
+<li>解码逻辑可维护</li>
+<li>优化点可定位</li>
+<li>边界行为可测试</li>
+</ul>
+<h2 id="c5-操作系统语义映射"><a class="header" href="#c5-操作系统语义映射">C.5 操作系统语义映射</a></h2>
+<p>RISC-V 在 <code>ckb-vm</code> 中不是“CPU 仿真”，而是“OS 风格执行语义承载”：</p>
+<ul>
+<li><code>ecall/ebreak</code> -&gt; 陷入机制</li>
+<li>页权限 -&gt; W^X 与 freeze</li>
+<li>栈 ABI -&gt; 对齐与参数布局</li>
+<li>错误码 -&gt; 可重放失败路径</li>
+</ul>
+<p>这也是为什么本书把 VM 视为“微型操作系统内核”。</p>
+<h2 id="c6-版本兼容策略与语义治理"><a class="header" href="#c6-版本兼容策略与语义治理">C.6 版本兼容策略与语义治理</a></h2>
+<p><code>VERSION0/1/2</code> 的存在说明一个现实：</p>
+<ul>
+<li>执行层 bug 修复必须与历史语义兼容并存。</li>
+<li>协议升级不能用“覆盖式修复”，而是要版本门控。</li>
+</ul>
+<p>这是一种“协议级软件工程”：正确不是单版本正确，而是历史全域可重放正确。</p>
+<h2 id="c7-反例分析isa-扩展无治理引入"><a class="header" href="#c7-反例分析isa-扩展无治理引入">C.7 反例分析：ISA 扩展无治理引入</a></h2>
+<p>反例场景：直接启用新扩展，不做版本隔离与计费校准：</p>
+<ul>
+<li>同一合约在不同节点配置下表现不一致。</li>
+<li>费用曲线突变，出现经济套利与 DoS 窗口。</li>
+</ul>
+<p>教训：任何新扩展都必须先过“语义一致 + 计费一致 + 工具链可复现”三重门禁。</p>
+<h2 id="c8-向量扩展v引入路线建议"><a class="header" href="#c8-向量扩展v引入路线建议">C.8 向量扩展（V）引入路线建议</a></h2>
+<h3 id="c81-分阶段路线"><a class="header" href="#c81-分阶段路线">C.8.1 分阶段路线</a></h3>
+<ol>
+<li>规范阶段：明确子集、禁用项、边界语义。</li>
+<li>实现阶段：先 Rust 语义后端，再逐步引入 ASM 快路径。</li>
+<li>计费阶段：建立向量指令专属成本模型。</li>
+<li>发布阶段：灰度、对拍、回滚预案。</li>
+</ol>
+<h3 id="c82-不建议的路线"><a class="header" href="#c82-不建议的路线">C.8.2 不建议的路线</a></h3>
+<ul>
+<li>先上快路径再补语义文档</li>
+<li>只做 microbenchmark 不做真实负载</li>
+<li>缺乏跨后端一致性测试就推进协议升级</li>
+</ul>
+<h2 id="c9-risc-v-审计清单出版版"><a class="header" href="#c9-risc-v-审计清单出版版">C.9 RISC-V 审计清单（出版版）</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"> ISA 子集是否有明确规范与版本边界。</li>
+<li><input disabled="" type="checkbox"> 新扩展是否附带可执行测试向量与反例集。</li>
+<li><input disabled="" type="checkbox"> 解码器、执行器、计费器是否同步演进。</li>
+<li><input disabled="" type="checkbox"> Rust/ASM 是否完成跨平台差分回归。</li>
+<li><input disabled="" type="checkbox"> 工具链版本是否可复现、可追踪。</li>
+</ul>
+<h2 id="c10-工程模板扩展提案最小包"><a class="header" href="#c10-工程模板扩展提案最小包">C.10 工程模板：扩展提案最小包</a></h2>
+<p>一个可上线的扩展提案，至少应包含：</p>
+<ol>
+<li>语义说明（含边界条件）</li>
+<li>解码与执行实现</li>
+<li>计费模型与校准报告</li>
+<li>跨后端一致性报告</li>
+<li>回滚方案与兼容性声明</li>
+</ol>
+<h2 id="c11-一针见血结论"><a class="header" href="#c11-一针见血结论">C.11 一针见血结论</a></h2>
+<p>RISC-V 在区块链 VM 的真正价值，不是“开放”这一个标签，而是它能把 ISA、执行器和协议治理连接成一条可长期维护的工程链。</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="附录-b-术语总表带锚点"><a class="header" href="#附录-b-术语总表带锚点">附录 B 术语总表（带锚点）</a></h1>
+<blockquote>
+<p>说明：本附录为术语定义入口；跨章节映射见附录 D。</p>
+</blockquote>
+<p><a id="term-a-extension"></a></p>
+<h3 id="a-extension"><a class="header" href="#a-extension">A Extension</a></h3>
+<p>RISC-V 原子指令扩展，包含 <code>LR/SC/AMO</code>。</p>
+<p><a id="term-b-extension"></a></p>
+<h3 id="b-extension"><a class="header" href="#b-extension">B Extension</a></h3>
+<p>RISC-V 位操作扩展，覆盖旋转、位计数、无进位乘法等。</p>
+<p><a id="term-coremachine"></a></p>
+<h3 id="coremachine"><a class="header" href="#coremachine">CoreMachine</a></h3>
+<p><code>ckb-vm</code> 中只描述寄存器/PC/内存等核心状态的抽象接口。</p>
+<p><a id="term-consensus-safety"></a></p>
+<h3 id="consensus-safety"><a class="header" href="#consensus-safety">Consensus Safety</a></h3>
+<p>同一交易在所有诚实节点上产出一致状态结果，不出现语义分叉。</p>
+<p><a id="term-cycle"></a></p>
+<h3 id="cycle"><a class="header" href="#cycle">Cycle</a></h3>
+<p>VM 的执行计费单位，用于资源预算控制。</p>
+<p><a id="term-cycle-budget"></a></p>
+<h3 id="cycle-budget"><a class="header" href="#cycle-budget">Cycle Budget</a></h3>
+<p>一次执行可用的最大 cycle 上限，超限应返回确定错误。</p>
+<p><a id="term-datasource"></a></p>
+<h3 id="datasource"><a class="header" href="#datasource">DataSource</a></h3>
+<p><code>snapshot2</code> 中可复用稳定数据源抽象，用于减少快照体积。</p>
+<p><a id="term-defaultmachine"></a></p>
+<h3 id="defaultmachine"><a class="header" href="#defaultmachine">DefaultMachine</a></h3>
+<p><code>ckb-vm</code> 核心机器实现，组合 inner machine、syscalls、debugger 与计费。</p>
+<p><a id="term-determinism"></a></p>
+<h3 id="determinism"><a class="header" href="#determinism">Determinism</a></h3>
+<p>同输入同输出同错误语义。</p>
+<p><a id="term-differential-testing"></a></p>
+<h3 id="differential-testing"><a class="header" href="#differential-testing">Differential Testing</a></h3>
+<p>通过多后端/多平台对拍验证执行一致性的测试方法。</p>
+<p><a id="term-dirty-page"></a></p>
+<h3 id="dirty-page"><a class="header" href="#dirty-page">Dirty Page</a></h3>
+<p>执行期间发生写入的内存页。</p>
+<p><a id="term-ecall"></a></p>
+<h3 id="ecall"><a class="header" href="#ecall">Ecall</a></h3>
+<p>RISC-V 系统调用陷入指令。</p>
+<p><a id="term-elf"></a></p>
+<h3 id="elf"><a class="header" href="#elf">ELF</a></h3>
+<p>Executable and Linkable Format，可执行文件格式。</p>
+<p><a id="term-execution-governance"></a></p>
+<h3 id="execution-governance"><a class="header" href="#execution-governance">Execution Governance</a></h3>
+<p>执行层升级、兼容、回滚与发布门禁的治理体系。</p>
+<p><a id="term-fast-path"></a></p>
+<h3 id="fast-path"><a class="header" href="#fast-path">Fast Path</a></h3>
+<p>高频执行路径，通常为性能优化重点。</p>
+<p><a id="term-gas-fairness"></a></p>
+<h3 id="gas-fairness"><a class="header" href="#gas-fairness">Gas Fairness</a></h3>
+<p>计费与实际资源消耗之间的一致性。</p>
+<p><a id="term-governance-cost"></a></p>
+<h3 id="governance-cost"><a class="header" href="#governance-cost">Governance Cost</a></h3>
+<p>协议在长期维护、升级与审计中需要支付的综合成本。</p>
+<p><a id="term-imc"></a></p>
+<h3 id="imc"><a class="header" href="#imc">IMC</a></h3>
+<p>RISC-V 基础整数指令集与压缩指令组合。</p>
+<p><a id="term-m-extension"></a></p>
+<h3 id="m-extension"><a class="header" href="#m-extension">M Extension</a></h3>
+<p>RISC-V 乘除扩展。</p>
+<p><a id="term-mop"></a></p>
+<h3 id="mop"><a class="header" href="#mop">MOP</a></h3>
+<p>Macro-Operation Fusion，宏操作融合。</p>
+<p><a id="term-open-isa"></a></p>
+<h3 id="open-isa"><a class="header" href="#open-isa">Open ISA</a></h3>
+<p>规范公开、可实现、可审计的指令集架构。</p>
+<p><a id="term-pause"></a></p>
+<h3 id="pause"><a class="header" href="#pause">Pause</a></h3>
+<p><code>ckb-vm</code> 中断控制信号机制，可用于安全暂停执行。</p>
+<p><a id="term-program-metadata"></a></p>
+<h3 id="programmetadata"><a class="header" href="#programmetadata">ProgramMetadata</a></h3>
+<p>ELF 解析后生成的装载动作集合。</p>
+<p><a id="term-runner"></a></p>
+<h3 id="runner"><a class="header" href="#runner">Runner</a></h3>
+<p>驱动 VM 生命周期（加载、执行、退出）的调度器抽象。</p>
+<p><a id="term-rvc"></a></p>
+<h3 id="rvc"><a class="header" href="#rvc">RVC</a></h3>
+<p>RISC-V Compressed Instructions，16 位压缩指令。</p>
+<p><a id="term-semantic-drift"></a></p>
+<h3 id="semantic-drift"><a class="header" href="#semantic-drift">Semantic Drift</a></h3>
+<p>实现随时间偏离既定语义规范。</p>
+<p><a id="term-slow-path"></a></p>
+<h3 id="slow-path"><a class="header" href="#slow-path">Slow Path</a></h3>
+<p>低频或复杂路径，通常在快路径无法覆盖时触发。</p>
+<p><a id="term-snapshot"></a></p>
+<h3 id="snapshot"><a class="header" href="#snapshot">Snapshot</a></h3>
+<p>用于挂起/恢复 VM 的状态序列化结构。</p>
+<p><a id="term-supportmachine"></a></p>
+<h3 id="supportmachine"><a class="header" href="#supportmachine">SupportMachine</a></h3>
+<p>在 <code>CoreMachine</code> 基础上扩展 cycles/load/reset 等能力的接口。</p>
+<p><a id="term-syscalls-trait"></a></p>
+<h3 id="syscalls-trait"><a class="header" href="#syscalls-trait">Syscalls Trait</a></h3>
+<p>宿主能力注入接口，定义 <code>initialize</code> 与 <code>ecall</code>。</p>
+<p><a id="term-tcb"></a></p>
+<h3 id="tcb"><a class="header" href="#tcb">TCB</a></h3>
+<p>Trusted Computing Base，可信计算基。</p>
+<p><a id="term-trace"></a></p>
+<h3 id="trace"><a class="header" href="#trace">Trace</a></h3>
+<p>按基本块缓存的指令与执行线程集合。</p>
+<p><a id="term-v-extension"></a></p>
+<h3 id="v-extension"><a class="header" href="#v-extension">V Extension</a></h3>
+<p>RISC-V 向量扩展。</p>
+<p><a id="term-wxorx"></a></p>
+<h3 id="wx"><a class="header" href="#wx">W^X</a></h3>
+<p>Write xor Execute，页不可同时写与执行。</p>
+<p><a id="term-wxorxmemory"></a></p>
+<h3 id="wxorxmemory"><a class="header" href="#wxorxmemory">WXorXMemory</a></h3>
+<p><code>ckb-vm</code> 的权限包装内存，实现 W^X 检查。</p>
+<p><a id="term-zero-register"></a></p>
+<h3 id="zero-register"><a class="header" href="#zero-register">Zero Register</a></h3>
+<p>RISC-V <code>x0</code> 寄存器，读恒为 0，写入被忽略。</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="附录-d-术语索引交叉章节-x-代码-x-定义"><a class="header" href="#附录-d-术语索引交叉章节-x-代码-x-定义">附录 D 术语索引交叉（章节 x 代码 x 定义）</a></h1>
+<blockquote>
+<p>使用方式：先在本附录定位术语，再跳到附录 B 对应定义，再回到章节中的应用语境。</p>
+</blockquote>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>术语</th><th>主要章节</th><th>代码锚点</th><th>定义入口</th></tr>
+</thead>
+<tbody>
+<tr><td>Determinism</td><td>第 1, 5, 7, 11 章</td><td><code>src/machine/mod.rs</code>, <code>src/error.rs</code></td><td>附录 B <code>Determinism</code></td></tr>
+<tr><td>Cycle Budget</td><td>第 1, 11 章</td><td><code>SupportMachine::add_cycles</code></td><td>附录 B <code>Cycle Budget</code></td></tr>
+<tr><td>CoreMachine</td><td>第 2 章</td><td><code>src/machine/mod.rs</code> trait 定义</td><td>附录 B <code>CoreMachine</code></td></tr>
+<tr><td>SupportMachine</td><td>第 2 章</td><td><code>src/machine/mod.rs</code> trait 定义</td><td>附录 B <code>SupportMachine</code></td></tr>
+<tr><td>Runner</td><td>第 2 章</td><td><code>DefaultMachineRunner</code></td><td>附录 B <code>Runner</code></td></tr>
+<tr><td>ELF</td><td>第 3 章</td><td><code>src/elf.rs</code></td><td>附录 B <code>ELF</code></td></tr>
+<tr><td>ProgramMetadata</td><td>第 3, 6 章</td><td><code>ProgramMetadata</code>, <code>LoadingAction</code></td><td>附录 B <code>ProgramMetadata</code></td></tr>
+<tr><td>W^X</td><td>第 3, 11 章</td><td><code>src/memory/wxorx.rs</code></td><td>附录 B <code>W^X</code></td></tr>
+<tr><td>WXorXMemory</td><td>第 3, 11 章</td><td><code>WXorXMemory</code></td><td>附录 B <code>WXorXMemory</code></td></tr>
+<tr><td>RVC</td><td>第 4, 9 章</td><td><code>decode_bits</code></td><td>附录 B <code>RVC</code></td></tr>
+<tr><td>MOP</td><td>第 4, 10 章</td><td><code>decode_mop</code>, <code>handle_wide_*</code></td><td>附录 B <code>MOP</code></td></tr>
+<tr><td>Trace</td><td>第 4, 10 章</td><td><code>src/machine/trace.rs</code></td><td>附录 B <code>Trace</code></td></tr>
+<tr><td>Fast Path</td><td>第 4, 8 章</td><td>ASM 执行快路径</td><td>附录 B <code>Fast Path</code></td></tr>
+<tr><td>Slow Path</td><td>第 4, 8 章</td><td><code>RET_SLOWPATH</code> 回退</td><td>附录 B <code>Slow Path</code></td></tr>
+<tr><td>Ecall</td><td>第 2, 5 章</td><td><code>Machine::ecall</code></td><td>附录 B <code>Ecall</code></td></tr>
+<tr><td>Syscalls Trait</td><td>第 5 章</td><td><code>src/syscalls/mod.rs</code></td><td>附录 B <code>Syscalls Trait</code></td></tr>
+<tr><td>TCB</td><td>第 5 章</td><td>syscall 边界设计</td><td>附录 B <code>TCB</code></td></tr>
+<tr><td>Snapshot</td><td>第 6 章</td><td><code>snapshot.rs</code>, <code>snapshot2.rs</code></td><td>附录 B <code>Snapshot</code></td></tr>
+<tr><td>Dirty Page</td><td>第 6 章</td><td><code>FLAG_DIRTY</code></td><td>附录 B <code>Dirty Page</code></td></tr>
+<tr><td>DataSource</td><td>第 6 章</td><td><code>Snapshot2Context::store_bytes</code></td><td>附录 B <code>DataSource</code></td></tr>
+<tr><td>Zero Register</td><td>第 7 章</td><td><code>update_register</code></td><td>附录 B <code>Zero Register</code></td></tr>
+<tr><td>Semantic Drift</td><td>第 7, 8, 11 章</td><td>多后端同步风险</td><td>附录 B <code>Semantic Drift</code></td></tr>
+<tr><td>Differential Testing</td><td>第 8, 11 章</td><td>Rust/ASM 对拍</td><td>附录 B <code>Differential Testing</code></td></tr>
+<tr><td>Open ISA</td><td>第 9 章</td><td>ISA 公开规范收益</td><td>附录 B <code>Open ISA</code></td></tr>
+<tr><td>Governance Cost</td><td>第 9 章</td><td>工具链/升级长期成本</td><td>附录 B <code>Governance Cost</code></td></tr>
+<tr><td>B Extension</td><td>第 10 章</td><td><code>src/instructions/b.rs</code></td><td>附录 B <code>B Extension</code></td></tr>
+<tr><td>M Extension</td><td>第 10 章</td><td><code>src/instructions/execute.rs</code></td><td>附录 B <code>M Extension</code></td></tr>
+<tr><td>Gas Fairness</td><td>第 10 章</td><td><code>src/cost_model.rs</code></td><td>附录 B <code>Gas Fairness</code></td></tr>
+<tr><td>Execution Governance</td><td>第 9, 11 章</td><td>版本策略与发布门禁</td><td>附录 B <code>Execution Governance</code></td></tr>
+<tr><td>V Extension</td><td>附录 C</td><td>向量扩展引入路线</td><td>附录 B <code>V Extension</code></td></tr>
+</tbody>
+</table>
+</div>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="附录-e-出版规范图号统一代码引用与章节收口"><a class="header" href="#附录-e-出版规范图号统一代码引用与章节收口">附录 E 出版规范：图号统一、代码引用与章节收口</a></h1>
+<h2 id="e1-图号统一规范"><a class="header" href="#e1-图号统一规范">E.1 图号统一规范</a></h2>
+<h3 id="e11-命名规则"><a class="header" href="#e11-命名规则">E.1.1 命名规则</a></h3>
+<ul>
+<li>章内图号采用 <code>图 X-Y</code>，其中：
+<ul>
+<li><code>X</code> 为章节号（1-11）</li>
+<li><code>Y</code> 为章内序号（从 1 开始）</li>
+</ul>
+</li>
+<li>章节标题中图示建议写作：<code>图 X-Y：&lt;图名&gt;</code></li>
+</ul>
+<h3 id="e12-适用范围"><a class="header" href="#e12-适用范围">E.1.2 适用范围</a></h3>
+<ul>
+<li>主体章节（第 1~11 章）</li>
+<li>专题附录（A/C）建议使用 <code>图 A-Y</code>、<code>图 C-Y</code></li>
+</ul>
+<h3 id="e13-反例不推荐"><a class="header" href="#e13-反例不推荐">E.1.3 反例（不推荐）</a></h3>
+<ul>
+<li>使用全书连续编号（如图 27），读者难以定位章节上下文。</li>
+<li>同章混用“图 3-1”和“Figure 1”，破坏检索一致性。</li>
+</ul>
+<h2 id="e2-代码引用规范"><a class="header" href="#e2-代码引用规范">E.2 代码引用规范</a></h2>
+<ul>
+<li>统一使用反引号包裹路径与符号：<code>src/machine/mod.rs</code>。</li>
+<li>章节末必须提供“参考实现清单（代码锚点）”。</li>
+<li>章节叙事中出现关键语义时，应至少给出一个可定位代码锚点。</li>
+</ul>
+<h2 id="e3-章节收口规范"><a class="header" href="#e3-章节收口规范">E.3 章节收口规范</a></h2>
+<p>每章应按以下顺序收口：</p>
+<ol>
+<li><code>一针见血结论</code></li>
+<li><code>反例分析</code></li>
+<li><code>架构评审清单（出版版）</code></li>
+<li><code>参考实现清单（代码锚点）</code></li>
+<li><code>术语索引交叉</code></li>
+<li><code>审稿人问题清单（出版评审）</code></li>
+</ol>
+<h2 id="e4-页面包装规范mdbook"><a class="header" href="#e4-页面包装规范mdbook">E.4 页面包装规范（mdBook）</a></h2>
+<ul>
+<li>每章 wrapper 需包含统一页眉：章节号、文档版本、评审状态。</li>
+<li>每章 wrapper 需包含统一页脚：章末核查提示（反例/清单/锚点/术语/审稿问题）。</li>
+<li>wrapper 仅做展示层补充，不应覆盖主体章节语义内容。</li>
+</ul>
+<h2 id="e5-当前合规性检查本稿"><a class="header" href="#e5-当前合规性检查本稿">E.5 当前合规性检查（本稿）</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>章节</th><th>图号规范</th><th>反例分析</th><th>评审清单</th><th>参考实现清单</th><th>术语交叉</th><th>审稿问题</th></tr>
+</thead>
+<tbody>
+<tr><td>第 1 章</td><td>通过</td><td>通过</td><td>通过</td><td>通过</td><td>通过</td><td>通过</td></tr>
+<tr><td>第 2 章</td><td>通过</td><td>通过</td><td>通过</td><td>通过</td><td>通过</td><td>通过</td></tr>
+<tr><td>第 3 章</td><td>通过</td><td>通过</td><td>通过</td><td>通过</td><td>通过</td><td>通过</td></tr>
+<tr><td>第 4 章</td><td>通过</td><td>通过</td><td>通过</td><td>通过</td><td>通过</td><td>通过</td></tr>
+<tr><td>第 5 章</td><td>通过</td><td>通过</td><td>通过</td><td>通过</td><td>通过</td><td>通过</td></tr>
+<tr><td>第 6 章</td><td>通过</td><td>通过</td><td>通过</td><td>通过</td><td>通过</td><td>通过</td></tr>
+<tr><td>第 7 章</td><td>通过</td><td>通过</td><td>通过</td><td>通过</td><td>通过</td><td>通过</td></tr>
+<tr><td>第 8 章</td><td>通过</td><td>通过</td><td>通过</td><td>通过</td><td>通过</td><td>通过</td></tr>
+<tr><td>第 9 章</td><td>通过</td><td>通过</td><td>通过</td><td>通过</td><td>通过</td><td>通过</td></tr>
+<tr><td>第 10 章</td><td>通过</td><td>通过</td><td>通过</td><td>通过</td><td>通过</td><td>通过</td></tr>
+<tr><td>第 11 章</td><td>通过</td><td>通过</td><td>通过</td><td>通过</td><td>通过</td><td>通过</td></tr>
+</tbody>
+</table>
+</div>
+<h2 id="e6-一针见血结论"><a class="header" href="#e6-一针见血结论">E.6 一针见血结论</a></h2>
+<p>统一的图号、代码锚点与章节收口规范，本质上是“可审计写作”的基础设施。</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="附录-g-作者改稿检查清单终版"><a class="header" href="#附录-g-作者改稿检查清单终版">附录 G 作者改稿检查清单（终版）</a></h1>
+<blockquote>
+<p>用途：在交付“终版出版稿”前，逐项确认文本一致性、证据完整性、发布可维护性。</p>
+</blockquote>
+<h2 id="g1-结构一致性"><a class="header" href="#g1-结构一致性">G.1 结构一致性</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"> 第 1-11 章均包含：结论、反例、评审清单、代码锚点、术语交叉、审稿问题。</li>
+<li><input disabled="" type="checkbox"> 章节编号连续，图号统一为 <code>图 X-Y</code>。</li>
+<li><input disabled="" type="checkbox"> 章节标题与 <code>mdbook/src/SUMMARY.md</code> 完全一致。</li>
+<li><input disabled="" type="checkbox"> 附录 A/B/C/D/E/F/G 均在目录中可访问。</li>
+</ul>
+<h2 id="g2-证据一致性"><a class="header" href="#g2-证据一致性">G.2 证据一致性</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"> 每章核心观点至少绑定一个源码锚点。</li>
+<li><input disabled="" type="checkbox"> 代码路径引用无拼写错误（如 <code>src/machine/mod.rs</code>）。</li>
+<li><input disabled="" type="checkbox"> 术语定义与章节用法无冲突（通过附录 D 抽查）。</li>
+<li><input disabled="" type="checkbox"> 结论未超出代码证据支持范围。</li>
+</ul>
+<h2 id="g3-安全与治理叙事"><a class="header" href="#g3-安全与治理叙事">G.3 安全与治理叙事</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"> 明确区分确定性、计费、公平性、恒时安全四条线。</li>
+<li><input disabled="" type="checkbox"> 明确披露 Rust/ASM 双后端一致性风险。</li>
+<li><input disabled="" type="checkbox"> 明确披露 cycles 模型“估算属性”与校准需求。</li>
+<li><input disabled="" type="checkbox"> RISC-V 扩展引入建议包含版本门禁与回滚预案。</li>
+</ul>
+<h2 id="g4-密码学专题质量门禁"><a class="header" href="#g4-密码学专题质量门禁">G.4 密码学专题质量门禁</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"> 附录 A 覆盖 secp/hash/Merkle 三类负载。</li>
+<li><input disabled="" type="checkbox"> 附录 F 可直接用于 PR 审计，不依赖额外解释。</li>
+<li><input disabled="" type="checkbox"> 文中对侧信道风险的表述无“自动安全”误导。</li>
+<li><input disabled="" type="checkbox"> 计费校准流程可执行、可复核。</li>
+</ul>
+<h2 id="g5-发布与维护"><a class="header" href="#g5-发布与维护">G.5 发布与维护</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"> 版本页已更新版本号和日期。</li>
+<li><input disabled="" type="checkbox"> 更新日志已记录本轮改动摘要。</li>
+<li><input disabled="" type="checkbox"> 审稿人摘要页已同步当前评审重点。</li>
+<li><input disabled="" type="checkbox"> 顶层 README 与 manuscript/README 同步。</li>
+</ul>
+<h2 id="g6-最终签署"><a class="header" href="#g6-最终签署">G.6 最终签署</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"> 我确认本文档可进入外部评审阶段。</li>
+<li><input disabled="" type="checkbox"> 我确认本轮改动未引入结构性断链。</li>
+</ul>
+<p>作者：<br>日期：</p>
+<h2 id="g7-一针见血结论"><a class="header" href="#g7-一针见血结论">G.7 一针见血结论</a></h2>
+<p>“终版”不是把文字写满，而是把证据链、风险链、维护链全部闭合。</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr-ef4e11c1.min.js"></script>
+        <script src="mark-09e88c2c.min.js"></script>
+        <script src="searcher-c2a407aa.js"></script>
+
+        <script src="clipboard-1626706a.min.js"></script>
+        <script src="highlight-abc7f01d.js"></script>
+        <script src="book-a0b12cfe.js"></script>
+
+        <!-- Custom JS scripts -->
+
+        <script>
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+
+
+    </div>
+    </body>
+</html>

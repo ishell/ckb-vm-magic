@@ -2,7 +2,6 @@
 title = "Rust 与 RISC-V：区块链虚拟机的工程必然性"
 authors = ["OpenCode + Jay"]
 language = "zh-CN"
-multilingual = false
 src = "src"
 
 [build]
